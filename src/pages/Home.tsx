@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { Search, MapPin, Bell } from "lucide-react";
 import { CafeCard } from "@/components/CafeCard";
+import { useHomeSections } from "@/hooks/useCafes";
 import { getHomeSections } from "@/services/cafes";
 import type { Cafe } from "@/types";
 
@@ -14,12 +14,8 @@ const ROWS: { key: keyof Sections; title: string }[] = [
 ];
 
 export default function Home() {
-  const [sections, setSections] = useState<Sections | null>(null);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    getHomeSections().then(setSections).catch(() => setError(true));
-  }, []);
+  // react-query handles fetching, caching, loading and error state for us.
+  const { data: sections, isPending, isError } = useHomeSections();
 
   return (
     <div className="pb-4">
@@ -51,13 +47,13 @@ export default function Home() {
         </div>
       </div>
 
-      {error && (
+      {isError && (
         <p className="px-4 py-8 text-center text-sm text-destructive">
           اتصال به سرور برقرار نشد. مطمئن شوید json-server اجراست (npm run mock).
         </p>
       )}
 
-      {!sections && !error && (
+      {isPending && (
         <p className="px-4 py-8 text-center text-sm text-muted-foreground">
           در حال بارگذاری…
         </p>
