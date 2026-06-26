@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* shadcn/ui semantic tokens, tuned to the warm/sage brand palette */
+    --background: 40 33% 96%; /* #FAF7F2 */
+    --foreground: 215 28% 17%; /* #1F2937 */
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+    --primary: 126 17% 37%; /* #4F6F52 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 82 23% 84%; /* sage tint */
+    --secondary-foreground: 126 25% 25%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 215 12% 50%;
+    --accent: 43 96% 56%; /* #FBBF24 */
+    --accent-foreground: 215 28% 17%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 16% 90%;
+    --input: 215 16% 88%;
+    --ring: 126 17% 37%;
+    --radius: 0.9rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  /* hide scrollbars on horizontal carousels */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
