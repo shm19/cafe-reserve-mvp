@@ -1,15 +1,7 @@
 import { api } from "@/lib/apiClient";
 import { toEnglishDigits } from "@/lib/utils";
+import { InvalidOtpError } from "@/lib/errors";
 import type { User } from "@/types";
-
-/** Thrown when the OTP code doesn't match. Lets callers tell a wrong code
- *  apart from a valid code for a brand-new user. */
-export class InvalidOtpError extends Error {
-  constructor() {
-    super("کد تأیید اشتباه است.");
-    this.name = "InvalidOtpError";
-  }
-}
 
 // Mock OTP: any phone accepts this code. Real send/verify will run
 // server-side later (Kavenegar) — see BUILD-PLAN.md section 7.
@@ -28,20 +20,14 @@ export async function sendOtp(phone: string): Promise<{ sent: true }> {
 /** Returns the existing user, or null when the code is valid but no account
  *  exists yet (caller should then collect a name). Throws InvalidOtpError on
  *  a wrong code. */
-export async function verifyOtp(
-  phone: string,
-  code: string
-): Promise<User | null> {
+export async function verifyOtp(phone: string, code: string): Promise<User | null> {
   await delay(400);
   if (toEnglishDigits(code) !== MOCK_OTP) throw new InvalidOtpError();
   const existing = await api.get<User[]>("/users", { phone });
   return existing[0] ?? null;
 }
 
-export async function registerUser(
-  phone: string,
-  name: string
-): Promise<User> {
+export async function registerUser(phone: string, name: string): Promise<User> {
   await delay(400);
   const user: User = {
     id: `u${Date.now().toString(36)}`,

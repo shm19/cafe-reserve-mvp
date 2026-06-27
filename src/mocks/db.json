@@ -1,101 +1,365 @@
 {
   "users": [
-    { "id": "u1", "phone": "09120000000", "name": "محمدرضا", "role": "user", "points": 350 },
-    { "id": "u2", "phone": "09121111111", "name": "آرزو", "role": "user", "points": 120 },
-    { "id": "owner1", "phone": "09122222222", "name": "مدیر کافهٔ نقطه", "role": "owner", "points": 0 },
-    { "id": "admin1", "phone": "09123333333", "name": "ادمین پلتفرم", "role": "admin", "points": 0 }
+    {
+      "id": "u1",
+      "phone": "09120000000",
+      "name": "محمدرضا",
+      "role": "user",
+      "points": 350
+    },
+    {
+      "id": "u2",
+      "phone": "09121111111",
+      "name": "آرزو",
+      "role": "user",
+      "points": 120
+    },
+    {
+      "id": "owner1",
+      "phone": "09122222222",
+      "name": "مدیر کافهٔ نقطه",
+      "role": "owner",
+      "points": 0
+    },
+    {
+      "id": "admin1",
+      "phone": "09123333333",
+      "name": "ادمین پلتفرم",
+      "role": "admin",
+      "points": 0
+    }
   ],
   "cafes": [
     {
-      "id": "c1", "name": "کافهٔ نقطه", "neighborhood": "الهیه", "lat": 35.797, "lng": 51.43,
-      "description": "کافه و برانچ دنج با فضای باز و موسیقی ملایم.", "status": "approved",
-      "ownerId": "owner1", "iban": "IR000000000000000000000001", "openHours": "۹:۰۰ تا ۲۴:۰۰",
-      "rating": 4.8, "reviewCount": 32, "distanceM": 400,
-      "tags": ["outdoor", "quiet", "group_table", "date"], "coverColor": "#E7DFD3",
-      "socialLinks": { "instagram": "cafe.noghte" }
+      "id": "c1",
+      "name": "کافهٔ نقطه",
+      "neighborhood": "الهیه",
+      "lat": 35.797,
+      "lng": 51.43,
+      "description": "کافه و برانچ دنج با فضای باز و موسیقی ملایم.",
+      "status": "approved",
+      "ownerId": "owner1",
+      "iban": "IR000000000000000000000001",
+      "openHours": "۹:۰۰ تا ۲۴:۰۰",
+      "rating": 4.8,
+      "reviewCount": 32,
+      "distanceM": 400,
+      "tags": [
+        "outdoor",
+        "quiet",
+        "group_table",
+        "date"
+      ],
+      "coverColor": "#E7DFD3",
+      "socialLinks": {
+        "instagram": "cafe.noghte"
+      }
     },
     {
-      "id": "c2", "name": "کافه رُف", "neighborhood": "زعفرانیه", "lat": 35.81, "lng": 51.42,
-      "description": "بام‌کافه با ویوی شهر، مناسب دورهمی.", "status": "approved",
-      "openHours": "۱۰:۰۰ تا ۲۳:۰۰", "rating": 4.5, "reviewCount": 21, "distanceM": 750,
-      "tags": ["outdoor", "group_table"], "coverColor": "#E3DDD0"
+      "id": "c2",
+      "name": "کافه رُف",
+      "neighborhood": "زعفرانیه",
+      "lat": 35.81,
+      "lng": 51.42,
+      "description": "بام‌کافه با ویوی شهر، مناسب دورهمی.",
+      "status": "approved",
+      "openHours": "۱۰:۰۰ تا ۲۳:۰۰",
+      "rating": 4.5,
+      "reviewCount": 21,
+      "distanceM": 750,
+      "tags": [
+        "outdoor",
+        "group_table"
+      ],
+      "coverColor": "#E3DDD0"
     },
     {
-      "id": "c3", "name": "دِلی برو", "neighborhood": "الهیه", "lat": 35.8, "lng": 51.43,
-      "description": "کافهٔ کوچک و آرام برای کار با لپ‌تاپ.", "status": "approved",
-      "openHours": "۸:۰۰ تا ۲۲:۰۰", "rating": 4.3, "reviewCount": 14, "distanceM": 900,
-      "tags": ["quiet", "power_outlet", "work"], "coverColor": "#E6DECF"
+      "id": "c3",
+      "name": "دِلی برو",
+      "neighborhood": "الهیه",
+      "lat": 35.8,
+      "lng": 51.43,
+      "description": "کافهٔ کوچک و آرام برای کار با لپ‌تاپ.",
+      "status": "approved",
+      "openHours": "۸:۰۰ تا ۲۲:۰۰",
+      "rating": 4.3,
+      "reviewCount": 14,
+      "distanceM": 900,
+      "tags": [
+        "quiet",
+        "power_outlet",
+        "work"
+      ],
+      "coverColor": "#E6DECF"
     },
     {
-      "id": "c4", "name": "کافه‌رستوران باغ", "neighborhood": "فرشته", "lat": 35.79, "lng": 51.42,
-      "description": "فضای باغ بزرگ با جای پارک، مناسب جمع‌های بزرگ.", "status": "approved",
-      "openHours": "۱۲:۰۰ تا ۲۴:۰۰", "rating": 4.6, "reviewCount": 47, "distanceM": 1200,
-      "tags": ["outdoor", "parking", "group_table", "football"], "coverColor": "#E3DDD0"
+      "id": "c4",
+      "name": "کافه‌رستوران باغ",
+      "neighborhood": "فرشته",
+      "lat": 35.79,
+      "lng": 51.42,
+      "description": "فضای باغ بزرگ با جای پارک، مناسب جمع‌های بزرگ.",
+      "status": "approved",
+      "openHours": "۱۲:۰۰ تا ۲۴:۰۰",
+      "rating": 4.6,
+      "reviewCount": 47,
+      "distanceM": 1200,
+      "tags": [
+        "outdoor",
+        "parking",
+        "group_table",
+        "football"
+      ],
+      "coverColor": "#E3DDD0"
     },
     {
-      "id": "c5", "name": "هاوس ۲۴", "neighborhood": "پاسداران", "lat": 35.78, "lng": 51.46,
-      "description": "کافهٔ شبانه‌روزی با پخش فوتبال.", "status": "approved",
-      "openHours": "۲۴ ساعته", "rating": 4.4, "reviewCount": 38, "distanceM": 2100,
-      "tags": ["parking", "football", "group_table"], "coverColor": "#E7DFD3"
+      "id": "c5",
+      "name": "هاوس ۲۴",
+      "neighborhood": "پاسداران",
+      "lat": 35.78,
+      "lng": 51.46,
+      "description": "کافهٔ شبانه‌روزی با پخش فوتبال.",
+      "status": "approved",
+      "openHours": "۲۴ ساعته",
+      "rating": 4.4,
+      "reviewCount": 38,
+      "distanceM": 2100,
+      "tags": [
+        "parking",
+        "football",
+        "group_table"
+      ],
+      "coverColor": "#E7DFD3"
     },
     {
-      "id": "c6", "name": "تراس سبز", "neighborhood": "قیطریه", "lat": 35.8, "lng": 51.45,
-      "description": "تراس سرسبز و رمانتیک، مناسب قرار.", "status": "approved",
-      "openHours": "۹:۰۰ تا ۲۳:۰۰", "rating": 4.7, "reviewCount": 29, "distanceM": 1800,
-      "tags": ["outdoor", "parking", "date", "quiet"], "coverColor": "#E6DECF"
+      "id": "c6",
+      "name": "تراس سبز",
+      "neighborhood": "قیطریه",
+      "lat": 35.8,
+      "lng": 51.45,
+      "description": "تراس سرسبز و رمانتیک، مناسب قرار.",
+      "status": "approved",
+      "openHours": "۹:۰۰ تا ۲۳:۰۰",
+      "rating": 4.7,
+      "reviewCount": 29,
+      "distanceM": 1800,
+      "tags": [
+        "outdoor",
+        "parking",
+        "date",
+        "quiet"
+      ],
+      "coverColor": "#E6DECF"
     },
     {
-      "id": "c7", "name": "کتابخانه‌کافه نقش", "neighborhood": "تجریش", "lat": 35.8, "lng": 51.43,
-      "description": "کتابخانه‌کافهٔ ساکت برای مطالعه و کار.", "status": "approved",
-      "openHours": "۹:۰۰ تا ۲۲:۰۰", "rating": 4.9, "reviewCount": 51, "distanceM": 1500,
-      "tags": ["quiet", "power_outlet", "work"], "coverColor": "#E2DCD0"
+      "id": "c7",
+      "name": "کتابخانه‌کافه نقش",
+      "neighborhood": "تجریش",
+      "lat": 35.8,
+      "lng": 51.43,
+      "description": "کتابخانه‌کافهٔ ساکت برای مطالعه و کار.",
+      "status": "approved",
+      "openHours": "۹:۰۰ تا ۲۲:۰۰",
+      "rating": 4.9,
+      "reviewCount": 51,
+      "distanceM": 1500,
+      "tags": [
+        "quiet",
+        "power_outlet",
+        "work"
+      ],
+      "coverColor": "#E2DCD0"
     },
     {
-      "id": "c8", "name": "گوشهٔ دنج", "neighborhood": "دروس", "lat": 35.79, "lng": 51.45,
-      "description": "کافهٔ کوچک و دنج با نور گرم.", "status": "approved",
-      "openHours": "۱۰:۰۰ تا ۲۳:۰۰", "rating": 4.8, "reviewCount": 33, "distanceM": 2000,
-      "tags": ["quiet", "date"], "coverColor": "#E7DFD3"
+      "id": "c8",
+      "name": "گوشهٔ دنج",
+      "neighborhood": "دروس",
+      "lat": 35.79,
+      "lng": 51.45,
+      "description": "کافهٔ کوچک و دنج با نور گرم.",
+      "status": "approved",
+      "openHours": "۱۰:۰۰ تا ۲۳:۰۰",
+      "rating": 4.8,
+      "reviewCount": 33,
+      "distanceM": 2000,
+      "tags": [
+        "quiet",
+        "date"
+      ],
+      "coverColor": "#E7DFD3"
     },
     {
-      "id": "c9", "name": "سوله نور", "neighborhood": "نیاوران", "lat": 35.81, "lng": 51.47,
-      "description": "فضای صنعتی بزرگ با میزهای گروهی.", "status": "approved",
-      "openHours": "۱۱:۰۰ تا ۲۴:۰۰", "rating": 4.8, "reviewCount": 26, "distanceM": 2400,
-      "tags": ["group_table", "power_outlet", "parking"], "coverColor": "#E3DDD0"
+      "id": "c9",
+      "name": "سوله نور",
+      "neighborhood": "نیاوران",
+      "lat": 35.81,
+      "lng": 51.47,
+      "description": "فضای صنعتی بزرگ با میزهای گروهی.",
+      "status": "approved",
+      "openHours": "۱۱:۰۰ تا ۲۴:۰۰",
+      "rating": 4.8,
+      "reviewCount": 26,
+      "distanceM": 2400,
+      "tags": [
+        "group_table",
+        "power_outlet",
+        "parking"
+      ],
+      "coverColor": "#E3DDD0"
     },
     {
-      "id": "c10", "name": "کافه پاییز", "neighborhood": "اقدسیه", "lat": 35.8, "lng": 51.48,
-      "description": "کافهٔ جدید در انتظار تأیید پلتفرم.", "status": "pending",
-      "ownerId": "owner1", "openHours": "۱۰:۰۰ تا ۲۲:۰۰", "rating": 0, "reviewCount": 0, "distanceM": 2600,
-      "tags": ["quiet", "work"], "coverColor": "#E6DECF"
+      "id": "c10",
+      "name": "کافه پاییز",
+      "neighborhood": "اقدسیه",
+      "lat": 35.8,
+      "lng": 51.48,
+      "description": "کافهٔ جدید در انتظار تأیید پلتفرم.",
+      "status": "pending",
+      "ownerId": "owner1",
+      "openHours": "۱۰:۰۰ تا ۲۲:۰۰",
+      "rating": 0,
+      "reviewCount": 0,
+      "distanceM": 2600,
+      "tags": [
+        "quiet",
+        "work"
+      ],
+      "coverColor": "#E6DECF"
     }
   ],
   "menuItems": [
-    { "id": "m1", "cafeId": "c1", "name": "اسپرسو", "price": 60000 },
-    { "id": "m2", "cafeId": "c1", "name": "لاته", "price": 95000 },
-    { "id": "m3", "cafeId": "c1", "name": "برانچ مخصوص", "price": 280000 },
-    { "id": "m4", "cafeId": "c1", "name": "چیزکیک", "price": 150000 },
-    { "id": "m5", "cafeId": "c4", "name": "قهوهٔ ترک", "price": 70000 },
-    { "id": "m6", "cafeId": "c4", "name": "پیتزا باغ", "price": 420000 }
+    {
+      "id": "m1",
+      "cafeId": "c1",
+      "name": "اسپرسو",
+      "price": 60000
+    },
+    {
+      "id": "m2",
+      "cafeId": "c1",
+      "name": "لاته",
+      "price": 95000
+    },
+    {
+      "id": "m3",
+      "cafeId": "c1",
+      "name": "برانچ مخصوص",
+      "price": 280000
+    },
+    {
+      "id": "m4",
+      "cafeId": "c1",
+      "name": "چیزکیک",
+      "price": 150000
+    },
+    {
+      "id": "m5",
+      "cafeId": "c4",
+      "name": "قهوهٔ ترک",
+      "price": 70000
+    },
+    {
+      "id": "m6",
+      "cafeId": "c4",
+      "name": "پیتزا باغ",
+      "price": 420000
+    }
   ],
   "reviews": [
-    { "id": "r1", "cafeId": "c1", "userId": "u2", "userName": "آرزو", "rating": 5, "body": "نور و فضاش دقیقاً مثل عکس‌ها بود، خیلی دنج.", "createdAt": "2026-06-10T18:00:00Z", "ownerReply": "ممنون از حضورتون 🌿" },
-    { "id": "r2", "cafeId": "c1", "userId": "u1", "userName": "محمدرضا", "rating": 4, "body": "برای جمع ۸ نفره‌مون جا داشت، فقط کمی شلوغ بود.", "createdAt": "2026-06-12T20:30:00Z" },
-    { "id": "r3", "cafeId": "c4", "userId": "u1", "userName": "محمدرضا", "rating": 5, "body": "جای پارک داشت و فضای باغش عالی بود.", "createdAt": "2026-06-15T15:00:00Z" }
+    {
+      "id": "r1",
+      "cafeId": "c1",
+      "userId": "u2",
+      "userName": "آرزو",
+      "rating": 5,
+      "body": "نور و فضاش دقیقاً مثل عکس‌ها بود، خیلی دنج.",
+      "createdAt": "2026-06-10T18:00:00Z",
+      "ownerReply": "ممنون از حضورتون 🌿"
+    },
+    {
+      "id": "r2",
+      "cafeId": "c1",
+      "userId": "u1",
+      "userName": "محمدرضا",
+      "rating": 4,
+      "body": "برای جمع ۸ نفره‌مون جا داشت، فقط کمی شلوغ بود.",
+      "createdAt": "2026-06-12T20:30:00Z"
+    },
+    {
+      "id": "r3",
+      "cafeId": "c4",
+      "userId": "u1",
+      "userName": "محمدرضا",
+      "rating": 5,
+      "body": "جای پارک داشت و فضای باغش عالی بود.",
+      "createdAt": "2026-06-15T15:00:00Z"
+    }
   ],
   "bookings": [
-    { "id": "b1", "cafeId": "c1", "userId": "u1", "datetime": "2026-06-28T19:00:00Z", "partySize": 8, "occasionNotes": "تماشای بازی، نزدیک تلویزیون باشیم.", "status": "confirmed", "depositRequired": true, "depositStatus": "paid", "createdAt": "2026-06-20T10:00:00Z" },
-    { "id": "b2", "cafeId": "c6", "userId": "u1", "datetime": "2026-05-30T18:00:00Z", "partySize": 2, "status": "completed", "depositRequired": false, "depositStatus": "none", "createdAt": "2026-05-25T09:00:00Z" }
+    {
+      "id": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "datetime": "2026-06-28T19:00:00Z",
+      "partySize": 8,
+      "occasionNotes": "تماشای بازی، نزدیک تلویزیون باشیم.",
+      "status": "confirmed",
+      "depositRequired": true,
+      "depositStatus": "paid",
+      "createdAt": "2026-06-20T10:00:00Z"
+    },
+    {
+      "id": "b2",
+      "cafeId": "c6",
+      "userId": "u1",
+      "datetime": "2026-05-30T18:00:00Z",
+      "partySize": 2,
+      "status": "completed",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-05-25T09:00:00Z"
+    }
   ],
   "invites": [
-    { "id": "i1", "bookingId": "b1", "token": "JOIN-8FK2", "joinedUserIds": ["u2"] }
+    {
+      "id": "i1",
+      "bookingId": "b1",
+      "token": "JOIN-8FK2",
+      "joinedUserIds": [
+        "u2"
+      ]
+    }
   ],
   "splitBills": [
     {
-      "id": "s1", "bookingId": "b1", "total": 2000000, "tax": 180000, "createdBy": "u1", "status": "open",
+      "id": "s1",
+      "bookingId": "b1",
+      "total": 2000000,
+      "tax": 180000,
+      "createdBy": "u1",
+      "status": "open",
       "shares": [
-        { "id": "sh1", "splitBillId": "s1", "userOrName": "محمدرضا", "amount": 250000, "paid": true },
-        { "id": "sh2", "splitBillId": "s1", "userOrName": "آرزو", "amount": 250000, "paid": true },
-        { "id": "sh3", "splitBillId": "s1", "userOrName": "علی", "amount": 250000, "paid": false }
+        {
+          "id": "sh1",
+          "splitBillId": "s1",
+          "userOrName": "محمدرضا",
+          "amount": 250000,
+          "paid": true
+        },
+        {
+          "id": "sh2",
+          "splitBillId": "s1",
+          "userOrName": "آرزو",
+          "amount": 250000,
+          "paid": true
+        },
+        {
+          "id": "sh3",
+          "splitBillId": "s1",
+          "userOrName": "علی",
+          "amount": 250000,
+          "paid": false
+        }
       ]
     }
   ],
