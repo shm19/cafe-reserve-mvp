@@ -385,6 +385,29 @@
       "createdAt": "2026-06-05T10:00:00Z"
     },
     {
+      "id": "bp1",
+      "cafeId": "c1",
+      "userId": "u2",
+      "datetime": "2026-07-01T19:00:00",
+      "partySize": 4,
+      "status": "pending",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T09:00:00Z"
+    },
+    {
+      "id": "bp2",
+      "cafeId": "c1",
+      "userId": "umqxeto48",
+      "datetime": "2026-07-03T20:30:00",
+      "partySize": 8,
+      "occasionNotes": "جشن تولد",
+      "status": "pending",
+      "depositRequired": true,
+      "depositStatus": "pending",
+      "createdAt": "2026-06-28T09:30:00Z"
+    },
+    {
       "id": "bmqxg0qgt9150",
       "cafeId": "c1",
       "userId": "umqxeto48",
