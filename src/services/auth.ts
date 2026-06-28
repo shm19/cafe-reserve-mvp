@@ -27,6 +27,11 @@ export async function verifyOtp(phone: string, code: string): Promise<User | nul
   return existing[0] ?? null;
 }
 
+/** Fetch the current user fresh (wallet/points/IBAN may have changed since login). */
+export function getUser(id: string): Promise<User> {
+  return api.get<User>(`/users/${id}`);
+}
+
 export async function registerUser(phone: string, name: string): Promise<User> {
   await delay(400);
   const user: User = {

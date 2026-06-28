@@ -1,6 +1,14 @@
-import { useMutation } from "@tanstack/react-query";
-import { sendOtp, verifyOtp, registerUser } from "@/services/auth";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { sendOtp, verifyOtp, registerUser, getUser } from "@/services/auth";
 import { useAuthStore } from "@/store/authStore";
+
+export function useUser(id: string) {
+  return useQuery({
+    queryKey: ["users", "detail", id],
+    queryFn: () => getUser(id),
+    enabled: !!id,
+  });
+}
 
 // Mutations = writes/actions (vs. useQuery for reads). Each gives us
 // .mutate()/.mutateAsync(), plus .isPending / .isError / .error for free —

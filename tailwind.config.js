@@ -31,6 +31,11 @@ export default {
           DEFAULT: "#C97C5D",
           ink: "#9a4f33", // dark rose text on a rose tint
         },
+        // dark green wallet-card gradient
+        forest: {
+          DEFAULT: "#3C4F3E",
+          deep: "#2A3A2C",
+        },
         // warm banner gradient (split-bill / "dong" banner)
         peach: {
           50: "#FFF3E6",

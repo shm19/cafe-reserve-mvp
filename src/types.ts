@@ -28,6 +28,8 @@ export interface User {
   name: string;
   role: Role;
   points: number;
+  walletBalance?: number;
+  iban?: string;
 }
 
 export interface Photo {

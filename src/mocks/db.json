@@ -5,7 +5,9 @@
       "phone": "09120000000",
       "name": "محمدرضا",
       "role": "user",
-      "points": 350
+      "points": 350,
+      "walletBalance": 1800000,
+      "iban": "IR120000000000000000004421"
     },
     {
       "id": "u2",
@@ -40,7 +42,9 @@
       "phone": "09125973369",
       "name": "شایان",
       "role": "user",
-      "points": 0
+      "points": 120,
+      "walletBalance": 450000,
+      "iban": "IR350000000000000000007788"
     }
   ],
   "cafes": [
