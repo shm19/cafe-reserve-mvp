@@ -44,6 +44,21 @@ export function faDate(iso: string): string {
   }
 }
 
+/** Jalali weekday + day + month with the time, e.g. "پنجشنبه ۵ تیر · ۱۸:۳۰". */
+export function faDateTime(iso: string): string {
+  try {
+    const date = new Intl.DateTimeFormat("fa-IR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    }).format(new Date(iso));
+    const time = faNum(iso.slice(11, 16)); // HH:MM straight from the string
+    return `${date} · ${time}`;
+  } catch {
+    return iso;
+  }
+}
+
 /** Format Toman amounts, e.g. 1200000 -> "۱٬۲۰۰٬۰۰۰ تومان". */
 export function toman(amount: number): string {
   return `${faNum(amount.toLocaleString("en-US"))} تومان`;

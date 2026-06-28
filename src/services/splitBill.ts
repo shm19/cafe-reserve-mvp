@@ -1,6 +1,10 @@
 import { api, newId } from "@/lib/apiClient";
 import type { Share, SplitBill } from "@/types";
 
+export function getSplitBills(): Promise<SplitBill[]> {
+  return api.get<SplitBill[]>("/splitBills");
+}
+
 export function getSplitBillByBooking(
   bookingId: string
 ): Promise<SplitBill[]> {

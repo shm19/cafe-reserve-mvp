@@ -116,6 +116,12 @@ export interface Booking {
   createdAt: string;
 }
 
+/** A booking with its cafe embedded (json-server `_expand=cafe`, or a real
+ *  backend join). Used by lists that show cafe info per booking. */
+export interface BookingWithCafe extends Booking {
+  cafe?: Cafe;
+}
+
 export interface NoShowReport {
   id: string;
   bookingId: string;

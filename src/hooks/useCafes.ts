@@ -1,5 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getHomeSections, getCafe, getCafeMenu, getCafeReviews } from "@/services/cafes";
+import {
+  getHomeSections,
+  getCafe,
+  getCafeMenu,
+  getCafeReviews,
+} from "@/services/cafes";
 
 /**
  * Query-key factory. Every cache entry for cafes is keyed off here, so
