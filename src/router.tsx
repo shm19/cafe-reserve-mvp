@@ -10,6 +10,7 @@ import OwnerReports from "@/pages/owner/Reports/Main";
 import OwnerEdit from "@/pages/owner/Edit/Main";
 import OwnerPhotos from "@/pages/owner/Photos/Main";
 import Auth from "@/pages/Auth/Main";
+import AddCafe from "@/pages/AddCafe/Main";
 import GuestBooking from "@/pages/GuestBooking/Main";
 import Home from "@/pages/Home/Main";
 import CafeProfile from "@/pages/CafeProfile/Main";
@@ -35,6 +36,8 @@ export const router = createBrowserRouter([
     path: "/app",
     element: <RequireAuth />,
     children: [
+      // Full-screen wizard (own header + footer, no nav).
+      { path: "add-cafe", element: <AddCafe /> },
       {
         element: <AppLayout />,
         children: [
