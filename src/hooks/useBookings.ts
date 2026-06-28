@@ -3,6 +3,7 @@ import {
   getMyBookings,
   getBooking,
   createBooking,
+  cancelBooking,
   type NewBookingInput,
 } from "@/services/bookings";
 
@@ -35,5 +36,16 @@ export function useCreateBooking() {
     // Refetch the user's bookings so "my bookings" and the home banner update.
     onSuccess: (booking) =>
       qc.invalidateQueries({ queryKey: bookingKeys.mine(booking.userId) }),
+  });
+}
+
+export function useCancelBooking() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => cancelBooking(id),
+    onSuccess: (booking) => {
+      qc.invalidateQueries({ queryKey: bookingKeys.detail(booking.id) });
+      qc.invalidateQueries({ queryKey: bookingKeys.mine(booking.userId) });
+    },
   });
 }

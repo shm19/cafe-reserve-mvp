@@ -69,6 +69,10 @@ export interface Cafe {
   address?: string;
   phone?: string;
   openHours: string;
+  // Deposit policy: a flat `depositAmount` is required when the party size
+  // exceeds `depositThreshold`. Cafes without a threshold never take a deposit.
+  depositThreshold?: number;
+  depositAmount?: number;
   rating: number;
   reviewCount: number;
   distanceM: number;

@@ -1,7 +1,7 @@
 import { api, newId } from "@/lib/apiClient";
-import type { Booking, BookingStatus, BookingWithCafe } from "@/types";
+import type { Booking, BookingStatus, BookingWithCafe, Cafe } from "@/types";
 
-const DEPOSIT_THRESHOLD = 6; // party size at/above which a deposit is required
+type DepositPolicy = Pick<Cafe, "depositThreshold" | "depositAmount">;
 
 export interface NewBookingInput {
   cafeId: string;
@@ -9,6 +9,7 @@ export interface NewBookingInput {
   datetime: string;
   partySize: number;
   occasionNotes?: string;
+  depositRequired: boolean;
 }
 
 export function getMyBookings(userId: string): Promise<BookingWithCafe[]> {
@@ -18,22 +19,33 @@ export function getMyBookings(userId: string): Promise<BookingWithCafe[]> {
   return api.get<BookingWithCafe[]>("/bookings", { userId, _expand: "cafe" });
 }
 
-export function getBooking(id: string): Promise<Booking> {
-  return api.get<Booking>(`/bookings/${id}`);
+export function getBooking(id: string): Promise<BookingWithCafe> {
+  return api.get<BookingWithCafe>(`/bookings/${id}`, { _expand: "cafe" });
 }
 
-export function requiresDeposit(partySize: number): boolean {
-  return partySize >= DEPOSIT_THRESHOLD;
+/** A deposit is required when the party exceeds the cafe's threshold.
+ *  Cafes without a threshold never take a deposit. */
+export function requiresDeposit(
+  cafe: DepositPolicy | undefined,
+  partySize: number
+): boolean {
+  return cafe?.depositThreshold != null && partySize > cafe.depositThreshold;
+}
+
+/** The flat deposit for this cafe when required, else 0. */
+export function depositAmount(
+  cafe: DepositPolicy | undefined,
+  partySize: number
+): number {
+  return requiresDeposit(cafe, partySize) ? cafe?.depositAmount ?? 0 : 0;
 }
 
 export function createBooking(input: NewBookingInput): Promise<Booking> {
-  const depositRequired = requiresDeposit(input.partySize);
   const booking: Booking = {
     id: newId("b"),
     ...input,
     status: "pending",
-    depositRequired,
-    depositStatus: depositRequired ? "pending" : "none",
+    depositStatus: input.depositRequired ? "pending" : "none",
     createdAt: new Date().toISOString(),
   };
   return api.post<Booking>("/bookings", booking);
