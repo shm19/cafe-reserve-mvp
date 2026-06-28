@@ -30,6 +30,9 @@ export default function Profile() {
     <div className="px-5 pt-5">
       <h1 className="mb-4 text-2xl font-black text-ink">پروفایل</h1>
 
+      {/* view switch — same position as the owner panel so it doesn't jump */}
+      {ownedCafe && <ViewSwitch current="user" />}
+
       {/* user card — tap to edit */}
       <button
         onClick={() => navigate("/app/profile/edit")}
@@ -107,28 +110,28 @@ export default function Profile() {
         </button>
       </div>
 
-      {/* cafe ownership: switch into the manager panel, or register a cafe */}
-      <h2 className="mb-2.5 mt-5 px-1 text-sm font-extrabold text-ink">
-        کافه‌داری
-      </h2>
-      {ownedCafe ? (
-        <ViewSwitch current="user" />
-      ) : (
-        <button
-          onClick={() => navigate("/app/add-cafe")}
-          className="flex w-full items-center gap-3 rounded-2xl border border-primary/25 bg-primary/[0.06] p-4 text-right"
-        >
-          <span className="flex size-10 flex-none items-center justify-center rounded-xl bg-primary/12">
-            <Store className="size-5 text-primary" />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block text-sm font-extrabold text-ink">صاحب کافه هستید؟ ثبت کافه</span>
-            <span className="mt-1 block text-xs font-semibold text-muted-foreground">
-              رزروها را مدیریت کنید و کافه‌تان را به مشتری‌ها معرفی کنید
+      {/* register a cafe (customers who aren't owners yet) */}
+      {!ownedCafe && (
+        <>
+          <h2 className="mb-2.5 mt-5 px-1 text-sm font-extrabold text-ink">
+            کافه‌داری
+          </h2>
+          <button
+            onClick={() => navigate("/app/add-cafe")}
+            className="flex w-full items-center gap-3 rounded-2xl border border-primary/25 bg-primary/[0.06] p-4 text-right"
+          >
+            <span className="flex size-10 flex-none items-center justify-center rounded-xl bg-primary/12">
+              <Store className="size-5 text-primary" />
             </span>
-          </span>
-          <ChevronLeft className="size-4 flex-none text-muted-foreground" />
-        </button>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-extrabold text-ink">صاحب کافه هستید؟ ثبت کافه</span>
+              <span className="mt-1 block text-xs font-semibold text-muted-foreground">
+                رزروها را مدیریت کنید و کافه‌تان را به مشتری‌ها معرفی کنید
+              </span>
+            </span>
+            <ChevronLeft className="size-4 flex-none text-muted-foreground" />
+          </button>
+        </>
       )}
 
       {/* account management — logout only */}
