@@ -75,6 +75,7 @@ export interface Cafe {
   // exceeds `depositThreshold`. Cafes without a threshold never take a deposit.
   depositThreshold?: number;
   depositAmount?: number;
+  parkingNote?: string;
   rating: number;
   reviewCount: number;
   distanceM: number;

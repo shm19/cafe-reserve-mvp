@@ -13,6 +13,9 @@ export async function getOwnerBookings(ownerId: string): Promise<OwnerBooking[]>
   return all.filter((b) => ids.has(b.cafeId));
 }
 
+export const updateCafe = (id: string, patch: Partial<Cafe>) =>
+  api.patch<Cafe>(`/cafes/${id}`, patch);
+
 export const approveBooking = (id: string) =>
   api.patch<Booking>(`/bookings/${id}`, { status: "confirmed" });
 

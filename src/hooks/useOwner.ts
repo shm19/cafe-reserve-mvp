@@ -2,10 +2,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getOwnerBookings,
   getOwnerCafes,
+  updateCafe,
   approveBooking,
   rejectBooking,
   reportNoShow,
 } from "@/api/owner";
+import type { Cafe } from "@/types";
 
 export const ownerKeys = {
   all: ["owner"] as const,
@@ -28,6 +30,18 @@ export function useOwnerCafe(ownerId: string) {
     queryKey: ownerKeys.cafe(ownerId),
     queryFn: async () => (await getOwnerCafes(ownerId))[0] ?? null,
     enabled: !!ownerId,
+  });
+}
+
+export function useUpdateCafe(ownerId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (v: { id: string; patch: Partial<Cafe> }) =>
+      updateCafe(v.id, v.patch),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ownerKeys.cafe(ownerId) });
+      qc.invalidateQueries({ queryKey: ["cafes"] }); // refresh customer-facing data
+    },
   });
 }
 
