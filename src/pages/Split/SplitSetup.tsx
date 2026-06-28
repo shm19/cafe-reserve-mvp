@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, Plus, X, Loader2, Percent } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCreateSplitBill } from "@/hooks/useSplitBills";
-import { VAT_RATE } from "@/services/splitBill";
+import { VAT_RATE } from "@/api/splitBill";
 import { useAuthStore } from "@/store/authStore";
 import { cn, faNum, faAmount, parseAmount, avatarColor } from "@/lib/utils";
 import type { BookingWithCafe } from "@/types";

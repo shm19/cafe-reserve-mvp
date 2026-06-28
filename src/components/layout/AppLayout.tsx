@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { PhoneFrame } from "@/components/PhoneFrame";
-import { BottomNav } from "@/components/BottomNav";
+import { PhoneFrame } from "@/components/shared/PhoneFrame";
+import { BottomNav } from "@/components/navigation/BottomNav";
 
 /** Tab shell: phone frame + scrollable content + bottom nav.
  *  Used for the top-level tab screens (home, bookings, profile). */

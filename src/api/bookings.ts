@@ -1,4 +1,4 @@
-import { api, newId } from "@/lib/apiClient";
+import { api, newId } from "@/api/client";
 import type { Booking, BookingStatus, BookingWithCafe, Cafe } from "@/types";
 
 type DepositPolicy = Pick<Cafe, "depositThreshold" | "depositAmount">;

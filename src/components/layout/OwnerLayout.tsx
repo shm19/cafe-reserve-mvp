@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { PhoneFrame } from "@/components/PhoneFrame";
-import { OwnerBottomNav } from "@/components/OwnerBottomNav";
+import { PhoneFrame } from "@/components/shared/PhoneFrame";
+import { OwnerBottomNav } from "@/components/navigation/OwnerBottomNav";
 import { useAuthStore } from "@/store/authStore";
 
 /** B2B shell: requires an owner; otherwise bounces to login or the B2C app. */

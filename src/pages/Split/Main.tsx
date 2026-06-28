@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { SplitSetup } from "@/components/split/SplitSetup";
-import { SplitTracker } from "@/components/split/SplitTracker";
+import { SplitSetup } from "@/pages/Split/SplitSetup";
+import { SplitTracker } from "@/pages/Split/SplitTracker";
 import { useBooking } from "@/hooks/useBookings";
 import { useSplitByBooking } from "@/hooks/useSplitBills";
 

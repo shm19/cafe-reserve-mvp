@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, RotateCw, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { OtpInput } from "@/components/OtpInput";
+import { OtpInput } from "@/pages/Auth/OtpInput";
 import { useVerifyOtp, useSendOtp } from "@/hooks/useAuth";
 import { useCountdown } from "@/hooks/useCountdown";
 import { faNum, formatPhone } from "@/lib/utils";

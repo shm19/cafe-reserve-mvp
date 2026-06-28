@@ -4,7 +4,7 @@ import { X, Minus, Plus, ShieldCheck, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCafe } from "@/hooks/useCafes";
 import { useCreateBooking } from "@/hooks/useBookings";
-import { requiresDeposit, depositAmount } from "@/services/bookings";
+import { requiresDeposit, depositAmount } from "@/api/bookings";
 import { useAuthStore } from "@/store/authStore";
 import { cn, faNum, toman, nextDays } from "@/lib/utils";
 

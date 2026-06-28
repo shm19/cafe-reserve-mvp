@@ -1,4 +1,4 @@
-import { api, newId } from "@/lib/apiClient";
+import { api, newId } from "@/api/client";
 import type { Booking, Cafe, NoShowReport, OwnerBooking } from "@/types";
 
 export async function getOwnerCafes(ownerId: string): Promise<Cafe[]> {

@@ -5,7 +5,7 @@ import {
   createBooking,
   cancelBooking,
   type NewBookingInput,
-} from "@/services/bookings";
+} from "@/api/bookings";
 
 export const bookingKeys = {
   all: ["bookings"] as const,

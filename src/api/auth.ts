@@ -1,4 +1,4 @@
-import { api } from "@/lib/apiClient";
+import { api } from "@/api/client";
 import { toEnglishDigits } from "@/lib/utils";
 import { InvalidOtpError } from "@/lib/errors";
 import type { User } from "@/types";

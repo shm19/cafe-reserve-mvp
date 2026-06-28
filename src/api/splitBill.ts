@@ -1,4 +1,4 @@
-import { api, newId } from "@/lib/apiClient";
+import { api, newId } from "@/api/client";
 import type { Share, SplitBill } from "@/types";
 
 /** VAT rate applied to split-bill shares when enabled. */

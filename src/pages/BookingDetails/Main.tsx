@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useBooking, useCancelBooking } from "@/hooks/useBookings";
 import { useSplitByBooking } from "@/hooks/useSplitBills";
-import { depositAmount } from "@/services/bookings";
+import { depositAmount } from "@/api/bookings";
 import { cn, faNum, faDateTime, toman } from "@/lib/utils";
 import type { BookingStatus } from "@/types";
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { faNum, formatDistance } from "@/lib/utils";
-import { Tag } from "@/components/Tag";
+import { Tag } from "@/components/shared/Tag";
 import type { Cafe } from "@/types";
 
 export function CafeCard({ cafe }: { cafe: Cafe }) {

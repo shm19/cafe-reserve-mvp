@@ -4,7 +4,7 @@ import {
   approveBooking,
   rejectBooking,
   reportNoShow,
-} from "@/services/owner";
+} from "@/api/owner";
 
 export const ownerKeys = {
   all: ["owner"] as const,

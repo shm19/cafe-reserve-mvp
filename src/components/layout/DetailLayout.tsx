@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { PhoneFrame } from "@/components/PhoneFrame";
+import { PhoneFrame } from "@/components/shared/PhoneFrame";
 
 /** Detail shell: phone frame only, no bottom nav. Detail pages (cafe profile,
  *  booking sheet, booking details) manage their own header + sticky CTA. */

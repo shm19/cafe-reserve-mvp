@@ -4,7 +4,7 @@ import {
   getSplitBillByBooking,
   createSplitBill,
   markSharePaid,
-} from "@/services/splitBill";
+} from "@/api/splitBill";
 
 export const splitKeys = {
   all: ["splitBills"] as const,

@@ -1,4 +1,4 @@
-import { api } from "@/lib/apiClient";
+import { api } from "@/api/client";
 import type { Cafe, SplitBill } from "@/types";
 
 export function getPendingCafes(): Promise<Cafe[]> {

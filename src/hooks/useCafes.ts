@@ -4,7 +4,7 @@ import {
   getCafe,
   getCafeMenu,
   getCafeReviews,
-} from "@/services/cafes";
+} from "@/api/cafes";
 
 /**
  * Query-key factory. Every cache entry for cafes is keyed off here, so

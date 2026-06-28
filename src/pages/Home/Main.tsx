@@ -1,11 +1,11 @@
 import { Search, MapPin, Bell, SlidersHorizontal, ChevronLeft } from "lucide-react";
-import { CafeCard } from "@/components/CafeCard";
-import { CafeHeroCard } from "@/components/CafeHeroCard";
-import { DongBanner } from "@/components/DongBanner";
+import { CafeCard } from "@/pages/Home/CafeCard";
+import { CafeHeroCard } from "@/pages/Home/CafeHeroCard";
+import { DongBanner } from "@/pages/Home/DongBanner";
 import { useHomeSections } from "@/hooks/useCafes";
 import { useMyBookings } from "@/hooks/useBookings";
-import { getHomeSections } from "@/services/cafes";
-import { findRecentOuting } from "@/services/bookings";
+import { getHomeSections } from "@/api/cafes";
+import { findRecentOuting } from "@/api/bookings";
 import { useAuthStore } from "@/store/authStore";
 import { TAG_META } from "@/lib/tags";
 import type { Cafe, CafeTag } from "@/types";

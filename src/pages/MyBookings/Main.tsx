@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import { BookingCard } from "@/components/BookingCard";
+import { BookingCard } from "@/pages/MyBookings/BookingCard";
 import { useMyBookings } from "@/hooks/useBookings";
 import { useAllSplitBills } from "@/hooks/useSplitBills";
-import { bucketBookings } from "@/services/bookings";
+import { bucketBookings } from "@/api/bookings";
 import { useAuthStore } from "@/store/authStore";
 import { cn } from "@/lib/utils";
 

@@ -11,8 +11,8 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Tag } from "@/components/Tag";
-import { ReviewCard } from "@/components/ReviewCard";
+import { Tag } from "@/components/shared/Tag";
+import { ReviewCard } from "@/pages/CafeProfile/ReviewCard";
 import { useCafe, useCafeMenu, useCafeReviews } from "@/hooks/useCafes";
 import { cn, faNum, toman } from "@/lib/utils";
 import {

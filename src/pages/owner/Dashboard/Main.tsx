@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { CalendarDays, ChevronLeft, ChevronRight, Pause } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
-import { StatCard } from "@/components/owner/StatCard";
-import { OwnerBookingCard } from "@/components/owner/OwnerBookingCard";
+import { StatCard } from "@/pages/owner/Dashboard/StatCard";
+import { OwnerBookingCard } from "@/pages/owner/Dashboard/OwnerBookingCard";
 import { useOwnerBookings } from "@/hooks/useOwner";
 import { useAuthStore } from "@/store/authStore";
 import { cn, faNum, faDayLabel } from "@/lib/utils";

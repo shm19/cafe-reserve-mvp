@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { PhoneFrame } from "@/components/PhoneFrame";
-import { PhoneStep } from "@/components/auth/PhoneStep";
-import { OtpStep } from "@/components/auth/OtpStep";
-import { NameStep } from "@/components/auth/NameStep";
+import { PhoneFrame } from "@/components/shared/PhoneFrame";
+import { PhoneStep } from "@/pages/Auth/PhoneStep";
+import { OtpStep } from "@/pages/Auth/OtpStep";
+import { NameStep } from "@/pages/Auth/NameStep";
 import { useAuthStore } from "@/store/authStore";
 import { homePathForRole } from "@/lib/roles";
 import type { User } from "@/types";
