@@ -70,7 +70,8 @@
         "outdoor",
         "quiet",
         "group_table",
-        "date"
+        "date",
+        "power_outlet"
       ],
       "coverColor": "#E7DFD3",
       "socialLinks": {
@@ -313,7 +314,8 @@
       "userName": "محمدرضا",
       "rating": 4,
       "body": "برای جمع ۸ نفره‌مون جا داشت، فقط کمی شلوغ بود.",
-      "createdAt": "2026-06-12T20:30:00Z"
+      "createdAt": "2026-06-12T20:30:00Z",
+      "ownerReply": "گوتتت"
     },
     {
       "id": "r3",
@@ -621,5 +623,10 @@
     }
   ],
   "noShowReports": [],
-  "payments": []
+  "payments": [],
+  "photos": [
+    { "id": "ph1", "cafeId": "c1", "url": "", "isUgc": false },
+    { "id": "ph2", "cafeId": "c1", "url": "", "isUgc": false },
+    { "id": "ph3", "cafeId": "c1", "url": "", "isUgc": true }
+  ]
 }

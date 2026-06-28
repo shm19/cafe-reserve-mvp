@@ -7,6 +7,7 @@ import OwnerDashboard from "@/pages/owner/Dashboard/Main";
 import OwnerProfileHub from "@/pages/owner/Profile/Main";
 import OwnerReviews from "@/pages/owner/Reviews/Main";
 import OwnerEdit from "@/pages/owner/Edit/Main";
+import OwnerPhotos from "@/pages/owner/Photos/Main";
 import Auth from "@/pages/Auth/Main";
 import Home from "@/pages/Home/Main";
 import CafeProfile from "@/pages/CafeProfile/Main";
@@ -57,7 +58,7 @@ export const router = createBrowserRouter([
       { path: "profile", element: <OwnerProfileHub /> },
       { path: "profile/reviews", element: <OwnerReviews /> },
       { path: "profile/edit", element: <OwnerEdit /> },
-      { path: "profile/photos", element: <Placeholder title="آلبوم تصاویر" /> },
+      { path: "profile/photos", element: <OwnerPhotos /> },
       { path: "reports", element: <Placeholder title="گزارشات مالی" /> },
     ],
   },

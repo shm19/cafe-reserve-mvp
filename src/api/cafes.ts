@@ -1,5 +1,5 @@
-import { api } from "@/api/client";
-import type { Cafe, CafeTag, MenuItem, Review } from "@/types";
+import { api, newId } from "@/api/client";
+import type { Cafe, CafeTag, MenuItem, Photo, Review } from "@/types";
 
 export interface CafeFilters {
   neighborhood?: string;
@@ -41,6 +41,16 @@ export const replyToReview = (id: string, ownerReply: string) =>
 
 export const removeReviewReply = (id: string) =>
   api.patch<Review>(`/reviews/${id}`, { ownerReply: null });
+
+export function getCafePhotos(cafeId: string): Promise<Photo[]> {
+  return api.get<Photo[]>("/photos", { cafeId });
+}
+
+export const addCafePhoto = (cafeId: string) =>
+  api.post<Photo>("/photos", { id: newId("ph"), cafeId, url: "", isUgc: false });
+
+export const deleteCafePhoto = (id: string) =>
+  api.delete<unknown>(`/photos/${id}`);
 
 /** Curated home rows, derived client-side from the cafe list. */
 export async function getHomeSections() {

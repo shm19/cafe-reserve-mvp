@@ -6,6 +6,9 @@ import {
   getCafeReviews,
   replyToReview,
   removeReviewReply,
+  getCafePhotos,
+  addCafePhoto,
+  deleteCafePhoto,
 } from "@/api/cafes";
 
 /**
@@ -19,6 +22,7 @@ export const cafeKeys = {
   detail: (id: string) => [...cafeKeys.all, "detail", id] as const,
   menu: (id: string) => [...cafeKeys.all, "menu", id] as const,
   reviews: (id: string) => [...cafeKeys.all, "reviews", id] as const,
+  photos: (id: string) => [...cafeKeys.all, "photos", id] as const,
 };
 
 export function useHomeSections() {
@@ -50,6 +54,30 @@ export function useCafeReviews(id: string) {
     queryFn: () => getCafeReviews(id),
     enabled: !!id,
   });
+}
+
+export function useCafePhotos(id: string) {
+  return useQuery({
+    queryKey: cafeKeys.photos(id),
+    queryFn: () => getCafePhotos(id),
+    enabled: !!id,
+  });
+}
+
+/** Owner-side: add / delete a cafe photo, then refetch that cafe's photos. */
+export function useCafePhotoActions(cafeId: string) {
+  const qc = useQueryClient();
+  const invalidate = () =>
+    qc.invalidateQueries({ queryKey: cafeKeys.photos(cafeId) });
+  const add = useMutation({
+    mutationFn: () => addCafePhoto(cafeId),
+    onSuccess: invalidate,
+  });
+  const remove = useMutation({
+    mutationFn: (id: string) => deleteCafePhoto(id),
+    onSuccess: invalidate,
+  });
+  return { add, remove };
 }
 
 /** Owner-side: reply to / remove a reply on a review, then refetch that cafe's reviews. */
