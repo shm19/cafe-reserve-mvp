@@ -32,6 +32,9 @@ export function getUser(id: string): Promise<User> {
   return api.get<User>(`/users/${id}`);
 }
 
+export const updateUser = (id: string, patch: Partial<User>) =>
+  api.patch<User>(`/users/${id}`, patch);
+
 export async function registerUser(phone: string, name: string): Promise<User> {
   await delay(400);
   const user: User = {

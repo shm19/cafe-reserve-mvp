@@ -18,6 +18,12 @@ export function toEnglishDigits(value: string): string {
     .replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)));
 }
 
+/** Mask an IBAN for display, e.g. "IR1200…4421" -> "IR••• ۴۴۲۱". */
+export function maskIban(iban?: string): string {
+  if (!iban) return "";
+  return `IR••• ${faNum(iban.replace(/\D/g, "").slice(-4))}`;
+}
+
 /** Pretty Iranian mobile for display, e.g. "09123456789" -> "۰۹۱۲ ۳۴۵ ۶۷۸۹". */
 export function formatPhone(phone: string): string {
   const grouped = phone.replace(/(\d{4})(\d{3})(\d{4})/, "$1 $2 $3");

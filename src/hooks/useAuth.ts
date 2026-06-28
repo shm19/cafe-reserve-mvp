@@ -1,6 +1,7 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { sendOtp, verifyOtp, registerUser, getUser } from "@/api/auth";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { sendOtp, verifyOtp, registerUser, getUser, updateUser } from "@/api/auth";
 import { useAuthStore } from "@/store/authStore";
+import type { User } from "@/types";
 
 export function useUser(id: string) {
   return useQuery({
@@ -31,5 +32,18 @@ export function useRegister() {
     mutationFn: (vars: { phone: string; name: string }) =>
       registerUser(vars.phone, vars.name),
     onSuccess: (user) => setUser(user), // log the new user in on success
+  });
+}
+
+export function useUpdateUser() {
+  const qc = useQueryClient();
+  const setUser = useAuthStore((s) => s.setUser);
+  return useMutation({
+    mutationFn: (vars: { id: string; patch: Partial<User> }) =>
+      updateUser(vars.id, vars.patch),
+    onSuccess: (updated) => {
+      setUser(updated); // keep the session/store in sync
+      qc.invalidateQueries({ queryKey: ["users", "detail", updated.id] });
+    },
   });
 }
