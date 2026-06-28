@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getHomeSections,
   getCafe,
   getCafeMenu,
   getCafeReviews,
+  replyToReview,
+  removeReviewReply,
 } from "@/api/cafes";
 
 /**
@@ -48,4 +50,20 @@ export function useCafeReviews(id: string) {
     queryFn: () => getCafeReviews(id),
     enabled: !!id,
   });
+}
+
+/** Owner-side: reply to / remove a reply on a review, then refetch that cafe's reviews. */
+export function useReviewReply(cafeId: string) {
+  const qc = useQueryClient();
+  const invalidate = () =>
+    qc.invalidateQueries({ queryKey: cafeKeys.reviews(cafeId) });
+  const reply = useMutation({
+    mutationFn: (v: { id: string; text: string }) => replyToReview(v.id, v.text),
+    onSuccess: invalidate,
+  });
+  const remove = useMutation({
+    mutationFn: (id: string) => removeReviewReply(id),
+    onSuccess: invalidate,
+  });
+  return { reply, remove };
 }

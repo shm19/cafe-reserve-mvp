@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getOwnerBookings,
+  getOwnerCafes,
   approveBooking,
   rejectBooking,
   reportNoShow,
@@ -10,12 +11,22 @@ export const ownerKeys = {
   all: ["owner"] as const,
   bookings: (ownerId: string) =>
     [...ownerKeys.all, "bookings", ownerId] as const,
+  cafe: (ownerId: string) => [...ownerKeys.all, "cafe", ownerId] as const,
 };
 
 export function useOwnerBookings(ownerId: string) {
   return useQuery({
     queryKey: ownerKeys.bookings(ownerId),
     queryFn: () => getOwnerBookings(ownerId),
+    enabled: !!ownerId,
+  });
+}
+
+/** The owner's primary cafe (first one). */
+export function useOwnerCafe(ownerId: string) {
+  return useQuery({
+    queryKey: ownerKeys.cafe(ownerId),
+    queryFn: async () => (await getOwnerCafes(ownerId))[0] ?? null,
     enabled: !!ownerId,
   });
 }

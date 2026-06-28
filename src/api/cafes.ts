@@ -35,6 +35,13 @@ export function getCafeReviews(cafeId: string): Promise<Review[]> {
   return api.get<Review[]>("/reviews", { cafeId });
 }
 
+/** Owner replies to a customer review (or clears the reply). */
+export const replyToReview = (id: string, ownerReply: string) =>
+  api.patch<Review>(`/reviews/${id}`, { ownerReply });
+
+export const removeReviewReply = (id: string) =>
+  api.patch<Review>(`/reviews/${id}`, { ownerReply: null });
+
 /** Curated home rows, derived client-side from the cafe list. */
 export async function getHomeSections() {
   const cafes = await getCafes();
