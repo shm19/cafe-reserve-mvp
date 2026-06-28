@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 const items = [
   { to: "/owner", label: "رزروها", icon: CalendarDays, end: true },
-  { to: "/owner/profile", label: "پروفایل کافه", icon: Store, end: false },
   { to: "/owner/reports", label: "گزارشات مالی", icon: BarChart3, end: false },
+  { to: "/owner/profile", label: "پروفایل کافه", icon: Store, end: false },
 ];
 
 export function OwnerBottomNav() {

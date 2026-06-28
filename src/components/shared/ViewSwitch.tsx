@@ -15,7 +15,7 @@ export function ViewSwitch({ current }: { current: "user" | "owner" }) {
       <button className={tab(current === "user")} onClick={() => navigate("/app/profile")}>
         نمای کاربری
       </button>
-      <button className={tab(current === "owner")} onClick={() => navigate("/owner")}>
+      <button className={tab(current === "owner")} onClick={() => navigate("/owner/profile")}>
         نمای مدیریت
       </button>
     </div>
