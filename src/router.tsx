@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import CafeProfile from "@/pages/CafeProfile";
 import Booking from "@/pages/Booking";
 import MyBookings from "@/pages/MyBookings";
+import BookingDetails from "@/pages/BookingDetails";
 import Placeholder from "@/pages/Placeholder";
 
 export const router = createBrowserRouter([
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
         children: [
           { path: "cafe/:id", element: <CafeProfile /> },
           { path: "book/:cafeId", element: <Booking /> },
-          { path: "booking/:id", element: <Placeholder title="جزئیات رزرو" /> },
+          { path: "booking/:id", element: <BookingDetails /> },
           { path: "split/:bookingId", element: <Placeholder title="تقسیم دُنگ" /> },
         ],
       },

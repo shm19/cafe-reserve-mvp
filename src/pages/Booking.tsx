@@ -4,11 +4,10 @@ import { X, Minus, Plus, ShieldCheck, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCafe } from "@/hooks/useCafes";
 import { useCreateBooking } from "@/hooks/useBookings";
-import { requiresDeposit } from "@/services/bookings";
+import { requiresDeposit, depositAmount } from "@/services/bookings";
 import { useAuthStore } from "@/store/authStore";
 import { cn, faNum, toman } from "@/lib/utils";
 
-const DEPOSIT_AMOUNT = 100_000;
 const MIN_GUESTS = 1;
 const MAX_GUESTS = 12;
 
@@ -52,7 +51,8 @@ export default function Booking() {
   const [partySize, setPartySize] = useState(2);
   const [notes, setNotes] = useState("");
 
-  const deposit = requiresDeposit(partySize);
+  const deposit = requiresDeposit(cafe, partySize);
+  const depAmount = depositAmount(cafe, partySize);
 
   function confirm() {
     if (!time || !user) return;
@@ -63,6 +63,7 @@ export default function Booking() {
         datetime: `${date}T${time}:00`,
         partySize,
         occasionNotes: notes.trim() || undefined,
+        depositRequired: deposit,
       },
       { onSuccess: (booking) => navigate(`/app/booking/${booking.id}`) }
     );
@@ -182,11 +183,16 @@ export default function Booking() {
           <ul className="flex flex-col gap-2.5 text-xs leading-relaxed text-ink/70">
             <li className="flex gap-2.5">
               <span className="mt-1.5 size-1.5 flex-none rounded-full bg-primary" />
-              <span>
-                برای رزرو بالای <b className="text-ink">۶ نفر</b>، پرداخت{" "}
-                <b className="text-ink">{toman(DEPOSIT_AMOUNT)}</b> بیعانه الزامی
-                است.
-              </span>
+              {cafe?.depositThreshold != null ? (
+                <span>
+                  برای رزرو بالای{" "}
+                  <b className="text-ink">{faNum(cafe.depositThreshold)} نفر</b>،{" "}
+                  <b className="text-ink">{toman(cafe.depositAmount ?? 0)}</b>{" "}
+                  بیعانه الزامی است.
+                </span>
+              ) : (
+                <span>این کافه برای رزرو بیعانه دریافت نمی‌کند.</span>
+              )}
             </li>
             <li className="flex gap-2.5">
               <span className="mt-1.5 size-1.5 flex-none rounded-full bg-primary" />
@@ -240,7 +246,7 @@ export default function Booking() {
           ) : (
             <>
               <span>{deposit ? "تأیید و پرداخت" : "ثبت درخواست رزرو"}</span>
-              {deposit && <span className="text-sm">{toman(DEPOSIT_AMOUNT)}</span>}
+              {deposit && <span className="text-sm">{toman(depAmount)}</span>}
             </>
           )}
         </Button>
