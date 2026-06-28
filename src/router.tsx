@@ -5,6 +5,7 @@ import { DetailLayout } from "@/layouts/DetailLayout";
 import Auth from "@/pages/Auth";
 import Home from "@/pages/Home";
 import CafeProfile from "@/pages/CafeProfile";
+import Booking from "@/pages/Booking";
 import Placeholder from "@/pages/Placeholder";
 
 export const router = createBrowserRouter([
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
         element: <DetailLayout />,
         children: [
           { path: "cafe/:id", element: <CafeProfile /> },
-          { path: "book/:cafeId", element: <Placeholder title="رزرو و هماهنگی" /> },
+          { path: "book/:cafeId", element: <Booking /> },
           { path: "booking/:id", element: <Placeholder title="جزئیات رزرو" /> },
           { path: "split/:bookingId", element: <Placeholder title="تقسیم دُنگ" /> },
         ],
