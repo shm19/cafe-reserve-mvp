@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { RequireAuth } from "@/layouts/RequireAuth";
 import { AppLayout } from "@/layouts/AppLayout";
 import { DetailLayout } from "@/layouts/DetailLayout";
+import { OwnerLayout } from "@/layouts/OwnerLayout";
+import OwnerDashboard from "@/pages/owner/OwnerDashboard";
 import Auth from "@/pages/Auth";
 import Home from "@/pages/Home";
 import CafeProfile from "@/pages/CafeProfile";
@@ -43,8 +45,18 @@ export const router = createBrowserRouter([
     ],
   },
 
-  // B2B-lite (owner) + Superadmin — built later
-  { path: "/owner/*", element: <Placeholder title="پنل کافه‌دار" /> },
+  // B2B-lite (owner)
+  {
+    path: "/owner",
+    element: <OwnerLayout />,
+    children: [
+      { index: true, element: <OwnerDashboard /> },
+      { path: "profile", element: <Placeholder title="پروفایل کافه" /> },
+      { path: "reports", element: <Placeholder title="گزارشات مالی" /> },
+    ],
+  },
+
+  // Superadmin — built later
   { path: "/admin/*", element: <Placeholder title="پنل ادمین" /> },
 
   { path: "*", element: <Navigate to="/app" replace /> },
