@@ -2,11 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { X, Check, ImagePlus, FileImage, Loader2 } from "lucide-react";
+import { X, Check, ChevronDown, ImagePlus, FileImage, Loader2 } from "lucide-react";
 import { PhoneFrame } from "@/components/shared/PhoneFrame";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
-import { Switch } from "@/components/ui/switch";
 import { useAddCafe } from "@/hooks/useOwner";
 import { useAuthStore } from "@/store/authStore";
 import { TAG_META } from "@/lib/tags";
@@ -27,6 +26,7 @@ export default function AddCafe() {
   const user = useAuthStore((s) => s.user);
   const add = useAddCafe(user?.id ?? "");
   const [step, setStep] = useState(0);
+  const [policyOpen, setPolicyOpen] = useState(false);
 
   const {
     register,
@@ -43,13 +43,12 @@ export default function AddCafe() {
       address: "",
       tags: [],
       parkingNote: "",
-      depositOn: false,
       cancellationPolicy: CANCELLATION_POLICIES[0],
     },
   });
 
   const tags = watch("tags");
-  const depositOn = watch("depositOn");
+  const cancellationPolicy = watch("cancellationPolicy");
   const toggleTag = (t: CafeTag) =>
     setValue("tags", tags.includes(t) ? tags.filter((x) => x !== t) : [...tags, t]);
 
@@ -62,8 +61,6 @@ export default function AddCafe() {
         tags: v.tags,
         parkingNote: v.parkingNote || undefined,
         maxPartySize: v.maxPartySize,
-        depositThreshold: v.depositOn ? v.depositThreshold : undefined,
-        depositAmount: v.depositOn ? v.depositAmount : undefined,
         cancellationPolicy: v.cancellationPolicy,
         lat: 35.7219, // Tehran default until the map picker is wired
         lng: 51.3347,
@@ -181,7 +178,7 @@ export default function AddCafe() {
             <h2 className="text-sm font-black text-ink">قوانین رزرو و هماهنگی</h2>
             <div>
               <label className="mb-1.5 block text-xs font-bold text-ink/60">
-                حداکثر ظرفیت قابل رزرو آنلاین <span className="font-semibold text-muted-foreground">(اختیاری)</span>
+                حداکثر ظرفیت قابل رزرو آنلاین
               </label>
               <input
                 inputMode="numeric"
@@ -194,49 +191,58 @@ export default function AddCafe() {
               )}
             </div>
 
-            <div className="rounded-2xl border border-border/70 bg-paper p-4">
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-sm font-extrabold text-ink">
-                  دریافت بیعانه برای گروه‌های بزرگ
-                </span>
-                <Switch on={depositOn} onClick={() => setValue("depositOn", !depositOn)} />
-              </div>
-              {depositOn && (
-                <div className="mt-4 flex flex-col gap-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs font-bold text-muted-foreground">برای گروه‌های بزرگ‌تر از</span>
-                    <span className="flex items-center gap-1.5">
-                      <input inputMode="numeric" placeholder="۶" {...register("depositThreshold")} className={cn(numCls, "w-16")} />
-                      <span className="text-xs font-bold text-muted-foreground">نفر</span>
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs font-bold text-muted-foreground">مبلغ ثابت بیعانه</span>
-                    <span className="flex items-center gap-1.5">
-                      <input inputMode="numeric" placeholder="۱۰۰٬۰۰۰" {...register("depositAmount")} className={cn(numCls, "w-28 text-primary")} />
-                      <span className="text-xs font-bold text-muted-foreground">تومان</span>
-                    </span>
-                  </div>
-                  {(errors.depositThreshold || errors.depositAmount) && (
-                    <p className="text-xs text-destructive">
-                      {errors.depositThreshold?.message ?? errors.depositAmount?.message}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-
             <div>
               <label className="mb-1.5 block text-xs font-bold text-ink/60">قوانین لغو رزرو</label>
-              <select
-                {...register("cancellationPolicy")}
-                dir="rtl"
-                className="h-12 w-full rounded-xl border border-border bg-paper px-3 text-sm font-bold text-ink outline-none focus:ring-2 focus:ring-primary/30"
-              >
-                {CANCELLATION_POLICIES.map((p) => (
-                  <option key={p}>{p}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setPolicyOpen((o) => !o)}
+                  className="flex h-12 w-full items-center justify-between rounded-xl border border-border bg-paper px-3.5 text-sm font-bold text-ink"
+                >
+                  {cancellationPolicy}
+                  <ChevronDown
+                    className={cn(
+                      "size-4 flex-none text-muted-foreground transition-transform",
+                      policyOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+                {policyOpen && (
+                  <>
+                    {/* click-away backdrop */}
+                    <button
+                      type="button"
+                      aria-hidden
+                      tabIndex={-1}
+                      className="fixed inset-0 z-10 cursor-default"
+                      onClick={() => setPolicyOpen(false)}
+                    />
+                    <ul className="absolute z-20 mt-1.5 w-full overflow-hidden rounded-xl border border-border bg-paper py-1 shadow-lg">
+                      {CANCELLATION_POLICIES.map((p) => {
+                        const active = p === cancellationPolicy;
+                        return (
+                          <li key={p}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setValue("cancellationPolicy", p);
+                                setPolicyOpen(false);
+                              }}
+                              className={cn(
+                                "flex w-full items-center justify-between gap-2 px-3.5 py-2.5 text-right text-sm font-bold",
+                                active ? "bg-primary/[0.07] text-primary" : "text-ink/80"
+                              )}
+                            >
+                              {p}
+                              {active && <Check className="size-4 flex-none" />}
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         )}
