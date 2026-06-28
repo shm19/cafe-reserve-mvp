@@ -6,6 +6,7 @@ import { OwnerLayout } from "@/components/layout/OwnerLayout";
 import OwnerDashboard from "@/pages/owner/Dashboard/Main";
 import OwnerProfileHub from "@/pages/owner/Profile/Main";
 import OwnerReviews from "@/pages/owner/Reviews/Main";
+import OwnerEdit from "@/pages/owner/Edit/Main";
 import Auth from "@/pages/Auth/Main";
 import Home from "@/pages/Home/Main";
 import CafeProfile from "@/pages/CafeProfile/Main";
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
       { index: true, element: <OwnerDashboard /> },
       { path: "profile", element: <OwnerProfileHub /> },
       { path: "profile/reviews", element: <OwnerReviews /> },
-      { path: "profile/edit", element: <Placeholder title="ویرایش اطلاعات کافه" /> },
+      { path: "profile/edit", element: <OwnerEdit /> },
       { path: "profile/photos", element: <Placeholder title="آلبوم تصاویر" /> },
       { path: "reports", element: <Placeholder title="گزارشات مالی" /> },
     ],
