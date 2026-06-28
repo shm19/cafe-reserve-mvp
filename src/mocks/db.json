@@ -413,6 +413,40 @@
       "status": "cancelled",
       "depositStatus": "none",
       "createdAt": "2026-06-28T07:55:50.062Z"
+    },
+    {
+      "id": "bs1",
+      "cafeId": "c1",
+      "userId": "umqxeto48",
+      "datetime": "2026-07-02T19:00:00",
+      "partySize": 4,
+      "occasionNotes": "دورهمی دوستانه.",
+      "status": "confirmed",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T08:00:00Z"
+    },
+    {
+      "id": "bs2",
+      "cafeId": "c4",
+      "userId": "umqxeto48",
+      "datetime": "2026-07-04T20:00:00",
+      "partySize": 6,
+      "status": "pending",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T08:05:00Z"
+    },
+    {
+      "id": "bs3",
+      "cafeId": "c6",
+      "userId": "umqxeto48",
+      "datetime": "2026-06-24T18:00:00",
+      "partySize": 2,
+      "status": "completed",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-06-20T10:00:00Z"
     }
   ],
   "invites": [
@@ -465,10 +499,34 @@
       "createdBy": "u1",
       "status": "open",
       "shares": [
-        { "id": "s2sh1", "splitBillId": "s2", "userOrName": "محمدرضا", "amount": 650000, "paid": true },
-        { "id": "s2sh2", "splitBillId": "s2", "userOrName": "نازنین", "amount": 650000, "paid": true },
-        { "id": "s2sh3", "splitBillId": "s2", "userOrName": "علی", "amount": 650000, "paid": false },
-        { "id": "s2sh4", "splitBillId": "s2", "userOrName": "سها", "amount": 650000, "paid": false }
+        {
+          "id": "s2sh1",
+          "splitBillId": "s2",
+          "userOrName": "محمدرضا",
+          "amount": 650000,
+          "paid": true
+        },
+        {
+          "id": "s2sh2",
+          "splitBillId": "s2",
+          "userOrName": "نازنین",
+          "amount": 650000,
+          "paid": true
+        },
+        {
+          "id": "s2sh3",
+          "splitBillId": "s2",
+          "userOrName": "علی",
+          "amount": 650000,
+          "paid": false
+        },
+        {
+          "id": "s2sh4",
+          "splitBillId": "s2",
+          "userOrName": "سها",
+          "amount": 650000,
+          "paid": false
+        }
       ]
     },
     {
@@ -479,10 +537,59 @@
       "createdBy": "u1",
       "status": "settled",
       "shares": [
-        { "id": "s3sh1", "splitBillId": "s3", "userOrName": "محمدرضا", "amount": 405000, "paid": true },
-        { "id": "s3sh2", "splitBillId": "s3", "userOrName": "آرزو", "amount": 405000, "paid": true },
-        { "id": "s3sh3", "splitBillId": "s3", "userOrName": "سینا", "amount": 405000, "paid": true },
-        { "id": "s3sh4", "splitBillId": "s3", "userOrName": "هدیه", "amount": 405000, "paid": true }
+        {
+          "id": "s3sh1",
+          "splitBillId": "s3",
+          "userOrName": "محمدرضا",
+          "amount": 405000,
+          "paid": true
+        },
+        {
+          "id": "s3sh2",
+          "splitBillId": "s3",
+          "userOrName": "آرزو",
+          "amount": 405000,
+          "paid": true
+        },
+        {
+          "id": "s3sh3",
+          "splitBillId": "s3",
+          "userOrName": "سینا",
+          "amount": 405000,
+          "paid": true
+        },
+        {
+          "id": "s3sh4",
+          "splitBillId": "s3",
+          "userOrName": "هدیه",
+          "amount": 405000,
+          "paid": true
+        }
+      ]
+    },
+    {
+      "id": "smqxj7bqg8188",
+      "bookingId": "bs3",
+      "total": 200000,
+      "tax": 0,
+      "createdBy": "umqxeto48",
+      "status": "open",
+      "shares": [
+        {
+          "id": "shmqxj7bqg893",
+          "splitBillId": "smqxj7bqg8188",
+          "userOrName": "شایان",
+          "amount": 100000,
+          "paid": false
+        },
+        {
+          "id": "shmqxj7bqg3001",
+          "splitBillId": "smqxj7bqg8188",
+          "userOrName": "شمبلیه",
+          "amount": 100000,
+          "paid": true,
+          "paymentRef": "paymqxj7df54243"
+        }
       ]
     }
   ],
