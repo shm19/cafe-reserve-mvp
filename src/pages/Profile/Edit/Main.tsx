@@ -52,7 +52,7 @@ export default function EditAccount() {
     }
     update.mutate(
       { id: user.id, patch: { name: values.name } },
-      { onSuccess: () => navigate("/app/profile") }
+      { onSuccess: () => navigate(-1) }
     );
   }
 
@@ -62,7 +62,7 @@ export default function EditAccount() {
       <div className="flex flex-none items-center justify-between gap-2 px-4 pb-3 pt-4">
         <button
           type="button"
-          onClick={() => navigate("/app/profile")}
+          onClick={() => navigate(-1)}
           className="flex size-9 items-center justify-center rounded-xl border border-border bg-paper text-ink"
           aria-label="بازگشت"
         >

@@ -45,7 +45,7 @@ export function VerifyPhoneSheet({
     }
     update.mutate(
       { id: userId, patch },
-      { onSuccess: () => navigate("/app/profile") }
+      { onSuccess: () => navigate(-1) }
     );
   }
 

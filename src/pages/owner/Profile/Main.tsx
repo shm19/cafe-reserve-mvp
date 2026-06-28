@@ -5,10 +5,11 @@ import {
   Images,
   ChevronLeft,
   Star,
+  LogOut,
 } from "lucide-react";
 import { useOwnerCafe } from "@/hooks/useOwner";
 import { useAuthStore } from "@/store/authStore";
-import { faNum } from "@/lib/utils";
+import { faNum, formatPhone } from "@/lib/utils";
 
 const MENU = [
   {
@@ -34,7 +35,13 @@ const MENU = [
 export default function OwnerProfileHub() {
   const navigate = useNavigate();
   const owner = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
   const { data: cafe } = useOwnerCafe(owner?.id ?? "");
+
+  function handleLogout() {
+    logout();
+    navigate("/auth", { replace: true });
+  }
 
   return (
     <div className="px-5 pt-5">
@@ -78,6 +85,39 @@ export default function OwnerProfileHub() {
           </button>
         ))}
       </div>
+
+      {/* owner account */}
+      <h2 className="mb-2.5 mt-6 px-1 text-sm font-extrabold text-ink">
+        حساب کاربری
+      </h2>
+      {owner && (
+        <button
+          onClick={() => navigate("/owner/account/edit")}
+          className="flex w-full items-center gap-3 rounded-2xl border border-border/60 bg-paper p-4 text-right"
+        >
+          <div className="flex size-12 flex-none items-center justify-center rounded-full bg-primary/15 text-xl font-black text-primary">
+            {owner.name.charAt(0)}
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="text-sm font-extrabold text-ink">{owner.name}</div>
+            <div dir="ltr" className="mt-0.5 text-right text-xs font-semibold text-muted-foreground">
+              {formatPhone(owner.phone)}
+            </div>
+          </div>
+          <Pencil className="size-4 flex-none text-muted-foreground" />
+        </button>
+      )}
+      <button
+        onClick={handleLogout}
+        className="mt-3 flex w-full items-center gap-3 rounded-2xl border border-destructive/20 p-3.5 text-right"
+      >
+        <span className="flex size-9 flex-none items-center justify-center rounded-lg bg-destructive/10">
+          <LogOut className="size-4 text-destructive" />
+        </span>
+        <span className="flex-1 text-sm font-extrabold text-destructive">
+          خروج از حساب کاربری
+        </span>
+      </button>
     </div>
   );
 }
