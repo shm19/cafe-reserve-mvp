@@ -1,5 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { getSplitBills, getSplitBillByBooking } from "@/services/splitBill";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  getSplitBills,
+  getSplitBillByBooking,
+  createSplitBill,
+  markSharePaid,
+} from "@/services/splitBill";
 
 export const splitKeys = {
   all: ["splitBills"] as const,
@@ -19,5 +24,28 @@ export function useSplitByBooking(bookingId: string) {
     queryKey: splitKeys.byBooking(bookingId),
     queryFn: async () => (await getSplitBillByBooking(bookingId))[0] ?? null,
     enabled: !!bookingId,
+  });
+}
+
+export function useCreateSplitBill() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: createSplitBill,
+    onSuccess: (bill) => {
+      qc.invalidateQueries({ queryKey: splitKeys.byBooking(bill.bookingId) });
+      qc.invalidateQueries({ queryKey: splitKeys.list() });
+    },
+  });
+}
+
+export function useMarkSharePaid() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (v: { billId: string; shareId: string }) =>
+      markSharePaid(v.billId, v.shareId),
+    onSuccess: (bill) => {
+      qc.invalidateQueries({ queryKey: splitKeys.byBooking(bill.bookingId) });
+      qc.invalidateQueries({ queryKey: splitKeys.list() });
+    },
   });
 }

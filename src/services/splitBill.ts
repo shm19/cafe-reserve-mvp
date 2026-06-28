@@ -1,6 +1,9 @@
 import { api, newId } from "@/lib/apiClient";
 import type { Share, SplitBill } from "@/types";
 
+/** VAT rate applied to split-bill shares when enabled. */
+export const VAT_RATE = 0.09;
+
 export function getSplitBills(): Promise<SplitBill[]> {
   return api.get<SplitBill[]>("/splitBills");
 }
@@ -34,14 +37,16 @@ export function createSplitBill(input: {
   total: number;
   tax: number;
   createdBy: string;
-  people: string[];
+  participants: { name: string; amount: number }[];
 }): Promise<SplitBill> {
   const id = newId("s");
-  const shares: Share[] = computeEqualShares(
-    input.total,
-    input.tax,
-    input.people
-  ).map((s) => ({ ...s, id: newId("sh"), splitBillId: id }));
+  const shares: Share[] = input.participants.map((p, i) => ({
+    id: newId("sh"),
+    splitBillId: id,
+    userOrName: p.name,
+    amount: p.amount,
+    paid: i === 0, // host collects, so their own share starts settled
+  }));
 
   const bill: SplitBill = {
     id,
