@@ -43,7 +43,7 @@ export function PhoneStep({
       </div>
 
       <div className="mt-7">
-        <label className="mb-2 block text-[13px] font-bold text-ink/70">
+        <label className="mb-2 block text-sm font-bold text-ink/70">
           شمارهٔ موبایل
         </label>
         <div className="flex h-14 items-center gap-3 rounded-2xl border-[1.5px] border-primary bg-paper px-4 shadow-sm focus-within:ring-2 focus-within:ring-primary/30">
@@ -64,7 +64,7 @@ export function PhoneStep({
 
       <div className="flex-1" />
 
-      <p className="mb-3 px-2 text-center text-[11.5px] leading-7 text-muted-foreground">
+      <p className="mb-3 px-2 text-center text-xs leading-7 text-muted-foreground">
         با ادامه، <span className="font-bold text-primary">قوانین و شرایط</span> و{" "}
         <span className="font-bold text-primary">حریم خصوصی</span> را می‌پذیرید.
       </p>

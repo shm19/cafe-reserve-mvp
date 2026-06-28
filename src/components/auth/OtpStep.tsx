@@ -67,7 +67,7 @@ export function OtpStep({
           <span dir="ltr" className="text-sm font-bold text-ink">
             {formatPhone(phone)}
           </span>
-          <button onClick={onEdit} className="text-[12.5px] font-extrabold text-primary">
+          <button onClick={onEdit} className="text-xs font-extrabold text-primary">
             ویرایش
           </button>
         </div>
@@ -80,14 +80,14 @@ export function OtpStep({
       {verify.isError && (
         <div className="mt-5 flex items-start gap-3 rounded-2xl border-r-[3px] border-rose bg-rose/10 p-3.5 text-rose">
           <AlertCircle className="mt-0.5 size-5 flex-none" />
-          <p className="text-[13px] leading-6">{(verify.error as Error).message}</p>
+          <p className="text-sm leading-6">{(verify.error as Error).message}</p>
         </div>
       )}
 
       {/* resend: countdown, then a button */}
       <div className="mt-6 text-center">
         {!done ? (
-          <p className="text-[12.5px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             ارسال مجدد کد تا{" "}
             <span dir="ltr" className="font-bold text-ink">
               {mmss}

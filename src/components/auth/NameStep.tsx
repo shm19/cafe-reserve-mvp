@@ -39,7 +39,7 @@ export function NameStep({
       </p>
 
       <div className="mt-8 text-right">
-        <label className="mb-2 block text-[13px] font-bold text-ink/70">
+        <label className="mb-2 block text-sm font-bold text-ink/70">
           نام و نام خانوادگی
         </label>
         <input
