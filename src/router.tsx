@@ -15,6 +15,7 @@ import ReviewSubmit from "@/pages/CafeProfile/ReviewSubmit";
 import Booking from "@/pages/Booking/Main";
 import MyBookings from "@/pages/MyBookings/Main";
 import Profile from "@/pages/Profile/Main";
+import EditAccount from "@/pages/Profile/Edit/Main";
 import BookingDetails from "@/pages/BookingDetails/Main";
 import SplitBill from "@/pages/Split/Main";
 import Placeholder from "@/components/shared/Placeholder";
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
         children: [
           { path: "cafe/:id", element: <CafeProfile /> },
           { path: "cafe/:id/review", element: <ReviewSubmit /> },
+          { path: "profile/edit", element: <EditAccount /> },
           { path: "book/:cafeId", element: <Booking /> },
           { path: "booking/:id", element: <BookingDetails /> },
           { path: "split/:bookingId", element: <SplitBill /> },

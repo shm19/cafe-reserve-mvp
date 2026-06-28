@@ -32,10 +32,11 @@
     },
     {
       "id": "umqwsrhgh",
-      "phone": "09123673699",
+      "phone": "09123673698",
       "name": "شایان",
       "role": "user",
-      "points": 0
+      "points": 0,
+      "iban": "IR000000000000000000000000"
     },
     {
       "id": "umqxeto48",
@@ -63,8 +64,8 @@
       "openHours": "۹:۰۰ تا ۲۴:۰۰",
       "depositThreshold": 6,
       "depositAmount": 200000,
-      "rating": 4.8,
-      "reviewCount": 32,
+      "rating": 3,
+      "reviewCount": 5,
       "distanceM": 400,
       "tags": [
         "outdoor",
@@ -189,8 +190,8 @@
       "description": "کتابخانه‌کافهٔ ساکت برای مطالعه و کار.",
       "status": "approved",
       "openHours": "۹:۰۰ تا ۲۲:۰۰",
-      "rating": 4.9,
-      "reviewCount": 51,
+      "rating": 1,
+      "reviewCount": 1,
       "distanceM": 1500,
       "tags": [
         "quiet",
@@ -325,6 +326,42 @@
       "rating": 5,
       "body": "جای پارک داشت و فضای باغش عالی بود.",
       "createdAt": "2026-06-15T15:00:00Z"
+    },
+    {
+      "id": "rmqxu0d43737",
+      "cafeId": "c1",
+      "userId": "u1",
+      "userName": "محمدرضا",
+      "rating": 1,
+      "body": "بدک نبود",
+      "createdAt": "2026-06-28T13:35:40.131Z"
+    },
+    {
+      "id": "rmqxu1l3x8787",
+      "cafeId": "c1",
+      "userId": "u1",
+      "userName": "محمدرضا",
+      "rating": 1,
+      "body": "e",
+      "createdAt": "2026-06-28T13:36:37.149Z"
+    },
+    {
+      "id": "rmqxuiic3986",
+      "cafeId": "c1",
+      "userId": "u1",
+      "userName": "محمدرضا",
+      "rating": 4,
+      "body": "یه نظر دیگه",
+      "createdAt": "2026-06-28T13:49:46.707Z"
+    },
+    {
+      "id": "rmqxujs5c3366",
+      "cafeId": "c7",
+      "userId": "u1",
+      "userName": "محمدرضا",
+      "rating": 1,
+      "body": "jr",
+      "createdAt": "2026-06-28T13:50:46.080Z"
     }
   ],
   "bookings": [
@@ -625,8 +662,23 @@
   "noShowReports": [],
   "payments": [],
   "photos": [
-    { "id": "ph1", "cafeId": "c1", "url": "", "isUgc": false },
-    { "id": "ph2", "cafeId": "c1", "url": "", "isUgc": false },
-    { "id": "ph3", "cafeId": "c1", "url": "", "isUgc": true }
+    {
+      "id": "ph1",
+      "cafeId": "c1",
+      "url": "",
+      "isUgc": false
+    },
+    {
+      "id": "ph2",
+      "cafeId": "c1",
+      "url": "",
+      "isUgc": false
+    },
+    {
+      "id": "ph3",
+      "cafeId": "c1",
+      "url": "",
+      "isUgc": true
+    }
   ]
 }
