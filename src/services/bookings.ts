@@ -45,3 +45,25 @@ export function setBookingStatus(
 
 export const cancelBooking = (id: string) =>
   setBookingStatus(id, "cancelled");
+
+/**
+ * The user's most recent *past* outing (confirmed or completed, within the
+ * last `withinDays`) — i.e. a gathering whose bill could still be split.
+ * Returns null if there isn't one. Drives the home "split your dong" banner.
+ */
+export function findRecentOuting(
+  bookings: Booking[],
+  withinDays = 7
+): Booking | null {
+  const now = Date.now();
+  const windowMs = withinDays * 24 * 60 * 60 * 1000;
+  return (
+    bookings
+      .filter((b) => b.status === "completed" || b.status === "confirmed")
+      .filter((b) => {
+        const t = new Date(b.datetime).getTime();
+        return t <= now && now - t <= windowMs;
+      })
+      .sort((a, b) => +new Date(b.datetime) - +new Date(a.datetime))[0] ?? null
+  );
+}

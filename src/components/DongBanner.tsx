@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 
 /**
  * Growth-hack banner nudging the user to split a recent group bill — the
- * product's core "dong" hook. Shown on home; tapping jumps to bookings where
- * a split can be started.
+ * product's core "dong" hook. Only rendered when the user actually has a
+ * recent outing; tapping opens that booking's split flow.
  */
-export function DongBanner() {
+export function DongBanner({ bookingId }: { bookingId: string }) {
   const navigate = useNavigate();
   return (
     <div className="relative flex items-center gap-3 overflow-hidden rounded-2xl border border-cta/20 bg-gradient-to-l from-peach-50 to-peach-100 p-3.5 shadow-md">
@@ -24,7 +24,7 @@ export function DongBanner() {
         variant="cta"
         size="sm"
         className="flex-none"
-        onClick={() => navigate("/app/bookings")}
+        onClick={() => navigate(`/app/split/${bookingId}`)}
       >
         محاسبه دُنگ
       </Button>

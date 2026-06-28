@@ -3,7 +3,10 @@ import { CafeCard } from "@/components/CafeCard";
 import { CafeHeroCard } from "@/components/CafeHeroCard";
 import { DongBanner } from "@/components/DongBanner";
 import { useHomeSections } from "@/hooks/useCafes";
+import { useMyBookings } from "@/hooks/useBookings";
 import { getHomeSections } from "@/services/cafes";
+import { findRecentOuting } from "@/services/bookings";
+import { useAuthStore } from "@/store/authStore";
 import { TAG_META } from "@/lib/tags";
 import type { Cafe, CafeTag } from "@/types";
 
@@ -37,6 +40,11 @@ function SectionHeader({ title }: { title: string }) {
 
 export default function Home() {
   const { data: sections, isPending, isError } = useHomeSections();
+
+  // Show the split-bill banner only if the user has a recent outing to split.
+  const user = useAuthStore((s) => s.user);
+  const { data: myBookings = [] } = useMyBookings(user?.id ?? "");
+  const recentOuting = findRecentOuting(myBookings);
 
   return (
     <div className="pb-4">
@@ -86,10 +94,12 @@ export default function Home() {
         ))}
       </div>
 
-      {/* split-bill growth banner */}
-      <div className="px-4 pt-2">
-        <DongBanner />
-      </div>
+      {/* split-bill growth banner — only when there's a recent outing */}
+      {recentOuting && (
+        <div className="px-4 pt-2">
+          <DongBanner bookingId={recentOuting.id} />
+        </div>
+      )}
 
       {isError && (
         <p className="px-4 py-8 text-center text-sm text-destructive">
