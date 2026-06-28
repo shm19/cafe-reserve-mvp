@@ -40,10 +40,12 @@ export async function getHomeSections() {
   const cafes = await getCafes();
   const byDistance = [...cafes].sort((a, b) => a.distanceM - b.distanceM);
   const byRating = [...cafes].sort((a, b) => b.rating - a.rating);
+  const byReviews = [...cafes].sort((a, b) => b.reviewCount - a.reviewCount);
   return {
+    featured: byRating.slice(0, 5), // hero row: best for reservation
     nearest: byDistance.slice(0, 6),
     groups: cafes.filter((c) => c.tags.includes("group_table")),
     cozy: cafes.filter((c) => c.tags.includes("quiet")),
-    popular: byRating.slice(0, 6),
+    popular: byReviews.slice(0, 6), // most-reviewed
   };
 }
