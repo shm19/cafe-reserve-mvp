@@ -1,10 +1,14 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
+import { homePathForRole } from "@/lib/roles";
 
-/** Guard layout: renders child routes only when logged in, else -> /auth.
- *  Shared by both the tab layout and the detail layout. */
+/** Guard for the B2C app: requires login, and keeps owners/admins out of the
+ *  customer app (they belong in their own panels). */
 export function RequireAuth() {
   const user = useAuthStore((s) => s.user);
   if (!user) return <Navigate to="/auth" replace />;
+  if (user.role !== "user") {
+    return <Navigate to={homePathForRole(user.role)} replace />;
+  }
   return <Outlet />;
 }

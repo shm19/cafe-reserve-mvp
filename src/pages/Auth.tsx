@@ -5,6 +5,7 @@ import { PhoneStep } from "@/components/auth/PhoneStep";
 import { OtpStep } from "@/components/auth/OtpStep";
 import { NameStep } from "@/components/auth/NameStep";
 import { useAuthStore } from "@/store/authStore";
+import { homePathForRole } from "@/lib/roles";
 import type { User } from "@/types";
 
 type Step = "phone" | "otp" | "name";
@@ -22,12 +23,12 @@ export default function Auth() {
   const [step, setStep] = useState<Step>("phone");
   const [phone, setPhone] = useState("");
 
-  if (user) return <Navigate to="/app" replace />;
+  if (user) return <Navigate to={homePathForRole(user.role)} replace />;
 
   function handleVerified(verified: User | null) {
     if (verified) {
       setUser(verified);
-      navigate("/app");
+      navigate(homePathForRole(verified.role)); // owners -> /owner, etc.
     } else {
       setStep("name"); // valid code, brand-new user
     }
