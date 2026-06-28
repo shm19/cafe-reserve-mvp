@@ -6,6 +6,7 @@ import Auth from "@/pages/Auth";
 import Home from "@/pages/Home";
 import CafeProfile from "@/pages/CafeProfile";
 import Booking from "@/pages/Booking";
+import MyBookings from "@/pages/MyBookings";
 import Placeholder from "@/pages/Placeholder";
 
 export const router = createBrowserRouter([
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
         element: <AppLayout />,
         children: [
           { index: true, element: <Home /> },
-          { path: "bookings", element: <Placeholder title="رزروهای من" /> },
+          { path: "bookings", element: <MyBookings /> },
           { path: "profile", element: <Placeholder title="پروفایل و کیف پول" /> },
         ],
       },
