@@ -57,6 +57,8 @@
       "address": "الهیه، خیابان فرشته، نبش کوچهٔ آبان، پلاک ۱۲",
       "phone": "021-88123456",
       "openHours": "۹:۰۰ تا ۲۴:۰۰",
+      "depositThreshold": 6,
+      "depositAmount": 200000,
       "rating": 4.8,
       "reviewCount": 32,
       "distanceM": 400,
@@ -119,6 +121,8 @@
       "address": "فرشته، بلوار آفریقا، خیابان گلستان، پلاک ۴",
       "phone": "021-22334455",
       "openHours": "۱۲:۰۰ تا ۲۴:۰۰",
+      "depositThreshold": 8,
+      "depositAmount": 300000,
       "rating": 4.6,
       "reviewCount": 47,
       "distanceM": 1200,
@@ -139,6 +143,8 @@
       "description": "کافهٔ شبانه‌روزی با پخش فوتبال.",
       "status": "approved",
       "openHours": "۲۴ ساعته",
+      "depositThreshold": 8,
+      "depositAmount": 250000,
       "rating": 4.4,
       "reviewCount": 38,
       "distanceM": 2100,
@@ -215,6 +221,8 @@
       "description": "فضای صنعتی بزرگ با میزهای گروهی.",
       "status": "approved",
       "openHours": "۱۱:۰۰ تا ۲۴:۰۰",
+      "depositThreshold": 10,
+      "depositAmount": 300000,
       "rating": 4.8,
       "reviewCount": 26,
       "distanceM": 2400,
@@ -336,6 +344,75 @@
       "depositRequired": false,
       "depositStatus": "none",
       "createdAt": "2026-05-25T09:00:00Z"
+    },
+    {
+      "id": "b3",
+      "cafeId": "c4",
+      "userId": "u1",
+      "datetime": "2026-06-30T20:00:00",
+      "partySize": 5,
+      "occasionNotes": "جلسهٔ کاری به‌علاوهٔ مهمان‌ها.",
+      "status": "pending",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-06-26T12:00:00Z"
+    },
+    {
+      "id": "b4",
+      "cafeId": "c5",
+      "userId": "u1",
+      "datetime": "2026-06-18T21:00:00",
+      "partySize": 9,
+      "occasionNotes": "تماشای فوتبال.",
+      "status": "completed",
+      "depositRequired": true,
+      "depositStatus": "paid",
+      "createdAt": "2026-06-15T19:00:00Z"
+    },
+    {
+      "id": "b5",
+      "cafeId": "c1",
+      "userId": "u1",
+      "datetime": "2026-06-08T18:30:00",
+      "partySize": 7,
+      "status": "completed",
+      "depositRequired": true,
+      "depositStatus": "paid",
+      "createdAt": "2026-06-05T10:00:00Z"
+    },
+    {
+      "id": "bmqxg0qgt9150",
+      "cafeId": "c1",
+      "userId": "umqxeto48",
+      "datetime": "2026-06-28T18:30:00",
+      "partySize": 3,
+      "occasionNotes": "تولد",
+      "status": "cancelled",
+      "depositRequired": false,
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T07:04:02.813Z"
+    },
+    {
+      "id": "bmqxh9t634343",
+      "cafeId": "c1",
+      "userId": "umqxeto48",
+      "datetime": "2026-06-28T18:30:00",
+      "partySize": 8,
+      "status": "cancelled",
+      "depositRequired": true,
+      "depositStatus": "pending",
+      "createdAt": "2026-06-28T07:39:05.835Z"
+    },
+    {
+      "id": "bmqxhvc1a4845",
+      "cafeId": "c1",
+      "userId": "umqxeto48",
+      "datetime": "2026-06-28T18:30:00",
+      "partySize": 6,
+      "depositRequired": false,
+      "status": "cancelled",
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T07:55:50.062Z"
     }
   ],
   "invites": [
@@ -378,6 +455,34 @@
           "amount": 250000,
           "paid": false
         }
+      ]
+    },
+    {
+      "id": "s2",
+      "bookingId": "b4",
+      "total": 2400000,
+      "tax": 200000,
+      "createdBy": "u1",
+      "status": "open",
+      "shares": [
+        { "id": "s2sh1", "splitBillId": "s2", "userOrName": "محمدرضا", "amount": 650000, "paid": true },
+        { "id": "s2sh2", "splitBillId": "s2", "userOrName": "نازنین", "amount": 650000, "paid": true },
+        { "id": "s2sh3", "splitBillId": "s2", "userOrName": "علی", "amount": 650000, "paid": false },
+        { "id": "s2sh4", "splitBillId": "s2", "userOrName": "سها", "amount": 650000, "paid": false }
+      ]
+    },
+    {
+      "id": "s3",
+      "bookingId": "b5",
+      "total": 1500000,
+      "tax": 120000,
+      "createdBy": "u1",
+      "status": "settled",
+      "shares": [
+        { "id": "s3sh1", "splitBillId": "s3", "userOrName": "محمدرضا", "amount": 405000, "paid": true },
+        { "id": "s3sh2", "splitBillId": "s3", "userOrName": "آرزو", "amount": 405000, "paid": true },
+        { "id": "s3sh3", "splitBillId": "s3", "userOrName": "سینا", "amount": 405000, "paid": true },
+        { "id": "s3sh4", "splitBillId": "s3", "userOrName": "هدیه", "amount": 405000, "paid": true }
       ]
     }
   ],
