@@ -1,25 +1,12 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  ArrowRight,
-  Bookmark,
-  Share2,
-  Star,
-  MapPin,
-  Phone,
-  ChevronDown,
-  Check,
-} from "lucide-react";
+import { ArrowRight, Bookmark, Share2, Star, MapPin, Phone, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/shared/Tag";
 import { ReviewCard } from "@/pages/CafeProfile/ReviewCard";
 import { useCafe, useCafeMenu, useCafeReviews } from "@/hooks/useCafes";
-import { cn, faNum, toman } from "@/lib/utils";
-import {
-  sortReviews,
-  REVIEW_SORT_LABELS,
-  type ReviewSort,
-} from "@/lib/reviews";
+import { faNum, toman } from "@/lib/utils";
+import { sortReviews } from "@/lib/reviews";
 
 export default function CafeProfile() {
   const { id = "" } = useParams();
@@ -29,9 +16,9 @@ export default function CafeProfile() {
   const { data: menu = [] } = useCafeMenu(id);
   const { data: reviews = [] } = useCafeReviews(id);
 
-  const [sort, setSort] = useState<ReviewSort>("popular");
-  const [sortOpen, setSortOpen] = useState(false);
-  const sortedReviews = useMemo(() => sortReviews(reviews, sort), [reviews, sort]);
+  const sortedReviews = useMemo(() => sortReviews(reviews, "popular"), [reviews]);
+  const cafeRating =
+    reviews.length > 0 ? reviews.reduce((a, b) => a + b.rating, 0) / reviews.length : null;
 
   if (isPending) {
     return (
@@ -55,10 +42,7 @@ export default function CafeProfile() {
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
       {/* hero */}
-      <div
-        className="relative h-60 flex-none"
-        style={{ backgroundColor: cafe.coverColor }}
-      >
+      <div className="relative h-60 flex-none" style={{ backgroundColor: cafe.coverColor }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-black/40" />
         <button
           onClick={() => navigate(-1)}
@@ -83,17 +67,16 @@ export default function CafeProfile() {
       {/* scroll body */}
       <div className="scrollbar-none flex-1 overflow-y-auto px-5 pt-4">
         <h1 className="text-2xl font-black text-ink">{cafe.name}</h1>
-        <div className="mt-1 text-xs text-muted-foreground">
-          {cafe.neighborhood}
-        </div>
+        <div className="mt-1 text-xs text-muted-foreground">{cafe.neighborhood}</div>
 
+        {/* update to read the cafe rating and reviewCount from reviews and calculate not reading them from cafe */}
         {/* trust + open status */}
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center gap-1.5 text-sm font-extrabold text-ink">
             <Star className="size-4 fill-accent text-accent" />
-            {faNum(cafe.rating)}
+            {faNum(cafeRating || 0)}
             <span className="text-xs font-semibold text-muted-foreground">
-              ({faNum(cafe.reviewCount)} نظر)
+              ({faNum(sortedReviews.length)} نظر)
             </span>
           </span>
           <span className="h-3.5 w-px bg-border" />
@@ -112,10 +95,7 @@ export default function CafeProfile() {
             </span>
           </div>
           {cafe.phone && (
-            <a
-              href={`tel:${cafe.phone}`}
-              className="flex items-center gap-2.5 text-sm text-ink/70"
-            >
+            <a href={`tel:${cafe.phone}`} className="flex items-center gap-2.5 text-sm text-ink/70">
               <Phone className="size-4 flex-none text-muted-foreground" />
               <span dir="ltr">{cafe.phone}</span>
             </a>
@@ -141,12 +121,8 @@ export default function CafeProfile() {
                   key={item.id}
                   className="flex h-28 w-36 flex-none flex-col justify-between rounded-2xl border border-border/60 bg-paper p-3"
                 >
-                  <div className="text-sm font-bold text-ink">
-                    {item.name}
-                  </div>
-                  <div className="text-sm font-extrabold text-primary">
-                    {toman(item.price)}
-                  </div>
+                  <div className="text-sm font-bold text-ink">{item.name}</div>
+                  <div className="text-sm font-extrabold text-primary">{toman(item.price)}</div>
                 </div>
               ))}
             </div>
@@ -157,43 +133,13 @@ export default function CafeProfile() {
         <section className="mt-6 pb-4">
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-base font-extrabold text-ink">نظرات کاربران</h2>
-            <div className="relative">
-              <button
-                onClick={() => setSortOpen((o) => !o)}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-paper px-3 py-1.5 text-xs font-bold text-ink/70"
-              >
-                {REVIEW_SORT_LABELS[sort]}
-                <ChevronDown className="size-3.5 text-primary" />
-              </button>
-              {sortOpen && (
-                <>
-                  <div
-                    className="fixed inset-0 z-10"
-                    onClick={() => setSortOpen(false)}
-                  />
-                  <div className="absolute left-0 z-20 mt-1 w-32 overflow-hidden rounded-xl border border-border bg-paper shadow-lg">
-                    {(Object.keys(REVIEW_SORT_LABELS) as ReviewSort[]).map((opt) => (
-                      <button
-                        key={opt}
-                        onClick={() => {
-                          setSort(opt);
-                          setSortOpen(false);
-                        }}
-                        className={cn(
-                          "flex w-full items-center justify-between px-3 py-2 text-xs",
-                          sort === opt
-                            ? "font-extrabold text-primary"
-                            : "text-ink/70"
-                        )}
-                      >
-                        {REVIEW_SORT_LABELS[opt]}
-                        {sort === opt && <Check className="size-3.5" />}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+            <button
+              onClick={() => navigate(`/app/cafe/${cafe.id}/review`)}
+              className="inline-flex items-center gap-1.5 text-sm font-extrabold text-primary"
+            >
+              <Plus className="size-4" />
+              ثبت نظر
+            </button>
           </div>
 
           {sortedReviews.length === 0 ? (

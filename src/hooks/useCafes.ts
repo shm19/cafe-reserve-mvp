@@ -4,6 +4,7 @@ import {
   getCafe,
   getCafeMenu,
   getCafeReviews,
+  createReview,
   replyToReview,
   removeReviewReply,
   getCafePhotos,
@@ -53,6 +54,23 @@ export function useCafeReviews(id: string) {
     queryKey: cafeKeys.reviews(id),
     queryFn: () => getCafeReviews(id),
     enabled: !!id,
+  });
+}
+
+/** Customer submits a review, then refetch that cafe's reviews. */
+export function useCreateReview(cafeId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (input: {
+      cafeId: string;
+      userId: string;
+      userName: string;
+      rating: number;
+      body: string;
+    }) => createReview(input),
+    // Review list AND the cafe's recomputed rating/count (profile headline +
+    // home carousels) need refreshing — invalidate everything under "cafes".
+    onSuccess: () => qc.invalidateQueries({ queryKey: cafeKeys.all }),
   });
 }
 

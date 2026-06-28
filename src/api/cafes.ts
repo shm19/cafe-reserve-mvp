@@ -35,6 +35,32 @@ export function getCafeReviews(cafeId: string): Promise<Review[]> {
   return api.get<Review[]>("/reviews", { cafeId });
 }
 
+export async function createReview(input: {
+  cafeId: string;
+  userId: string;
+  userName: string;
+  rating: number;
+  body: string;
+}): Promise<Review> {
+  const review = await api.post<Review>("/reviews", {
+    id: newId("r"),
+    ...input,
+    createdAt: new Date().toISOString(),
+  });
+  // Recompute the cafe's aggregate rating + count so they aren't static.
+  // (A real backend would do this server-side / via a trigger.)
+  const all = await getCafeReviews(input.cafeId);
+  const reviewCount = all.length;
+  const avg = reviewCount
+    ? all.reduce((sum, r) => sum + r.rating, 0) / reviewCount
+    : 0;
+  await api.patch<Cafe>(`/cafes/${input.cafeId}`, {
+    reviewCount,
+    rating: Math.round(avg * 10) / 10,
+  });
+  return review;
+}
+
 /** Owner replies to a customer review (or clears the reply). */
 export const replyToReview = (id: string, ownerReply: string) =>
   api.patch<Review>(`/reviews/${id}`, { ownerReply });

@@ -11,6 +11,7 @@ import OwnerPhotos from "@/pages/owner/Photos/Main";
 import Auth from "@/pages/Auth/Main";
 import Home from "@/pages/Home/Main";
 import CafeProfile from "@/pages/CafeProfile/Main";
+import ReviewSubmit from "@/pages/CafeProfile/ReviewSubmit";
 import Booking from "@/pages/Booking/Main";
 import MyBookings from "@/pages/MyBookings/Main";
 import Profile from "@/pages/Profile/Main";
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
         element: <DetailLayout />,
         children: [
           { path: "cafe/:id", element: <CafeProfile /> },
+          { path: "cafe/:id/review", element: <ReviewSubmit /> },
           { path: "book/:cafeId", element: <Booking /> },
           { path: "booking/:id", element: <BookingDetails /> },
           { path: "split/:bookingId", element: <SplitBill /> },
