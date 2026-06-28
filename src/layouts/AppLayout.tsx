@@ -1,13 +1,10 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { BottomNav } from "@/components/BottomNav";
-import { useAuthStore } from "@/store/authStore";
 
-/** B2C shell: phone frame + bottom nav. Requires a logged-in user. */
+/** Tab shell: phone frame + scrollable content + bottom nav.
+ *  Used for the top-level tab screens (home, bookings, profile). */
 export function AppLayout() {
-  const user = useAuthStore((s) => s.user);
-  if (!user) return <Navigate to="/auth" replace />;
-
   return (
     <PhoneFrame>
       <div className="flex-1 overflow-y-auto scrollbar-none">
