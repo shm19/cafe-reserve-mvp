@@ -6,7 +6,7 @@ import { useCafe } from "@/hooks/useCafes";
 import { useCreateBooking } from "@/hooks/useBookings";
 import { requiresDeposit, depositAmount } from "@/services/bookings";
 import { useAuthStore } from "@/store/authStore";
-import { cn, faNum, toman } from "@/lib/utils";
+import { cn, faNum, toman, nextDays } from "@/lib/utils";
 
 const MIN_GUESTS = 1;
 const MAX_GUESTS = 12;
@@ -19,24 +19,6 @@ const TIME_SLOTS: { time: string; full?: boolean }[] = [
   { time: "21:30" },
   { time: "22:30" },
 ];
-
-const pad = (n: number) => String(n).padStart(2, "0");
-const dateKey = (d: Date) =>
-  `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-
-function nextDays(count: number) {
-  const weekday = new Intl.DateTimeFormat("fa-IR", { weekday: "long" });
-  const dayMonth = new Intl.DateTimeFormat("fa-IR", {
-    day: "numeric",
-    month: "long",
-  });
-  return Array.from({ length: count }).map((_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() + i);
-    const label = i === 0 ? "امروز" : i === 1 ? "فردا" : weekday.format(d);
-    return { key: dateKey(d), label, sub: dayMonth.format(d) };
-  });
-}
 
 export default function Booking() {
   const { cafeId = "" } = useParams();

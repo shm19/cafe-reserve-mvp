@@ -1,13 +1,6 @@
 import { Star } from "lucide-react";
-import { cn, faDate } from "@/lib/utils";
+import { cn, faDate, avatarColor } from "@/lib/utils";
 import type { Review } from "@/types";
-
-// Deterministic avatar colour from the reviewer's name.
-const AVATAR_COLORS = ["#A3B18A", "#C97C5D", "#4F6F52", "#6B8E7F", "#B5895A"];
-function avatarColor(name: string) {
-  const sum = [...name].reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-  return AVATAR_COLORS[sum % AVATAR_COLORS.length];
-}
 
 function Stars({ rating }: { rating: number }) {
   return (

@@ -15,27 +15,11 @@ import { Tag } from "@/components/Tag";
 import { ReviewCard } from "@/components/ReviewCard";
 import { useCafe, useCafeMenu, useCafeReviews } from "@/hooks/useCafes";
 import { cn, faNum, toman } from "@/lib/utils";
-import type { Review } from "@/types";
-
-type ReviewSort = "popular" | "newest";
-
-const SORT_LABELS: Record<ReviewSort, string> = {
-  popular: "محبوب‌ترین",
-  newest: "جدیدترین",
-};
-
-function sortReviews(reviews: Review[], sort: ReviewSort): Review[] {
-  const arr = [...reviews];
-  if (sort === "newest") {
-    arr.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
-  } else {
-    arr.sort(
-      (a, b) =>
-        b.rating - a.rating || +new Date(b.createdAt) - +new Date(a.createdAt)
-    );
-  }
-  return arr;
-}
+import {
+  sortReviews,
+  REVIEW_SORT_LABELS,
+  type ReviewSort,
+} from "@/lib/reviews";
 
 export default function CafeProfile() {
   const { id = "" } = useParams();
@@ -178,7 +162,7 @@ export default function CafeProfile() {
                 onClick={() => setSortOpen((o) => !o)}
                 className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-paper px-3 py-1.5 text-xs font-bold text-ink/70"
               >
-                {SORT_LABELS[sort]}
+                {REVIEW_SORT_LABELS[sort]}
                 <ChevronDown className="size-3.5 text-primary" />
               </button>
               {sortOpen && (
@@ -188,7 +172,7 @@ export default function CafeProfile() {
                     onClick={() => setSortOpen(false)}
                   />
                   <div className="absolute left-0 z-20 mt-1 w-32 overflow-hidden rounded-xl border border-border bg-paper shadow-lg">
-                    {(Object.keys(SORT_LABELS) as ReviewSort[]).map((opt) => (
+                    {(Object.keys(REVIEW_SORT_LABELS) as ReviewSort[]).map((opt) => (
                       <button
                         key={opt}
                         onClick={() => {
@@ -202,7 +186,7 @@ export default function CafeProfile() {
                             : "text-ink/70"
                         )}
                       >
-                        {SORT_LABELS[opt]}
+                        {REVIEW_SORT_LABELS[opt]}
                         {sort === opt && <Check className="size-3.5" />}
                       </button>
                     ))}
