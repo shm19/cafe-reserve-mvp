@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   ArrowRight,
@@ -7,12 +8,34 @@ import {
   MapPin,
   Phone,
   ChevronDown,
+  Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/Tag";
 import { ReviewCard } from "@/components/ReviewCard";
 import { useCafe, useCafeMenu, useCafeReviews } from "@/hooks/useCafes";
-import { faNum, toman } from "@/lib/utils";
+import { cn, faNum, toman } from "@/lib/utils";
+import type { Review } from "@/types";
+
+type ReviewSort = "popular" | "newest";
+
+const SORT_LABELS: Record<ReviewSort, string> = {
+  popular: "محبوب‌ترین",
+  newest: "جدیدترین",
+};
+
+function sortReviews(reviews: Review[], sort: ReviewSort): Review[] {
+  const arr = [...reviews];
+  if (sort === "newest") {
+    arr.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
+  } else {
+    arr.sort(
+      (a, b) =>
+        b.rating - a.rating || +new Date(b.createdAt) - +new Date(a.createdAt)
+    );
+  }
+  return arr;
+}
 
 export default function CafeProfile() {
   const { id = "" } = useParams();
@@ -21,6 +44,10 @@ export default function CafeProfile() {
   const { data: cafe, isPending, isError } = useCafe(id);
   const { data: menu = [] } = useCafeMenu(id);
   const { data: reviews = [] } = useCafeReviews(id);
+
+  const [sort, setSort] = useState<ReviewSort>("popular");
+  const [sortOpen, setSortOpen] = useState(false);
+  const sortedReviews = useMemo(() => sortReviews(reviews, sort), [reviews, sort]);
 
   if (isPending) {
     return (
@@ -146,18 +173,52 @@ export default function CafeProfile() {
         <section className="mt-6 pb-4">
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-base font-extrabold text-ink">نظرات کاربران</h2>
-            <span className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-paper px-3 py-1.5 text-xs font-bold text-ink/70">
-              محبوب‌ترین <ChevronDown className="size-3.5 text-primary" />
-            </span>
+            <div className="relative">
+              <button
+                onClick={() => setSortOpen((o) => !o)}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-paper px-3 py-1.5 text-xs font-bold text-ink/70"
+              >
+                {SORT_LABELS[sort]}
+                <ChevronDown className="size-3.5 text-primary" />
+              </button>
+              {sortOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setSortOpen(false)}
+                  />
+                  <div className="absolute left-0 z-20 mt-1 w-32 overflow-hidden rounded-xl border border-border bg-paper shadow-lg">
+                    {(Object.keys(SORT_LABELS) as ReviewSort[]).map((opt) => (
+                      <button
+                        key={opt}
+                        onClick={() => {
+                          setSort(opt);
+                          setSortOpen(false);
+                        }}
+                        className={cn(
+                          "flex w-full items-center justify-between px-3 py-2 text-xs",
+                          sort === opt
+                            ? "font-extrabold text-primary"
+                            : "text-ink/70"
+                        )}
+                      >
+                        {SORT_LABELS[opt]}
+                        {sort === opt && <Check className="size-3.5" />}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
-          {reviews.length === 0 ? (
+          {sortedReviews.length === 0 ? (
             <p className="py-6 text-center text-sm text-muted-foreground">
               هنوز نظری ثبت نشده است.
             </p>
           ) : (
             <div className="flex flex-col gap-3">
-              {reviews.map((r) => (
+              {sortedReviews.map((r) => (
                 <ReviewCard key={r.id} review={r} />
               ))}
             </div>
