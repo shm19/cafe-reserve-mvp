@@ -12,10 +12,12 @@ export function PhoneFrame({
   className?: string;
 }) {
   return (
-    <div className="min-h-dvh w-full bg-muted/40 flex justify-center">
+    <div className="flex h-dvh w-full justify-center bg-muted/40">
+      {/* h-dvh (not min-h) so inner overflow-y-auto regions scroll and any
+          flex-none footer / bottom nav stays pinned to the bottom. */}
       <div
         className={cn(
-          "relative w-full max-w-[420px] bg-bg min-h-dvh flex flex-col shadow-xl overflow-hidden",
+          "relative flex h-dvh w-full max-w-sm flex-col overflow-hidden bg-bg shadow-xl",
           className
         )}
       >
