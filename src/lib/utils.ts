@@ -24,6 +24,26 @@ export function formatPhone(phone: string): string {
   return faNum(grouped);
 }
 
+/** Human distance in Persian, e.g. 400 -> "۴۰۰ متر", 1200 -> "۱٫۲ کیلومتر". */
+export function formatDistance(meters: number): string {
+  if (meters >= 1000) return `${faNum((meters / 1000).toFixed(1))} کیلومتر`;
+  return `${faNum(meters)} متر`;
+}
+
+/** Format an ISO date in the Persian (Jalali) calendar, e.g. "۲ تیر ۱۴۰۵".
+ *  Uses the browser's Intl support — no date library needed. */
+export function faDate(iso: string): string {
+  try {
+    return new Intl.DateTimeFormat("fa-IR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(iso));
+  } catch {
+    return iso;
+  }
+}
+
 /** Format Toman amounts, e.g. 1200000 -> "۱٬۲۰۰٬۰۰۰ تومان". */
 export function toman(amount: number): string {
   return `${faNum(amount.toLocaleString("en-US"))} تومان`;

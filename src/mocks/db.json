@@ -27,6 +27,20 @@
       "name": "ادمین پلتفرم",
       "role": "admin",
       "points": 0
+    },
+    {
+      "id": "umqwsrhgh",
+      "phone": "09123673699",
+      "name": "شایان",
+      "role": "user",
+      "points": 0
+    },
+    {
+      "id": "umqxeto48",
+      "phone": "09125973369",
+      "name": "شایان",
+      "role": "user",
+      "points": 0
     }
   ],
   "cafes": [
@@ -40,6 +54,8 @@
       "status": "approved",
       "ownerId": "owner1",
       "iban": "IR000000000000000000000001",
+      "address": "الهیه، خیابان فرشته، نبش کوچهٔ آبان، پلاک ۱۲",
+      "phone": "021-88123456",
       "openHours": "۹:۰۰ تا ۲۴:۰۰",
       "rating": 4.8,
       "reviewCount": 32,
@@ -100,6 +116,8 @@
       "lng": 51.42,
       "description": "فضای باغ بزرگ با جای پارک، مناسب جمع‌های بزرگ.",
       "status": "approved",
+      "address": "فرشته، بلوار آفریقا، خیابان گلستان، پلاک ۴",
+      "phone": "021-22334455",
       "openHours": "۱۲:۰۰ تا ۲۴:۰۰",
       "rating": 4.6,
       "reviewCount": 47,

@@ -66,6 +66,8 @@ export interface Cafe {
   status: "pending" | "approved";
   ownerId?: string;
   iban?: string;
+  address?: string;
+  phone?: string;
   openHours: string;
   rating: number;
   reviewCount: number;

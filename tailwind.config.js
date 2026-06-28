@@ -20,12 +20,22 @@ export default {
         cta: {
           DEFAULT: "#F97316",
           foreground: "#FFFFFF",
+          ink: "#9a5418", // dark orange text on a light tint
         },
         accent: {
           DEFAULT: "#FBBF24",
           foreground: "#1F2937",
+          ink: "#8a6510", // dark gold text on an amber tint
         },
-        rose: "#C97C5D",
+        rose: {
+          DEFAULT: "#C97C5D",
+          ink: "#9a4f33", // dark rose text on a rose tint
+        },
+        // warm banner gradient (split-bill / "dong" banner)
+        peach: {
+          50: "#FFF3E6",
+          100: "#FFE7CE",
+        },
         // shadcn/ui semantic tokens (CSS variables in index.css)
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
