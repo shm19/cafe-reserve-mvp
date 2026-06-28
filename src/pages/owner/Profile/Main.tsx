@@ -7,6 +7,7 @@ import {
   Star,
   LogOut,
 } from "lucide-react";
+import { ViewSwitch } from "@/components/shared/ViewSwitch";
 import { useOwnerCafe } from "@/hooks/useOwner";
 import { useAuthStore } from "@/store/authStore";
 import { faNum, formatPhone } from "@/lib/utils";
@@ -46,6 +47,8 @@ export default function OwnerProfileHub() {
   return (
     <div className="px-5 pt-5">
       <h1 className="mb-4 text-2xl font-black text-ink">پروفایل کافه</h1>
+
+      <ViewSwitch current="owner" />
 
       {/* cafe overview */}
       <div className="mb-5 flex items-center gap-3 rounded-2xl border border-border/60 bg-paper p-3.5">

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Wallet, ArrowDown, Landmark, Pencil, LogOut, Plus } from "lucide-react";
+import { Wallet, ArrowDown, Landmark, Pencil, LogOut, Plus, Store, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BottomSheet } from "@/components/shared/BottomSheet";
+import { ViewSwitch } from "@/components/shared/ViewSwitch";
 import { IbanSheet } from "@/pages/Profile/IbanSheet";
 import { useUser } from "@/hooks/useAuth";
+import { useOwnerCafe } from "@/hooks/useOwner";
 import { useAuthStore } from "@/store/authStore";
 import { faNum, formatPhone, maskIban } from "@/lib/utils";
 
@@ -13,6 +15,7 @@ export default function Profile() {
   const storeUser = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const { data: fetched } = useUser(storeUser?.id ?? "");
+  const { data: ownedCafe } = useOwnerCafe(storeUser?.id ?? "");
   const user = fetched ?? storeUser;
   const [ibanOpen, setIbanOpen] = useState(false);
 
@@ -103,6 +106,30 @@ export default function Profile() {
           {user.iban ? <Pencil className="size-4" /> : <Plus className="size-4" />}
         </button>
       </div>
+
+      {/* cafe ownership: switch into the manager panel, or register a cafe */}
+      <h2 className="mb-2.5 mt-5 px-1 text-sm font-extrabold text-ink">
+        کافه‌داری
+      </h2>
+      {ownedCafe ? (
+        <ViewSwitch current="user" />
+      ) : (
+        <button
+          onClick={() => navigate("/app/add-cafe")}
+          className="flex w-full items-center gap-3 rounded-2xl border border-primary/25 bg-primary/[0.06] p-4 text-right"
+        >
+          <span className="flex size-10 flex-none items-center justify-center rounded-xl bg-primary/12">
+            <Store className="size-5 text-primary" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-extrabold text-ink">صاحب کافه هستید؟ ثبت کافه</span>
+            <span className="mt-1 block text-xs font-semibold text-muted-foreground">
+              رزروها را مدیریت کنید و کافه‌تان را به مشتری‌ها معرفی کنید
+            </span>
+          </span>
+          <ChevronLeft className="size-4 flex-none text-muted-foreground" />
+        </button>
+      )}
 
       {/* account management — logout only */}
       <h2 className="mb-2.5 mt-5 px-1 text-sm font-extrabold text-ink">
