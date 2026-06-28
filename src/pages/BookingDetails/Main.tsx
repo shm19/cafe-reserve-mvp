@@ -1,16 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  ArrowRight,
-  MapPin,
-  Phone,
-  Navigation,
-  Car,
-  Info,
-  RotateCcw,
-  Receipt,
-  Loader2,
-} from "lucide-react";
+import { ArrowRight, Info, RotateCcw, Receipt, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BookingCafeCard } from "@/components/shared/BookingCafeCard";
+import { InfoRow } from "@/components/shared/InfoRow";
 import { useBooking, useCancelBooking } from "@/hooks/useBookings";
 import { useSplitByBooking } from "@/hooks/useSplitBills";
 import { depositAmount } from "@/api/bookings";
@@ -27,15 +19,6 @@ const PILL: Record<
   cancelled: { label: "لغو شده", dot: "bg-destructive", cls: "bg-destructive/10 text-destructive" },
   rejected: { label: "رد شده", dot: "bg-destructive", cls: "bg-destructive/10 text-destructive" },
 };
-
-function Row({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="flex items-center justify-between border-b border-border/50 py-3 last:border-0">
-      <span className="text-xs font-semibold text-ink/60">{label}</span>
-      <span className="text-sm font-extrabold text-ink">{children}</span>
-    </div>
-  );
-}
 
 export default function BookingDetails() {
   const { id = "" } = useParams();
@@ -94,76 +77,26 @@ export default function BookingDetails() {
       {/* body */}
       <div className="scrollbar-none flex-1 overflow-y-auto px-4 pb-6">
         {/* cafe & location */}
-        <div className="rounded-2xl border border-border/60 bg-paper p-4">
-          <div className="flex items-center gap-3">
-            <div
-              className="size-14 flex-none rounded-xl"
-              style={{ backgroundColor: cafe?.coverColor ?? "#E0D8CB" }}
-            />
-            <div className="min-w-0 flex-1">
-              <div className="text-base font-extrabold text-ink">
-                {cafe?.name ?? "کافه"}
-              </div>
-              <div className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
-                <MapPin className="size-3.5 text-sage" />
-                {cafe?.neighborhood ?? "—"}
-              </div>
-            </div>
-          </div>
-          <div className="mt-3 flex gap-2.5">
-            <a
-              href={cafe?.phone ? `tel:${cafe.phone}` : undefined}
-              className={cn(
-                "flex h-10 flex-1 items-center justify-center gap-2 rounded-xl border border-border/60 bg-bg text-xs font-extrabold text-ink/80",
-                !cafe?.phone && "pointer-events-none opacity-50"
-              )}
-            >
-              <Phone className="size-4 text-primary" />
-              تماس با کافه
-            </a>
-            <a
-              href={
-                cafe
-                  ? `https://neshan.org/maps/@${cafe.lat},${cafe.lng},16z`
-                  : undefined
-              }
-              target="_blank"
-              rel="noreferrer"
-              className="flex h-10 flex-1 items-center justify-center gap-2 rounded-xl border border-border/60 bg-bg text-xs font-extrabold text-ink/80"
-            >
-              <Navigation className="size-4 text-primary" />
-              مسیریابی
-            </a>
-          </div>
-          {cafe?.tags.includes("parking") && (
-            <div className="mt-3 flex gap-2 border-t border-border/50 pt-3">
-              <Car className="mt-0.5 size-4 flex-none text-sage" />
-              <p className="text-xs leading-relaxed text-ink/60">
-                <b className="font-extrabold text-ink/80">وضعیت پارکینگ:</b> دارای
-                جای پارک اختصاصی.
-              </p>
-            </div>
-          )}
-        </div>
+        <BookingCafeCard cafe={cafe} />
 
         {/* core details */}
         <h2 className="mb-2.5 mt-5 px-1 text-sm font-extrabold text-ink">
           جزئیات رزرو
         </h2>
         <div className="rounded-2xl border border-border/60 bg-paper px-4">
-          <Row label="کد رزرو">
+          <InfoRow label="کد رزرو">
             <span dir="ltr">#{booking.id}</span>
-          </Row>
-          <Row label="تاریخ و ساعت">{faDateTime(booking.datetime)}</Row>
-          <Row label="تعداد نفرات">{faNum(booking.partySize)} نفر</Row>
+          </InfoRow>
+          <InfoRow label="تاریخ و ساعت">{faDateTime(booking.datetime)}</InfoRow>
+          <InfoRow label="تعداد نفرات">{faNum(booking.partySize)} نفر</InfoRow>
           {booking.depositRequired && (
-            <Row label="بیعانه">
+            <InfoRow label="بیعانه">
               {booking.depositStatus === "paid" ? (
                 <span className="text-primary">{toman(deposit)}</span>
               ) : (
                 <span className="text-cta-ink">در انتظار پرداخت</span>
               )}
-            </Row>
+            </InfoRow>
           )}
           <div className="py-3">
             <div className="mb-1.5 text-xs font-semibold text-ink/60">

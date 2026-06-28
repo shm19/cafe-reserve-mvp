@@ -10,6 +10,7 @@ import OwnerReports from "@/pages/owner/Reports/Main";
 import OwnerEdit from "@/pages/owner/Edit/Main";
 import OwnerPhotos from "@/pages/owner/Photos/Main";
 import Auth from "@/pages/Auth/Main";
+import GuestBooking from "@/pages/GuestBooking/Main";
 import Home from "@/pages/Home/Main";
 import CafeProfile from "@/pages/CafeProfile/Main";
 import ReviewSubmit from "@/pages/CafeProfile/ReviewSubmit";
@@ -24,6 +25,8 @@ import Placeholder from "@/components/shared/Placeholder";
 export const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/app" replace /> },
   { path: "/auth", element: <Auth /> },
+  // Public guest invite — no auth.
+  { path: "/invite/:id", element: <GuestBooking /> },
 
   // Everything under /app requires login (RequireAuth), then splits into:
   //  - AppLayout: tab screens with the bottom nav

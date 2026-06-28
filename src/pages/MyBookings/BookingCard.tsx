@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Calendar, Users, Share2, Receipt, FileText } from "lucide-react";
+import { Calendar, Users, Share2, Receipt, FileText, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn, faNum, faDateTime } from "@/lib/utils";
 import type { BookingWithCafe, SplitBill } from "@/types";
@@ -20,7 +21,15 @@ export function BookingCard({
   upcoming: boolean;
 }) {
   const navigate = useNavigate();
+  const [copied, setCopied] = useState(false);
   const cafe = booking.cafe;
+
+  function copyInvite() {
+    const link = `${location.origin}/invite/${booking.id}`;
+    navigator.clipboard?.writeText(link).catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
   const badge = upcoming
     ? STATUS_BADGE[booking.status] ?? STATUS_BADGE.pending
     : STATUS_BADGE.done;
@@ -67,13 +76,18 @@ export function BookingCard({
       {/* action area */}
       <div className="px-4 pb-4">
         {upcoming && (
-          <Button
-            variant="cta"
-            className="w-full gap-2"
-            onClick={() => navigate(`/app/booking/${booking.id}`)}
-          >
-            <Share2 className="size-4" />
-            ارسال لینک دعوت
+          <Button variant="cta" className="w-full gap-2" onClick={copyInvite}>
+            {copied ? (
+              <>
+                <Check className="size-4" />
+                لینک دعوت کپی شد
+              </>
+            ) : (
+              <>
+                <Share2 className="size-4" />
+                ارسال لینک دعوت
+              </>
+            )}
           </Button>
         )}
 
