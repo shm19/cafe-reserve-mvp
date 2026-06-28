@@ -55,6 +55,19 @@ export function faDate(iso: string): string {
   }
 }
 
+/** Jalali weekday + day + month for a date, e.g. "پنجشنبه ۵ تیر". */
+export function faDayLabel(iso: string): string {
+  try {
+    return new Intl.DateTimeFormat("fa-IR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    }).format(new Date(iso));
+  } catch {
+    return iso;
+  }
+}
+
 /** Jalali weekday + day + month with the time, e.g. "پنجشنبه ۵ تیر · ۱۸:۳۰". */
 export function faDateTime(iso: string): string {
   try {

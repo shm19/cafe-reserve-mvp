@@ -128,6 +128,11 @@ export interface BookingWithCafe extends Booking {
   cafe?: Cafe;
 }
 
+/** A booking with the guest embedded — for the owner dashboard. */
+export interface OwnerBooking extends Booking {
+  user?: User;
+}
+
 export interface NoShowReport {
   id: string;
   bookingId: string;

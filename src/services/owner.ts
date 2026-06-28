@@ -1,14 +1,15 @@
 import { api, newId } from "@/lib/apiClient";
-import type { Booking, Cafe, NoShowReport } from "@/types";
+import type { Booking, Cafe, NoShowReport, OwnerBooking } from "@/types";
 
 export async function getOwnerCafes(ownerId: string): Promise<Cafe[]> {
   return api.get<Cafe[]>("/cafes", { ownerId });
 }
 
-export async function getOwnerBookings(ownerId: string): Promise<Booking[]> {
+/** Bookings across the owner's cafes, with the guest embedded (_expand=user). */
+export async function getOwnerBookings(ownerId: string): Promise<OwnerBooking[]> {
   const cafes = await getOwnerCafes(ownerId);
   const ids = new Set(cafes.map((c) => c.id));
-  const all = await api.get<Booking[]>("/bookings");
+  const all = await api.get<OwnerBooking[]>("/bookings", { _expand: "user" });
   return all.filter((b) => ids.has(b.cafeId));
 }
 
