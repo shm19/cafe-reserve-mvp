@@ -1,14 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
-import { homePathForRole } from "@/lib/roles";
 
-/** Guard for the B2C app: requires login, and keeps owners/admins out of the
- *  customer app (they belong in their own panels). */
+/** Guard for the B2C app: just requires login. Owners are also customers, so
+ *  they may use the user app and switch into their manager panel at will. */
 export function RequireAuth() {
   const user = useAuthStore((s) => s.user);
   if (!user) return <Navigate to="/auth" replace />;
-  if (user.role !== "user") {
-    return <Navigate to={homePathForRole(user.role)} replace />;
-  }
   return <Outlet />;
 }

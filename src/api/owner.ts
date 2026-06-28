@@ -1,5 +1,5 @@
 import { api, newId } from "@/api/client";
-import type { Booking, Cafe, NoShowReport, OwnerBooking } from "@/types";
+import type { Booking, Cafe, NoShowReport, OwnerBooking, User } from "@/types";
 
 export async function getOwnerCafes(ownerId: string): Promise<Cafe[]> {
   return api.get<Cafe[]>("/cafes", { ownerId });
@@ -40,6 +40,10 @@ export function addCafe(input: Partial<Cafe> & { name: string; ownerId: string }
   };
   return api.post<Cafe>("/cafes", cafe);
 }
+
+/** Promote a customer to owner once they register their first cafe. */
+export const becomeOwner = (userId: string) =>
+  api.patch<User>(`/users/${userId}`, { role: "owner" });
 
 export function reportNoShow(bookingId: string, cafeId: string, userId: string) {
   const report: NoShowReport = {

@@ -2,11 +2,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getOwnerBookings,
   getOwnerCafes,
+  addCafe,
+  becomeOwner,
   updateCafe,
   approveBooking,
   rejectBooking,
   reportNoShow,
 } from "@/api/owner";
+import { useAuthStore } from "@/store/authStore";
 import type { Cafe } from "@/types";
 
 export const ownerKeys = {
@@ -30,6 +33,25 @@ export function useOwnerCafe(ownerId: string) {
     queryKey: ownerKeys.cafe(ownerId),
     queryFn: async () => (await getOwnerCafes(ownerId))[0] ?? null,
     enabled: !!ownerId,
+  });
+}
+
+/** Register the user's first cafe, then promote them to owner (updates the
+ *  session so the manager view unlocks immediately). */
+export function useAddCafe(userId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (input: Partial<Cafe> & { name: string }) => {
+      const cafe = await addCafe({ ...input, ownerId: userId });
+      const user = await becomeOwner(userId);
+      return { cafe, user };
+    },
+    onSuccess: ({ user }) => {
+      useAuthStore.getState().setUser(user);
+      qc.invalidateQueries({ queryKey: ownerKeys.cafe(userId) });
+      qc.invalidateQueries({ queryKey: ["cafes"] });
+      qc.invalidateQueries({ queryKey: ["users"] });
+    },
   });
 }
 
