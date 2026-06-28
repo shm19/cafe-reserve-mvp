@@ -610,9 +610,10 @@
         <!-- reviews -->
         <div style="display:flex;align-items:center;justify-content:space-between;margin:24px 0 12px">
           <div style="font-size:16px;font-weight:800;color:#1F2937">نظرات کاربران</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#54574e;background:#fff;border:1px solid rgba(31,41,55,.1);padding:7px 11px;border-radius:11px">
-            محبوب‌ترین <span style="font-size:8px;color:#4F6F52">▼</span>
-          </div>
+          <button style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:800;color:#4F6F52;background:transparent;border:none;padding:5px 4px;cursor:pointer">
+            <span style="font-size:16px;font-weight:700;line-height:1">+</span>
+            ثبت نظر
+          </button>
         </div>
         <!-- review card 1 -->
         <div style="background:#fff;border-radius:16px;padding:15px;border:1px solid rgba(31,41,55,.07);margin-bottom:12px">
@@ -629,7 +630,7 @@
           <div style="display:flex;gap:7px;margin-top:11px">
             <div style="width:58px;height:58px;border-radius:11px;background-image:repeating-linear-gradient(45deg,#E7DFD3 0 9px,#EFE8DD 9px 18px);border:1px solid rgba(31,41,55,.05)"></div>
             <div style="width:58px;height:58px;border-radius:11px;background-image:repeating-linear-gradient(45deg,#E3DDD0 0 9px,#ECE6DA 9px 18px);border:1px solid rgba(31,41,55,.05)"></div>
-            <div style="width:58px;height:58px;border-radius:11px;position:relative;background-image:repeating-linear-gradient(45deg,#E2DCD0 0 9px,#EBE4D8 9px 18px);border:1px solid rgba(31,41,55,.05);overflow:hidden"><div style="position:absolute;inset:0;background:rgba(20,18,15,.5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">۳+</div></div>
+            <div style="width:58px;height:58px;border-radius:11px;position:relative;background-image:repeating-linear-gradient(45deg,#E2DCD0 0 9px,#EBE4D8 9px 18px);border:1px solid rgba(31,41,55,.05);overflow:hidden"><div style="position:absolute;inset:0;background:rgba(20,18,15,.5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;direction:ltr;unicode-bidi:isolate">+۳</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
             <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#6b6f66;font-weight:600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H4V10z"/><path d="M7 10l4-7c1.3 0 2 .9 2 2v3h4.5c1.3 0 2.2 1.2 1.9 2.4l-1.6 6c-.2 1-1.1 1.6-2 1.6H7"/></svg> ۲۴</span>
@@ -657,15 +658,86 @@
             <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#9a9d93;font-weight:600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9a9d93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V3h3v11z"/><path d="M17 14l-4 7c-1.3 0-2-.9-2-2v-3H6.5c-1.3 0-2.2-1.2-1.9-2.4l1.6-6c.2-1 1.1-1.6 2-1.6H17"/></svg> ۰</span>
           </div>
         </div>
-        <!-- view all user photos -->
-        <button style="width:100%;height:46px;margin-bottom:18px;border:1px solid rgba(79,111,82,.28);border-radius:14px;background:#fff;color:#4F6F52;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          مشاهده همه عکس‌های کاربران
-        </button>
       </div>
       <!-- sticky bottom bar -->
       <div style="flex:none;padding:14px 18px 24px;background:#fff;border-top:1px solid rgba(31,41,55,.06);box-shadow:0 -14px 30px -18px rgba(31,41,55,.3)">
         <button style="width:100%;height:56px;border:none;border-radius:16px;background:#F97316;color:#fff;font-size:17px;font-weight:800;box-shadow:0 12px 26px -10px rgba(249,115,22,.7);cursor:pointer">رزرو رایگان</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ۰۳B — باتم‌شیت ثبت نظر · امتیاز و دیدگاه ============ -->
+<div style="position:absolute;left:2940px;top:440px;width:393px">
+  <div data-drags-parent="1" style="font-size:13px;font-weight:800;color:#4F6F52;margin-bottom:13px">۰۳B — باتم‌شیت ثبت نظر · امتیاز و دیدگاه</div>
+  <div style="width:393px;background:#16140f;border-radius:52px;padding:9px;box-shadow:0 40px 80px -34px rgba(31,41,55,.5)">
+    <div dir="rtl" style="width:375px;height:812px;background:#FAF7F2;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+      <!-- status bar -->
+      <div style="height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:relative;z-index:3">
+        <span style="font-size:14px;font-weight:700;color:#fff;direction:ltr;unicode-bidi:isolate">۹:۴۱</span>
+        <span style="display:flex;align-items:center;gap:7px">
+          <span style="display:flex;align-items:flex-end;gap:2px;height:10px">
+            <i style="display:block;width:3px;height:4px;background:#fff;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:6px;background:#fff;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:8px;background:#fff;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:10px;background:#fff;border-radius:1px"></i>
+          </span>
+          <span style="width:23px;height:11px;border:1.4px solid #fff;border-radius:3px;position:relative;display:inline-block">
+            <span style="position:absolute;top:1.5px;bottom:1.5px;right:1.5px;width:13px;background:#fff;border-radius:1px;display:block"></span>
+          </span>
+        </span>
+      </div>
+      <!-- dimmed backdrop -->
+      <div style="position:absolute;inset:0;background:rgba(20,18,15,.5)"></div>
+
+      <!-- bottom sheet -->
+      <div style="margin-top:auto;position:relative;z-index:3;background:#FAF7F2;border-radius:26px 26px 0 0;padding:10px 24px 26px;box-shadow:0 -20px 50px -20px rgba(31,41,55,.5)">
+        <div style="width:42px;height:5px;border-radius:999px;background:rgba(31,41,55,.16);margin:0 auto 18px"></div>
+
+        <!-- cafe row -->
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px">
+          <div style="flex:none;width:46px;height:46px;border-radius:12px;background-image:repeating-linear-gradient(45deg,#E0D8CB 0 9px,#EAE2D6 9px 18px)"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:17px;font-weight:900;color:#1F2937">ثبت نظر</div>
+            <div style="font-size:12px;color:#9a9d93;font-weight:600;margin-top:2px">کافهٔ نقطه · الهیه</div>
+          </div>
+        </div>
+
+        <!-- star rating -->
+        <div style="font-size:12.5px;font-weight:700;color:#54574e;margin-bottom:10px">امتیاز شما</div>
+        <div style="display:flex;gap:10px;direction:ltr;justify-content:center;margin-bottom:20px">
+          <span style="font-size:38px;color:#FBBF24;line-height:1">★</span>
+          <span style="font-size:38px;color:#FBBF24;line-height:1">★</span>
+          <span style="font-size:38px;color:#FBBF24;line-height:1">★</span>
+          <span style="font-size:38px;color:#FBBF24;line-height:1">★</span>
+          <span style="font-size:38px;color:#d8d4ca;line-height:1">★</span>
+        </div>
+
+        <!-- review text -->
+        <div style="font-size:12.5px;font-weight:700;color:#54574e;margin-bottom:9px">دیدگاه شما</div>
+        <div style="background:#fff;border:1.5px solid rgba(31,41,55,.1);border-radius:16px;padding:14px;min-height:96px">
+          <span style="font-size:13.5px;color:#bdbfb6;font-weight:500;line-height:1.8">تجربه‌تان از فضا، سرویس و کیفیت را بنویسید…</span>
+        </div>
+
+        <!-- UGC photo upload -->
+        <div style="font-size:12px;font-weight:800;color:#1F2937;margin:16px 0 10px">عکس‌های شما (اختیاری)</div>
+        <div style="display:flex;gap:9px">
+          <button style="flex:none;width:64px;height:64px;border-radius:14px;border:1.6px dashed rgba(79,111,82,.5);background:rgba(79,111,82,.06);display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </button>
+          <div style="flex:none;width:64px;height:64px;border-radius:14px;position:relative;background-image:repeating-linear-gradient(45deg,#E7DFD3 0 9px,#EFE8DD 9px 18px);border:1px solid rgba(31,41,55,.05)">
+            <button style="position:absolute;top:5px;left:5px;width:20px;height:20px;border-radius:7px;border:none;background:rgba(22,20,15,.62);display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div style="flex:none;width:64px;height:64px;border-radius:14px;position:relative;background-image:repeating-linear-gradient(45deg,#E3DDD0 0 9px,#ECE6DA 9px 18px);border:1px solid rgba(31,41,55,.05)">
+            <button style="position:absolute;top:5px;left:5px;width:20px;height:20px;border-radius:7px;border:none;background:rgba(22,20,15,.62);display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button style="width:100%;height:55px;margin-top:20px;border:none;border-radius:16px;background:#F97316;color:#fff;font-size:16px;font-weight:800;box-shadow:0 12px 26px -10px rgba(249,115,22,.7);cursor:pointer">ثبت نظر</button>
       </div>
     </div>
   </div>
@@ -1399,14 +1471,17 @@
       <!-- scroll body -->
       <div class="scr" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:0 22px 16px">
 
-        <!-- user card -->
-        <div style="display:flex;align-items:center;gap:13px;background:#fff;border-radius:18px;border:1px solid rgba(31,41,55,.06);padding:15px">
+        <!-- user card (clickable → edit profile) -->
+        <button style="width:100%;text-align:right;display:flex;align-items:center;gap:13px;background:#fff;border-radius:18px;border:1px solid rgba(31,41,55,.06);padding:15px;cursor:pointer">
           <div style="flex:none;width:54px;height:54px;border-radius:50%;background:rgba(79,111,82,.14);color:#4F6F52;font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center">م</div>
           <div style="flex:1;min-width:0">
             <div style="font-size:16.5px;font-weight:800;color:#1F2937">محمدرضا</div>
             <div style="font-size:13px;color:#9a9d93;font-weight:600;margin-top:3px;direction:ltr;unicode-bidi:isolate;text-align:right">۰۹۱۲۱۲۳۴۵۶۷</div>
           </div>
-        </div>
+          <span style="flex:none;width:36px;height:36px;border-radius:10px;background:rgba(31,41,55,.05);display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7a7d73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          </span>
+        </button>
 
         <!-- wallet card -->
         <div style="margin-top:16px;border-radius:20px;padding:19px;background:linear-gradient(150deg,#3c4f3e 0%,#2a3a2c 100%);box-shadow:0 18px 36px -18px rgba(42,58,44,.7);position:relative;overflow:hidden">
@@ -1425,39 +1500,32 @@
           </button>
         </div>
 
-        <!-- bank settings row -->
+        <!-- bank settings (inline · State B filled) -->
         <div style="font-size:13px;font-weight:800;color:#1F2937;margin:20px 4px 11px">تنظیمات بانکی</div>
-        <button style="width:100%;text-align:right;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(31,41,55,.06);border-radius:16px;padding:14px 15px;cursor:pointer">
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(31,41,55,.06);border-radius:16px;padding:14px 15px">
           <span style="flex:none;width:40px;height:40px;border-radius:11px;background:rgba(79,111,82,.1);display:flex;align-items:center;justify-content:center">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4 10h16"/><path d="M12 3L3 8h18z"/><path d="M5 10v11M19 10v11M10 10v11M14 10v11"/></svg>
           </span>
           <span style="flex:1;min-width:0">
-            <span style="display:block;font-size:13.5px;font-weight:800;color:#1F2937">حساب‌های بانکی و شماره شبا</span>
-            <span style="display:flex;align-items:center;gap:6px;margin-top:4px">
-              <span style="font-size:11px;color:#7a7d73;font-weight:600;direction:ltr;unicode-bidi:isolate">IR••• ۴۴۲۱</span>
+            <span style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:13.5px;color:#1F2937;font-weight:800;direction:ltr;unicode-bidi:isolate">IR••• ۴۴۲۱</span>
               <span style="font-size:10px;font-weight:700;color:#4F6F52;background:rgba(79,111,82,.12);padding:3px 8px;border-radius:999px">تأیید شده</span>
             </span>
+            <span style="display:block;font-size:11px;color:#9a9d93;font-weight:600;margin-top:4px">شمارهٔ شبا برای واریز برداشت‌ها</span>
           </span>
-          <svg style="flex:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2c4bb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-
-        <!-- account actions -->
-        <div style="font-size:13px;font-weight:800;color:#1F2937;margin:20px 4px 11px">مدیریت حساب</div>
-        <div style="background:#fff;border:1px solid rgba(31,41,55,.06);border-radius:16px;overflow:hidden">
-          <button style="width:100%;text-align:right;display:flex;align-items:center;gap:12px;background:transparent;border:none;border-bottom:1px solid rgba(31,41,55,.05);padding:14px 15px;cursor:pointer">
-            <span style="flex:none;width:36px;height:36px;border-radius:10px;background:rgba(31,41,55,.05);display:flex;align-items:center;justify-content:center">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7a7d73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
-            </span>
-            <span style="flex:1;font-size:13.5px;font-weight:700;color:#3f4239">ویرایش اطلاعات کاربری</span>
-            <svg style="flex:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2c4bb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button style="width:100%;text-align:right;display:flex;align-items:center;gap:12px;background:transparent;border:none;padding:14px 15px;cursor:pointer">
-            <span style="flex:none;width:36px;height:36px;border-radius:10px;background:rgba(214,69,69,.1);display:flex;align-items:center;justify-content:center">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-            </span>
-            <span style="flex:1;font-size:13.5px;font-weight:700;color:#c0392b">خروج از حساب کاربری</span>
+          <button style="flex:none;width:36px;height:36px;border-radius:10px;background:rgba(31,41,55,.05);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7a7d73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
           </button>
         </div>
+
+        <!-- account management (logout only · ghost destructive) -->
+        <div style="font-size:13px;font-weight:800;color:#1F2937;margin:20px 4px 11px">مدیریت حساب</div>
+        <button style="width:100%;text-align:right;display:flex;align-items:center;gap:12px;background:transparent;border:1px solid rgba(214,69,69,.2);border-radius:16px;padding:14px 15px;cursor:pointer">
+          <span style="flex:none;width:36px;height:36px;border-radius:10px;background:rgba(214,69,69,.1);display:flex;align-items:center;justify-content:center">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          </span>
+          <span style="flex:1;font-size:13.5px;font-weight:800;color:#c0392b">خروج از حساب کاربری</span>
+        </button>
 
       </div>
 
@@ -1475,6 +1543,276 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
           پروفایل
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ۱۰B — ویرایش اطلاعات کاربری · زیرصفحه ============ -->
+<div style="position:absolute;left:2460px;top:2920px;width:393px">
+  <div data-drags-parent="1" style="font-size:13px;font-weight:800;color:#4F6F52;margin-bottom:13px">۱۰B — ویرایش اطلاعات کاربری · زیرصفحه</div>
+  <div style="width:393px;background:#16140f;border-radius:52px;padding:9px;box-shadow:0 40px 80px -34px rgba(31,41,55,.5)">
+    <div dir="rtl" style="width:375px;height:812px;background:#FAF7F2;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+      <!-- status bar -->
+      <div style="height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 28px">
+        <span style="font-size:14px;font-weight:700;color:#1F2937;direction:ltr;unicode-bidi:isolate">۹:۴۱</span>
+        <span style="display:flex;align-items:center;gap:7px">
+          <span style="display:flex;align-items:flex-end;gap:2px;height:10px">
+            <i style="display:block;width:3px;height:4px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:6px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:8px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:10px;background:#1F2937;border-radius:1px"></i>
+          </span>
+          <span style="width:23px;height:11px;border:1.4px solid #1F2937;border-radius:3px;position:relative;display:inline-block">
+            <span style="position:absolute;top:1.5px;bottom:1.5px;right:1.5px;width:13px;background:#1F2937;border-radius:1px;display:block"></span>
+          </span>
+        </span>
+      </div>
+      <!-- header -->
+      <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 18px 12px">
+        <button style="flex:none;width:38px;height:38px;border-radius:12px;background:#fff;border:1px solid rgba(31,41,55,.1);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+        <div style="font-size:16.5px;font-weight:900;color:#1F2937">ویرایش اطلاعات</div>
+        <button style="flex:none;height:38px;padding:0 16px;border-radius:12px;background:#F97316;border:none;color:#fff;font-size:13px;font-weight:800;box-shadow:0 10px 22px -10px rgba(249,115,22,.65);cursor:pointer">ذخیره</button>
+      </div>
+
+      <!-- scroll body -->
+      <div class="scr" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 22px 16px">
+
+        <!-- avatar upload -->
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 0 26px">
+          <div style="position:relative;width:108px;height:108px">
+            <div style="width:108px;height:108px;border-radius:50%;background:rgba(79,111,82,.14);color:#4F6F52;font-size:44px;font-weight:900;display:flex;align-items:center;justify-content:center">م</div>
+            <button style="position:absolute;bottom:0;left:0;width:36px;height:36px;border-radius:50%;background:#4F6F52;border:3px solid #FAF7F2;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </button>
+          </div>
+          <div style="font-size:12.5px;font-weight:700;color:#4F6F52;margin-top:13px">تغییر عکس پروفایل</div>
+        </div>
+
+        <!-- full name -->
+        <div style="margin-bottom:20px">
+          <div style="font-size:12.5px;font-weight:700;color:#54574e;margin-bottom:9px">نام و نام خانوادگی</div>
+          <div style="height:54px;border-radius:15px;background:#fff;border:1.5px solid rgba(31,41,55,.1);display:flex;align-items:center;padding:0 16px">
+            <span style="font-size:15px;font-weight:700;color:#1F2937">محمدرضا کریمی</span>
+          </div>
+        </div>
+
+        <!-- phone -->
+        <div>
+          <div style="font-size:12.5px;font-weight:700;color:#54574e;margin-bottom:9px">شماره موبایل</div>
+          <div style="height:54px;border-radius:15px;background:#fff;border:1.5px solid rgba(31,41,55,.1);display:flex;align-items:center;padding:0 16px">
+            <span style="font-size:15px;font-weight:700;color:#1F2937;direction:ltr;unicode-bidi:isolate">۰۹۱۲۱۲۳۴۵۶۷</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:10px;align-items:flex-start;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.28);border-radius:13px;padding:11px 13px">
+            <svg width="15" height="15" style="flex:none;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="#8a6510" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <div style="font-size:11.5px;color:#8a6510;line-height:1.8">با تغییر شمارهٔ موبایل، یک کد تأیید جدید برای شمارهٔ جدید ارسال می‌شود.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ۱۰B — باتم‌شیت افزودن/ویرایش شبا ============ -->
+<div style="position:absolute;left:2940px;top:2920px;width:393px">
+  <div data-drags-parent="1" style="font-size:13px;font-weight:800;color:#4F6F52;margin-bottom:13px">۱۰B — باتم‌شیت افزودن / ویرایش شماره شبا</div>
+  <div style="width:393px;background:#16140f;border-radius:52px;padding:9px;box-shadow:0 40px 80px -34px rgba(31,41,55,.5)">
+    <div dir="rtl" style="width:375px;height:812px;background:#FAF7F2;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+      <!-- status bar -->
+      <div style="height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 28px">
+        <span style="font-size:14px;font-weight:700;color:#1F2937;direction:ltr;unicode-bidi:isolate">۹:۴۱</span>
+        <span style="display:flex;align-items:center;gap:7px">
+          <span style="display:flex;align-items:flex-end;gap:2px;height:10px">
+            <i style="display:block;width:3px;height:4px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:6px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:8px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:10px;background:#1F2937;border-radius:1px"></i>
+          </span>
+          <span style="width:23px;height:11px;border:1.4px solid #1F2937;border-radius:3px;position:relative;display:inline-block">
+            <span style="position:absolute;top:1.5px;bottom:1.5px;right:1.5px;width:13px;background:#1F2937;border-radius:1px;display:block"></span>
+          </span>
+        </span>
+      </div>
+
+      <!-- dimmed profile behind -->
+      <div style="flex:1;position:relative;overflow:hidden">
+        <div style="padding:6px 22px 14px">
+          <div style="font-size:22px;font-weight:900;color:#c9cbc3">پروفایل</div>
+        </div>
+        <div style="padding:0 22px;opacity:.45">
+          <div style="height:54px;border-radius:18px;background:#fff;border:1px solid rgba(31,41,55,.06)"></div>
+          <div style="height:150px;border-radius:20px;background:linear-gradient(150deg,#3c4f3e 0%,#2a3a2c 100%);margin-top:16px"></div>
+        </div>
+        <div style="position:absolute;inset:0;background:rgba(22,20,15,.32)"></div>
+
+        <!-- bottom sheet -->
+        <div style="position:absolute;left:0;right:0;bottom:0;background:#FAF7F2;border-radius:26px 26px 0 0;padding:10px 22px 26px;box-shadow:0 -20px 50px -20px rgba(31,41,55,.4)">
+          <div style="width:42px;height:5px;border-radius:999px;background:rgba(31,41,55,.16);margin:0 auto 18px"></div>
+          <div style="font-size:18px;font-weight:900;color:#1F2937">شماره شبا</div>
+          <div style="font-size:12.5px;color:#7a7d73;margin-top:7px;line-height:1.8">شماره شبای ۲۴ رقمی خود را برای واریز برداشت‌ها وارد کنید.</div>
+
+          <div style="margin-top:18px">
+            <div style="font-size:12.5px;font-weight:700;color:#54574e;margin-bottom:9px">شماره شبا</div>
+            <div style="height:56px;border-radius:16px;background:#fff;border:1.5px solid #4F6F52;display:flex;align-items:center;padding:0 16px;gap:10px;box-shadow:0 8px 20px -14px rgba(79,111,82,.5)">
+              <span style="font-size:13.5px;font-weight:800;color:#1F2937;direction:ltr;unicode-bidi:isolate">IR</span>
+              <span style="flex:1;font-size:15px;font-weight:700;color:#bdbfb6;direction:ltr;unicode-bidi:isolate;letter-spacing:.06em">۰۶۰ ۱۲۰ ۰۰۰۰ ۰۰۰۰ ۴۴۲۱</span>
+            </div>
+          </div>
+
+          <button style="width:100%;height:55px;margin-top:22px;border:none;border-radius:16px;background:#F97316;color:#fff;font-size:16px;font-weight:800;box-shadow:0 12px 26px -10px rgba(249,115,22,.7);cursor:pointer">ذخیره شماره شبا</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ۱۰B — باتم‌شیت تأیید شماره جدید (OTP) ============ -->
+<div style="position:absolute;left:3420px;top:2920px;width:393px">
+  <div data-drags-parent="1" style="font-size:13px;font-weight:800;color:#4F6F52;margin-bottom:13px">۱۰B — باتم‌شیت تأیید شماره جدید (OTP)</div>
+  <div style="width:393px;background:#16140f;border-radius:52px;padding:9px;box-shadow:0 40px 80px -34px rgba(31,41,55,.5)">
+    <div dir="rtl" style="width:375px;height:812px;background:#FAF7F2;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+      <!-- status bar -->
+      <div style="height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 28px">
+        <span style="font-size:14px;font-weight:700;color:#1F2937;direction:ltr;unicode-bidi:isolate">۹:۴۱</span>
+        <span style="display:flex;align-items:center;gap:7px">
+          <span style="display:flex;align-items:flex-end;gap:2px;height:10px">
+            <i style="display:block;width:3px;height:4px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:6px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:8px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:10px;background:#1F2937;border-radius:1px"></i>
+          </span>
+          <span style="width:23px;height:11px;border:1.4px solid #1F2937;border-radius:3px;position:relative;display:inline-block">
+            <span style="position:absolute;top:1.5px;bottom:1.5px;right:1.5px;width:13px;background:#1F2937;border-radius:1px;display:block"></span>
+          </span>
+        </span>
+      </div>
+
+      <!-- dimmed edit-profile behind -->
+      <div style="flex:1;position:relative;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 18px 12px;opacity:.5">
+          <span style="width:38px;height:38px;border-radius:12px;background:#fff;border:1px solid rgba(31,41,55,.1)"></span>
+          <div style="font-size:16.5px;font-weight:900;color:#c9cbc3">ویرایش اطلاعات</div>
+          <span style="width:60px;height:38px;border-radius:12px;background:#F0C9A8"></span>
+        </div>
+        <div style="padding:8px 22px;opacity:.4;display:flex;flex-direction:column;align-items:center;gap:18px">
+          <div style="width:108px;height:108px;border-radius:50%;background:rgba(79,111,82,.14)"></div>
+          <div style="width:100%;height:54px;border-radius:15px;background:#fff;border:1px solid rgba(31,41,55,.1)"></div>
+          <div style="width:100%;height:54px;border-radius:15px;background:#fff;border:1px solid rgba(31,41,55,.1)"></div>
+        </div>
+        <div style="position:absolute;inset:0;background:rgba(22,20,15,.34)"></div>
+
+        <!-- OTP bottom sheet -->
+        <div style="position:absolute;left:0;right:0;bottom:0;background:#FAF7F2;border-radius:26px 26px 0 0;padding:10px 24px 26px;box-shadow:0 -20px 50px -20px rgba(31,41,55,.4)">
+          <div style="width:42px;height:5px;border-radius:999px;background:rgba(31,41,55,.16);margin:0 auto 18px"></div>
+          <div style="font-size:19px;font-weight:900;color:#1F2937">تأیید شمارهٔ جدید</div>
+          <div style="font-size:12.5px;color:#7a7d73;margin-top:8px;line-height:1.85">کد ۴ رقمی ارسال‌شده به شمارهٔ جدید را وارد کنید.</div>
+          <div style="margin-top:6px;font-size:13px;font-weight:800;color:#1F2937;direction:ltr;unicode-bidi:isolate">۰۹۳۵ ۸۸۷ ۶۵۴۳</div>
+
+          <!-- OTP boxes -->
+          <div style="display:flex;gap:12px;margin-top:22px;direction:ltr;justify-content:center">
+            <div style="width:62px;height:68px;border-radius:17px;background:#fff;border:1.5px solid #4F6F52;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#1F2937;box-shadow:0 8px 20px -14px rgba(79,111,82,.5)">۸</div>
+            <div style="width:62px;height:68px;border-radius:17px;background:#fff;border:1.5px solid #4F6F52;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#1F2937;box-shadow:0 8px 20px -14px rgba(79,111,82,.5)">۱</div>
+            <div style="width:62px;height:68px;border-radius:17px;background:#fff;border:2px solid #F97316;display:flex;align-items:center;justify-content:center"><span style="width:2px;height:30px;background:#F97316;display:block;border-radius:2px"></span></div>
+            <div style="width:62px;height:68px;border-radius:17px;background:#fff;border:1.5px solid rgba(31,41,55,.13);display:flex;align-items:center;justify-content:center"></div>
+          </div>
+
+          <div style="text-align:center;font-size:12px;color:#9a9d93;margin-top:18px">ارسال مجدد کد تا <span style="color:#1F2937;font-weight:700;direction:ltr;unicode-bidi:isolate">۰۰:۵۲</span></div>
+
+          <button style="width:100%;height:55px;margin-top:20px;border:none;border-radius:16px;background:#F97316;color:#fff;font-size:16px;font-weight:800;box-shadow:0 12px 26px -10px rgba(249,115,22,.7);cursor:pointer">تأیید و ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ۰۸ — جزئیات رزرو · حالت مهمان (Guest Mode · دعوت) ============ -->
+<div style="position:absolute;left:3900px;top:2920px;width:393px">
+  <div data-drags-parent="1" style="font-size:13px;font-weight:800;color:#F97316;margin-bottom:13px">۰۸ — جزئیات رزرو · حالت مهمان (Guest · بدون ورود)</div>
+  <div style="width:393px;background:#16140f;border-radius:52px;padding:9px;box-shadow:0 40px 80px -34px rgba(31,41,55,.5)">
+    <div dir="rtl" style="width:375px;height:812px;background:#FAF7F2;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+      <!-- status bar -->
+      <div style="height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 28px">
+        <span style="font-size:14px;font-weight:700;color:#1F2937;direction:ltr;unicode-bidi:isolate">۹:۴۱</span>
+        <span style="display:flex;align-items:center;gap:7px">
+          <span style="display:flex;align-items:flex-end;gap:2px;height:10px">
+            <i style="display:block;width:3px;height:4px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:6px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:8px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:10px;background:#1F2937;border-radius:1px"></i>
+          </span>
+          <span style="width:23px;height:11px;border:1.4px solid #1F2937;border-radius:3px;position:relative;display:inline-block">
+            <span style="position:absolute;top:1.5px;bottom:1.5px;right:1.5px;width:13px;background:#1F2937;border-radius:1px;display:block"></span>
+          </span>
+        </span>
+      </div>
+      <!-- guest header (brand only) -->
+      <div style="flex:none;display:flex;align-items:center;gap:9px;padding:4px 18px 12px">
+        <span style="width:30px;height:30px;border-radius:9px;background:#4F6F52;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900">ن</span>
+        <span style="font-size:15px;font-weight:900;color:#1F2937">نشست</span>
+      </div>
+
+      <!-- scroll body -->
+      <div class="scr" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:2px 18px 22px">
+
+        <!-- invite banner -->
+        <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(150deg,#3c4f3e 0%,#2a3a2c 100%);border-radius:18px;padding:15px;box-shadow:0 16px 32px -18px rgba(42,58,44,.7);margin-bottom:18px">
+          <span style="flex:none;width:42px;height:42px;border-radius:50%;background:rgba(163,177,138,.25);color:#fff;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center">م</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13.5px;font-weight:800;color:#fff;line-height:1.7">محمدرضا شما را به این دورهمی دعوت کرده است</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.65);font-weight:600;margin-top:4px">جزئیات قرار را اینجا ببینید</div>
+          </div>
+        </div>
+
+        <!-- cafe & location card -->
+        <div style="background:#fff;border-radius:18px;border:1px solid rgba(31,41,55,.06);padding:14px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="flex:none;width:58px;height:58px;border-radius:14px;background-image:repeating-linear-gradient(45deg,#E0D8CB 0 9px,#EAE2D6 9px 18px)"></div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:16.5px;font-weight:800;color:#1F2937">کافهٔ نقطه</div>
+              <div style="font-size:12.5px;color:#9a9d93;margin-top:3px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A3B18A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> الهیه</div>
+            </div>
+          </div>
+          <!-- tertiary action row -->
+          <div style="display:flex;gap:9px;margin-top:13px">
+            <button style="flex:1;height:42px;border-radius:12px;background:#FAF7F2;border:1px solid rgba(31,41,55,.07);color:#3f4239;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              تماس با کافه
+            </button>
+            <button style="flex:1;height:42px;border-radius:12px;background:#FAF7F2;border:1px solid rgba(31,41,55,.07);color:#3f4239;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+              مسیریابی
+            </button>
+          </div>
+          <!-- parking status (visible to guests) -->
+          <div style="display:flex;gap:8px;margin-top:13px;padding-top:13px;border-top:1px solid rgba(31,41,55,.06)">
+            <svg width="16" height="16" style="flex:none;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="#A3B18A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+            <div style="font-size:11.5px;color:#7a7d73;line-height:1.7"><b style="color:#3f4239;font-weight:800">وضعیت پارکینگ:</b> دارای جای پارک اختصاصی · خارج از محدودهٔ طرح ترافیک</div>
+          </div>
+        </div>
+
+        <!-- reservation details (privacy-filtered: no code, no deposit) -->
+        <div style="font-size:13px;font-weight:800;color:#1F2937;margin:20px 4px 11px">جزئیات قرار</div>
+        <div style="background:#fff;border-radius:18px;border:1px solid rgba(31,41,55,.06);padding:4px 15px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(31,41,55,.05)">
+            <span style="font-size:12.5px;color:#7a7d73;font-weight:600">تاریخ و ساعت</span>
+            <span style="font-size:13.5px;color:#1F2937;font-weight:800">پنجشنبه ۵ تیر · ۱۸:۳۰</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(31,41,55,.05)">
+            <span style="font-size:12.5px;color:#7a7d73;font-weight:600">تعداد نفرات</span>
+            <span style="font-size:13.5px;color:#1F2937;font-weight:800">۸ نفر</span>
+          </div>
+          <div style="padding:13px 0">
+            <div style="font-size:12.5px;color:#7a7d73;font-weight:600;margin-bottom:6px">درخواست ویژه</div>
+            <div style="font-size:13px;color:#3f4239;font-weight:600;line-height:1.7">میز کنار پنجره برای ۸ نفر؛ ترجیحاً فضای دنج برای گفت‌وگو.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- footer · user-acquisition CTA -->
+      <div style="flex:none;padding:14px 18px 24px;background:#fff;border-top:1px solid rgba(31,41,55,.06);box-shadow:0 -14px 30px -18px rgba(31,41,55,.3)">
+        <button style="width:100%;height:56px;border:none;border-radius:16px;background:#F97316;color:#fff;font-size:16.5px;font-weight:800;box-shadow:0 12px 26px -10px rgba(249,115,22,.7);cursor:pointer">شما هم با نشست رزرو کنید</button>
       </div>
     </div>
   </div>
@@ -1881,6 +2219,27 @@
             <svg style="flex:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2c4bb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
         </div>
+
+        <!-- account & support section -->
+        <div style="font-size:13px;font-weight:800;color:#1F2937;margin:24px 4px 11px">مدیریت حساب و پشتیبانی</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <button style="width:100%;text-align:right;display:flex;align-items:center;gap:13px;background:#fff;border:1px solid rgba(31,41,55,.07);border-radius:16px;padding:16px 15px;cursor:pointer">
+            <span style="flex:none;width:44px;height:44px;border-radius:13px;background:rgba(79,111,82,.1);display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:14px;font-weight:800;color:#1F2937">اطلاعات کافه‌دار و شماره شبا</span>
+              <span style="display:block;font-size:11.5px;color:#9a9d93;font-weight:600;margin-top:3px">نام، شمارهٔ تماس شخصی و شبا برای تسویه و برداشت</span>
+            </span>
+            <svg style="flex:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2c4bb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button style="width:100%;text-align:right;display:flex;align-items:center;gap:13px;background:transparent;border:1px solid rgba(31,41,55,.1);border-radius:16px;padding:15px;cursor:pointer">
+            <span style="flex:none;width:40px;height:40px;border-radius:12px;background:rgba(31,41,55,.05);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#54574e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:13.5px;font-weight:800;color:#3f4239">تماس با پشتیبانی نشست</span>
+              <span style="display:block;font-size:11.5px;color:#9a9d93;font-weight:600;margin-top:3px">رفع مشکلات و گفت‌وگو با ادمین‌های پلتفرم</span>
+            </span>
+            <svg style="flex:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2c4bb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+        </div>
       </div>
 
       <!-- bottom nav (B2B) -->
@@ -2091,6 +2450,122 @@
             <div style="font-size:11px;color:#9a9d93;font-weight:600;margin-top:3px">آخرین به‌روزرسانی: ۱۲ خرداد</div>
             <button style="margin-top:9px;height:38px;width:100%;border:1.5px solid #4F6F52;border-radius:11px;background:rgba(79,111,82,.06);color:#4F6F52;font-size:12.5px;font-weight:800;cursor:pointer">تغییر عکس منو</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ۱۴ — گزارشات مالی و کیف پول کافه · سمت کافه‌دار (B2B) ============ -->
+<div style="position:absolute;left:2940px;top:4260px;width:393px">
+  <div data-drags-parent="1" style="font-size:13px;font-weight:800;color:#F97316;margin-bottom:13px">۱۴ — گزارشات مالی و کیف پول کافه · سمت کافه‌دار (B2B)</div>
+  <div style="width:393px;background:#16140f;border-radius:52px;padding:9px;box-shadow:0 40px 80px -34px rgba(31,41,55,.5)">
+    <div dir="rtl" style="width:375px;height:812px;background:#FAF7F2;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+      <!-- status bar -->
+      <div style="height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 28px">
+        <span style="font-size:14px;font-weight:700;color:#1F2937;direction:ltr;unicode-bidi:isolate">۹:۴۱</span>
+        <span style="display:flex;align-items:center;gap:7px">
+          <span style="display:flex;align-items:flex-end;gap:2px;height:10px">
+            <i style="display:block;width:3px;height:4px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:6px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:8px;background:#1F2937;border-radius:1px"></i>
+            <i style="display:block;width:3px;height:10px;background:#1F2937;border-radius:1px"></i>
+          </span>
+          <span style="width:23px;height:11px;border:1.4px solid #1F2937;border-radius:3px;position:relative;display:inline-block">
+            <span style="position:absolute;top:1.5px;bottom:1.5px;right:1.5px;width:13px;background:#1F2937;border-radius:1px;display:block"></span>
+          </span>
+        </span>
+      </div>
+      <!-- header -->
+      <div style="flex:none;padding:4px 22px 14px">
+        <div style="font-size:21px;font-weight:900;color:#1F2937">گزارشات مالی</div>
+      </div>
+
+      <!-- scroll body -->
+      <div class="scr" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:0 22px 16px">
+
+        <!-- wallet card -->
+        <div style="border-radius:20px;padding:20px;background:linear-gradient(150deg,#3c4f3e 0%,#2a3a2c 100%);box-shadow:0 18px 36px -18px rgba(42,58,44,.7);position:relative;overflow:hidden">
+          <div style="position:absolute;top:-30px;left:-20px;width:120px;height:120px;border-radius:50%;background:rgba(163,177,138,.12)"></div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.72)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A3B18A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M16 12h.01"/><path d="M3 9h18"/></svg>
+            موجودی قابل برداشت (بیعانه‌ها)
+          </div>
+          <div style="display:flex;align-items:baseline;gap:7px;margin-top:13px">
+            <span style="font-size:33px;font-weight:900;color:#fff;letter-spacing:-.5px">۴٬۲۰۰٬۰۰۰</span>
+            <span style="font-size:14px;font-weight:700;color:rgba(255,255,255,.7)">تومان</span>
+          </div>
+          <button style="width:100%;height:48px;margin-top:18px;border:none;border-radius:14px;background:#F97316;color:#fff;font-size:14.5px;font-weight:800;box-shadow:0 12px 24px -10px rgba(249,115,22,.6);display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7 7 7-7"/></svg>
+            برداشت به شبا
+          </button>
+        </div>
+
+        <!-- transactions -->
+        <div style="font-size:13px;font-weight:800;color:#1F2937;margin:22px 4px 11px">تراکنش‌های اخیر</div>
+        <div style="background:#fff;border:1px solid rgba(31,41,55,.06);border-radius:16px;overflow:hidden">
+
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 15px;border-bottom:1px solid rgba(31,41,55,.05)">
+            <span style="flex:none;width:38px;height:38px;border-radius:11px;background:rgba(79,111,82,.12);display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:13.5px;font-weight:800;color:#1F2937">بیعانه رزرو محمدرضا</span>
+              <span style="display:block;font-size:11px;color:#9a9d93;font-weight:600;margin-top:3px">امروز · ۱۰:۲۴</span>
+            </span>
+            <span style="flex:none;font-size:14px;font-weight:900;color:#4F6F52;direction:ltr;unicode-bidi:isolate">+ ۸۰۰٬۰۰۰</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 15px;border-bottom:1px solid rgba(31,41,55,.05)">
+            <span style="flex:none;width:38px;height:38px;border-radius:11px;background:rgba(79,111,82,.12);display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:13.5px;font-weight:800;color:#1F2937">بیعانه رزرو سارا احمدی</span>
+              <span style="display:block;font-size:11px;color:#9a9d93;font-weight:600;margin-top:3px">دیروز · ۱۹:۰۲</span>
+            </span>
+            <span style="flex:none;font-size:14px;font-weight:900;color:#4F6F52;direction:ltr;unicode-bidi:isolate">+ ۶۴۰٬۰۰۰</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 15px;border-bottom:1px solid rgba(31,41,55,.05)">
+            <span style="flex:none;width:38px;height:38px;border-radius:11px;background:rgba(31,41,55,.06);display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#54574e" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:13.5px;font-weight:800;color:#1F2937">تسویه به شبا</span>
+              <span style="display:block;font-size:11px;color:#9a9d93;font-weight:600;margin-top:3px">۲۴ خرداد · IR••• ۴۴۲۱</span>
+            </span>
+            <span style="flex:none;font-size:14px;font-weight:900;color:#1F2937;direction:ltr;unicode-bidi:isolate">− ۴٬۲۰۰٬۰۰۰</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 15px">
+            <span style="flex:none;width:38px;height:38px;border-radius:11px;background:rgba(79,111,82,.12);display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:13.5px;font-weight:800;color:#1F2937">بیعانه رزرو نیما رضایی</span>
+              <span style="display:block;font-size:11px;color:#9a9d93;font-weight:600;margin-top:3px">۲۲ خرداد · ۱۳:۴۷</span>
+            </span>
+            <span style="flex:none;font-size:14px;font-weight:900;color:#4F6F52;direction:ltr;unicode-bidi:isolate">+ ۹۶۰٬۰۰۰</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- bottom nav (B2B) -->
+      <div style="flex:none;display:flex;justify-content:space-around;align-items:center;padding:9px 18px 24px;background:#fff;border-top:1px solid rgba(31,41,55,.07)">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#9a9d93;font-size:10.5px;font-weight:600">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9a9d93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+          رزروها
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#9a9d93;font-size:10.5px;font-weight:600">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9a9d93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+          پروفایل کافه
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#4F6F52;font-size:10.5px;font-weight:800">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F6F52" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+          گزارشات مالی
         </div>
       </div>
     </div>
