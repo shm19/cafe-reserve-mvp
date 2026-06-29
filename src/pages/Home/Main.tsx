@@ -4,12 +4,13 @@ import { CafeCard } from "@/pages/Home/CafeCard";
 import { CafeHeroCard } from "@/pages/Home/CafeHeroCard";
 import { DongBanner } from "@/pages/Home/DongBanner";
 import { NotificationsSheet } from "@/pages/Home/NotificationsSheet";
-import { BottomSheet } from "@/components/shared/BottomSheet";
+import { TopSheet } from "@/components/shared/TopSheet";
 import { useHomeSections, useCafes } from "@/hooks/useCafes";
 import { useMyBookings } from "@/hooks/useBookings";
 import { getHomeSections } from "@/api/cafes";
 import { findRecentOuting } from "@/api/bookings";
 import { useAuthStore } from "@/store/authStore";
+import { useNotificationStore } from "@/store/notificationStore";
 import { TAG_META } from "@/lib/tags";
 import { cn, haversineM } from "@/lib/utils";
 import type { Cafe, CafeTag } from "@/types";
@@ -65,8 +66,11 @@ export default function Home() {
   const user = useAuthStore((s) => s.user);
   const { data: myBookings = [] } = useMyBookings(user?.id ?? "");
   const recentOuting = findRecentOuting(myBookings);
+  const dismissed = useNotificationStore((s) => s.dismissed);
   const unreadCount = myBookings.filter(
-    (b) => b.status === "confirmed" || b.status === "rejected"
+    (b) =>
+      (b.status === "confirmed" || b.status === "rejected") &&
+      !dismissed.includes(b.id)
   ).length;
 
   const term = q.trim();
@@ -257,9 +261,9 @@ export default function Home() {
         </>
       )}
 
-      <BottomSheet open={notifOpen} onClose={() => setNotifOpen(false)}>
+      <TopSheet open={notifOpen} onClose={() => setNotifOpen(false)}>
         <NotificationsSheet bookings={myBookings} onClose={() => setNotifOpen(false)} />
-      </BottomSheet>
+      </TopSheet>
     </div>
   );
 }

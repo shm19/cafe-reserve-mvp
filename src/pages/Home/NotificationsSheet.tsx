@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Check, X, BellOff } from "lucide-react";
+import { useNotificationStore } from "@/store/notificationStore";
 import { cn, faDateTime } from "@/lib/utils";
 import type { BookingWithCafe } from "@/types";
 
 /** Notifications = reservations the cafe has approved or rejected, newest first.
- *  Tapping one opens that booking. */
+ *  Each can be cleared individually, and the page stays behind the panel. */
 export function NotificationsSheet({
   bookings,
   onClose,
@@ -13,33 +14,52 @@ export function NotificationsSheet({
   onClose: () => void;
 }) {
   const navigate = useNavigate();
+  const dismissed = useNotificationStore((s) => s.dismissed);
+  const dismiss = useNotificationStore((s) => s.dismiss);
+  const clear = useNotificationStore((s) => s.clear);
+
   const items = bookings
-    .filter((b) => b.status === "confirmed" || b.status === "rejected")
+    .filter(
+      (b) =>
+        (b.status === "confirmed" || b.status === "rejected") &&
+        !dismissed.includes(b.id)
+    )
     .sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
 
   return (
-    <div className="px-5 pb-2 pt-1">
-      <h2 className="mb-4 text-lg font-black text-ink">اعلان‌ها</h2>
+    <>
+      {/* header */}
+      <div className="flex flex-none items-center justify-between gap-3 px-5 pb-3 pt-2">
+        <h2 className="text-lg font-black text-ink">اعلان‌ها</h2>
+        {items.length > 0 && (
+          <button
+            onClick={() => clear(items.map((b) => b.id))}
+            className="text-xs font-bold text-primary"
+          >
+            پاک کردن همه
+          </button>
+        )}
+      </div>
 
       {items.length === 0 ? (
-        <div className="flex flex-col items-center gap-2 py-10 text-center">
+        <div className="flex flex-col items-center gap-2 px-5 py-10 text-center">
           <BellOff className="size-7 text-muted-foreground" />
           <p className="text-sm font-semibold text-muted-foreground">
             اعلان جدیدی ندارید
           </p>
         </div>
       ) : (
-        <ul className="flex flex-col gap-2.5">
+        <ul className="flex flex-col gap-2.5 overflow-y-auto scrollbar-none px-5">
           {items.map((b) => {
             const approved = b.status === "confirmed";
             return (
-              <li key={b.id}>
+              <li key={b.id} className="relative">
                 <button
                   onClick={() => {
                     onClose();
                     navigate(`/app/booking/${b.id}`);
                   }}
-                  className="flex w-full items-start gap-3 rounded-2xl border border-border/60 bg-paper p-3.5 text-right"
+                  className="flex w-full items-start gap-3 rounded-2xl border border-border/60 bg-paper p-3.5 pl-10 text-right"
                 >
                   <span
                     className={cn(
@@ -64,11 +84,19 @@ export function NotificationsSheet({
                     </span>
                   </span>
                 </button>
+                {/* clear this notification */}
+                <button
+                  onClick={() => dismiss(b.id)}
+                  aria-label="پاک کردن اعلان"
+                  className="absolute left-2 top-2 flex size-6 items-center justify-center rounded-full bg-ink/5 text-muted-foreground"
+                >
+                  <X className="size-3.5" />
+                </button>
               </li>
             );
           })}
         </ul>
       )}
-    </div>
+    </>
   );
 }
