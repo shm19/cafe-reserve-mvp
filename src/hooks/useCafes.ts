@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getHomeSections,
+  getCafes,
   getCafe,
   getCafeMenu,
   getCafeReviews,
@@ -24,12 +25,21 @@ export const cafeKeys = {
   menu: (id: string) => [...cafeKeys.all, "menu", id] as const,
   reviews: (id: string) => [...cafeKeys.all, "reviews", id] as const,
   photos: (id: string) => [...cafeKeys.all, "photos", id] as const,
+  list: () => [...cafeKeys.all, "list"] as const,
 };
 
 export function useHomeSections() {
   return useQuery({
     queryKey: cafeKeys.home(),
     queryFn: () => getHomeSections(),
+  });
+}
+
+/** All approved cafes — backs home search + filtering. */
+export function useCafes() {
+  return useQuery({
+    queryKey: cafeKeys.list(),
+    queryFn: () => getCafes(),
   });
 }
 

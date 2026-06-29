@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
-import { faNum, formatDistance } from "@/lib/utils";
+import { cn, faNum, formatDistance } from "@/lib/utils";
 import { Tag } from "@/components/shared/Tag";
 import type { Cafe } from "@/types";
 
-export function CafeCard({ cafe }: { cafe: Cafe }) {
+export function CafeCard({ cafe, className }: { cafe: Cafe; className?: string }) {
   return (
     <Link
       to={`/app/cafe/${cafe.id}`}
-      className="w-52 flex-none overflow-hidden rounded-2xl border border-border/60 bg-paper shadow-sm"
+      className={cn(
+        "overflow-hidden rounded-2xl border border-border/60 bg-paper shadow-sm",
+        className ?? "w-52 flex-none"
+      )}
     >
       <div className="relative h-28" style={{ backgroundColor: cafe.coverColor }}>
         <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 text-xs font-extrabold text-ink">
