@@ -1,22 +1,20 @@
 import { useMemo, useState } from "react";
-import { Search, MapPin, Bell, X, Loader2, ChevronLeft } from "lucide-react";
+import { Search, MapPin, X, Loader2, ChevronLeft } from "lucide-react";
 import { CafeCard } from "@/pages/Home/CafeCard";
 import { CafeHeroCard } from "@/pages/Home/CafeHeroCard";
 import { DongBanner } from "@/pages/Home/DongBanner";
-import { NotificationsSheet } from "@/pages/Home/NotificationsSheet";
-import { TopSheet } from "@/components/shared/TopSheet";
 import { useHomeSections, useCafes } from "@/hooks/useCafes";
 import { useMyBookings } from "@/hooks/useBookings";
 import { getHomeSections } from "@/api/cafes";
+import { reverseGeocodeDistrict } from "@/api/geo";
 import { findRecentOuting } from "@/api/bookings";
 import { useAuthStore } from "@/store/authStore";
-import { useNotificationStore } from "@/store/notificationStore";
+import { useLocationStore, type Coords } from "@/store/locationStore";
 import { TAG_META } from "@/lib/tags";
 import { cn, haversineM } from "@/lib/utils";
 import type { Cafe, CafeTag } from "@/types";
 
 type Sections = Awaited<ReturnType<typeof getHomeSections>>;
-type Coords = { lat: number; lng: number };
 
 const ROWS: { key: keyof Sections; title: string }[] = [
   { key: "nearest", title: "نزدیک‌ترین‌ها به شما" },
@@ -59,19 +57,15 @@ export default function Home() {
 
   const [q, setQ] = useState("");
   const [activeTags, setActiveTags] = useState<CafeTag[]>([]);
-  const [coords, setCoords] = useState<Coords | null>(null);
   const [geo, setGeo] = useState<"idle" | "locating" | "denied">("idle");
-  const [notifOpen, setNotifOpen] = useState(false);
+
+  const district = useLocationStore((s) => s.district);
+  const coords = useLocationStore((s) => s.coords);
+  const setLocation = useLocationStore((s) => s.setLocation);
 
   const user = useAuthStore((s) => s.user);
   const { data: myBookings = [] } = useMyBookings(user?.id ?? "");
   const recentOuting = findRecentOuting(myBookings);
-  const dismissed = useNotificationStore((s) => s.dismissed);
-  const unreadCount = myBookings.filter(
-    (b) =>
-      (b.status === "confirmed" || b.status === "rejected") &&
-      !dismissed.includes(b.id)
-  ).length;
 
   const term = q.trim();
   const filtering = term !== "" || activeTags.length > 0;
@@ -90,12 +84,22 @@ export default function Home() {
       prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]
     );
 
+  /** Nearest cafe's neighbourhood — offline fallback when reverse geocoding fails. */
+  function nearestNeighbourhood(c: Coords): string | null {
+    return (
+      byRealDistance(allCafes, c)[0]?.neighborhood ?? null
+    );
+  }
+
   function locateMe() {
     if (!navigator.geolocation) return setGeo("denied");
     setGeo("locating");
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+      async (pos) => {
+        const c = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        const name =
+          (await reverseGeocodeDistrict(c.lat, c.lng)) ?? nearestNeighbourhood(c);
+        setLocation(name, c);
         setGeo("idle");
       },
       () => setGeo("denied"),
@@ -108,9 +112,7 @@ export default function Home() {
       ? "در حال یافتن موقعیت…"
       : geo === "denied"
       ? "دسترسی به موقعیت رد شد"
-      : coords
-      ? "موقعیت فعلی شما"
-      : "موقعیت فعلی (اطراف من)";
+      : district ?? "موقعیت فعلی (اطراف من)";
 
   return (
     <div className="pb-4">
@@ -129,16 +131,6 @@ export default function Home() {
             <div className="text-xs font-semibold text-muted-foreground">موقعیت شما</div>
             <div className="truncate text-sm font-extrabold text-ink">{locationLabel}</div>
           </div>
-        </button>
-        <button
-          onClick={() => setNotifOpen(true)}
-          className="relative flex size-11 flex-none items-center justify-center rounded-2xl border border-border/60 bg-paper shadow-sm"
-          aria-label="اعلان‌ها"
-        >
-          <Bell className="size-5 text-ink" />
-          {unreadCount > 0 && (
-            <span className="absolute left-2.5 top-2.5 size-2 rounded-full border border-paper bg-cta" />
-          )}
         </button>
       </div>
 
@@ -260,10 +252,6 @@ export default function Home() {
           )}
         </>
       )}
-
-      <TopSheet open={notifOpen} onClose={() => setNotifOpen(false)}>
-        <NotificationsSheet bookings={myBookings} onClose={() => setNotifOpen(false)} />
-      </TopSheet>
     </div>
   );
 }
