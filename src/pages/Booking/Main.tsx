@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { X, Minus, Plus, ShieldCheck, Loader2 } from "lucide-react";
+import { X, Minus, Plus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCafe } from "@/hooks/useCafes";
 import { useCreateBooking } from "@/hooks/useBookings";
-import { requiresDeposit, depositAmount } from "@/api/bookings";
 import { useAuthStore } from "@/store/authStore";
-import { cn, faNum, toman, nextDays } from "@/lib/utils";
+import { cn, faNum, nextDays } from "@/lib/utils";
 
 const MIN_GUESTS = 1;
 const MAX_GUESTS = 12;
@@ -33,9 +32,6 @@ export default function Booking() {
   const [partySize, setPartySize] = useState(2);
   const [notes, setNotes] = useState("");
 
-  const deposit = requiresDeposit(cafe, partySize);
-  const depAmount = depositAmount(cafe, partySize);
-
   function confirm() {
     if (!time || !user) return;
     createBooking.mutate(
@@ -45,7 +41,7 @@ export default function Booking() {
         datetime: `${date}T${time}:00`,
         partySize,
         occasionNotes: notes.trim() || undefined,
-        depositRequired: deposit,
+        depositRequired: false, // reservations are free
       },
       { onSuccess: (booking) => navigate(`/app/booking/${booking.id}`) }
     );
@@ -154,45 +150,6 @@ export default function Booking() {
           </div>
         </div>
 
-        {/* deposit & cancellation policy */}
-        <div className="mb-5 rounded-2xl border border-border/70 bg-ink/[0.03] p-4">
-          <div className="mb-3 flex items-center gap-2">
-            <ShieldCheck className="size-4 text-muted-foreground" />
-            <span className="text-sm font-extrabold text-ink">
-              جزئیات بیعانه و لغو
-            </span>
-          </div>
-          <ul className="flex flex-col gap-2.5 text-xs leading-relaxed text-ink/70">
-            <li className="flex gap-2.5">
-              <span className="mt-1.5 size-1.5 flex-none rounded-full bg-primary" />
-              {cafe?.depositThreshold != null ? (
-                <span>
-                  برای رزرو بالای{" "}
-                  <b className="text-ink">{faNum(cafe.depositThreshold)} نفر</b>،{" "}
-                  <b className="text-ink">{toman(cafe.depositAmount ?? 0)}</b>{" "}
-                  بیعانه الزامی است.
-                </span>
-              ) : (
-                <span>این کافه برای رزرو بیعانه دریافت نمی‌کند.</span>
-              )}
-            </li>
-            <li className="flex gap-2.5">
-              <span className="mt-1.5 size-1.5 flex-none rounded-full bg-primary" />
-              <span>
-                لغو <b className="text-primary">رایگان</b> و بازگشت وجه تا{" "}
-                <b className="text-ink">۲۴ ساعت</b> قبل.
-              </span>
-            </li>
-            <li className="flex gap-2.5">
-              <span className="mt-1.5 size-1.5 flex-none rounded-full bg-rose" />
-              <span>
-                لغو دیرهنگام یا عدم حضور، مشمول{" "}
-                <b className="text-rose-ink">کسر جریمه</b> از بیعانه می‌شود.
-              </span>
-            </li>
-          </ul>
-        </div>
-
         {/* special request */}
         <h2 className="mb-2 text-sm font-extrabold text-ink">
           درخواست ویژه{" "}
@@ -226,10 +183,7 @@ export default function Booking() {
           {createBooking.isPending ? (
             <Loader2 className="mx-auto size-5 animate-spin" />
           ) : (
-            <>
-              <span>{deposit ? "تأیید و پرداخت" : "ثبت درخواست رزرو"}</span>
-              {deposit && <span className="text-sm">{toman(depAmount)}</span>}
-            </>
+            <span className="mx-auto">ثبت درخواست رزرو</span>
           )}
         </Button>
       </div>

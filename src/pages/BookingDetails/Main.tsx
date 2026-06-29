@@ -5,8 +5,7 @@ import { BookingCafeCard } from "@/components/shared/BookingCafeCard";
 import { InfoRow } from "@/components/shared/InfoRow";
 import { useBooking, useCancelBooking } from "@/hooks/useBookings";
 import { useSplitByBooking } from "@/hooks/useSplitBills";
-import { depositAmount } from "@/api/bookings";
-import { cn, faNum, faDateTime, toman } from "@/lib/utils";
+import { cn, faNum, faDateTime } from "@/lib/utils";
 import type { BookingStatus } from "@/types";
 
 const PILL: Record<
@@ -48,8 +47,6 @@ export default function BookingDetails() {
   const cafe = booking.cafe;
   const pill = PILL[booking.status];
   const isUpcoming = booking.status === "pending" || booking.status === "confirmed";
-  const deposit = depositAmount(cafe, booking.partySize);
-  const refund = Math.round(deposit * 0.8); // 20% fee on late cancel
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
@@ -89,15 +86,6 @@ export default function BookingDetails() {
           </InfoRow>
           <InfoRow label="تاریخ و ساعت">{faDateTime(booking.datetime)}</InfoRow>
           <InfoRow label="تعداد نفرات">{faNum(booking.partySize)} نفر</InfoRow>
-          {booking.depositRequired && (
-            <InfoRow label="بیعانه">
-              {booking.depositStatus === "paid" ? (
-                <span className="text-primary">{toman(deposit)}</span>
-              ) : (
-                <span className="text-cta-ink">در انتظار پرداخت</span>
-              )}
-            </InfoRow>
-          )}
           <div className="py-3">
             <div className="mb-1.5 text-xs font-semibold text-ink/60">
               درخواست ویژه
@@ -145,8 +133,8 @@ export default function BookingDetails() {
                 قوانین لغو رزرو
               </div>
               <p className="text-xs leading-relaxed text-ink/60">
-                لغو رایگان تا ۲۴ ساعت قبل از موعد. پس از آن، بیعانه با کسر کارمزد
-                به کیف پول شما بازمی‌گردد.
+                رزرو رایگان است و هر زمان می‌توانید آن را لغو کنید. لطفاً در صورت
+                انصراف، رزرو خود را لغو کنید تا میز برای دیگران آزاد شود.
               </p>
             </div>
             {cancel.isError && (
@@ -177,9 +165,6 @@ export default function BookingDetails() {
               {booking.status === "rejected"
                 ? "این درخواست توسط کافه رد شد."
                 : "این رزرو لغو شده است."}
-              {deposit > 0 &&
-                booking.depositStatus === "paid" &&
-                ` مبلغ ${toman(refund)} (بیعانه با کسر کارمزد) به کیف پول شما بازگردانده شد.`}
             </p>
           </div>
         )}
