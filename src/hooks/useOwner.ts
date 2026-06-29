@@ -83,7 +83,7 @@ export function useUpdateCafe(ownerId: string) {
   });
 }
 
-/** Approve / reject / no-show — all refetch the owner's bookings on success. */
+/** Approve / reject pending bookings — refetch the owner's bookings on success. */
 export function useOwnerActions(ownerId: string) {
   const qc = useQueryClient();
   const invalidate = () =>
@@ -97,11 +97,17 @@ export function useOwnerActions(ownerId: string) {
     mutationFn: (id: string) => rejectBooking(id),
     onSuccess: invalidate,
   });
-  const noShow = useMutation({
+
+  return { approve, reject };
+}
+
+/** Flag a past booking as a no-show (only meaningful after the reservation
+ *  time — lives on the history page). Refreshes the no-show badge set. */
+export function useReportNoShow() {
+  const qc = useQueryClient();
+  return useMutation({
     mutationFn: (v: { bookingId: string; cafeId: string; userId: string }) =>
       reportNoShow(v.bookingId, v.cafeId, v.userId),
-    onSuccess: invalidate,
+    onSuccess: () => qc.invalidateQueries({ queryKey: ownerKeys.noShows() }),
   });
-
-  return { approve, reject, noShow };
 }

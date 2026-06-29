@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Check, UserX, Flag, Users } from "lucide-react";
+import { Check, UserX, Flag, Users, Loader2 } from "lucide-react";
 import { BottomSheet } from "@/components/shared/BottomSheet";
 import { IssueSheet } from "./IssueSheet";
-import { useOwnerBookings, useNoShowBookingIds } from "@/hooks/useOwner";
+import {
+  useOwnerBookings,
+  useNoShowBookingIds,
+  useReportNoShow,
+} from "@/hooks/useOwner";
 import { useAuthStore } from "@/store/authStore";
 import { cn, faNum, faDateTime } from "@/lib/utils";
 import type { OwnerBooking } from "@/types";
@@ -11,6 +15,7 @@ export default function OwnerHistory() {
   const owner = useAuthStore((s) => s.user);
   const { data: bookings = [] } = useOwnerBookings(owner?.id ?? "");
   const { data: noShowIds } = useNoShowBookingIds();
+  const reportNoShow = useReportNoShow();
   const [reportFor, setReportFor] = useState<OwnerBooking | null>(null);
 
   const now = Date.now();
@@ -62,7 +67,31 @@ export default function OwnerHistory() {
                   </span>
                 </div>
 
-                <div className="mt-3 border-t border-border/50 pt-2.5">
+                <div className="mt-3 flex items-center gap-4 border-t border-border/50 pt-2.5">
+                  {!noShow && (
+                    <button
+                      onClick={() =>
+                        reportNoShow.mutate({
+                          bookingId: b.id,
+                          cafeId: b.cafeId,
+                          userId: b.userId,
+                        })
+                      }
+                      disabled={
+                        reportNoShow.isPending &&
+                        reportNoShow.variables?.bookingId === b.id
+                      }
+                      className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground disabled:opacity-50"
+                    >
+                      {reportNoShow.isPending &&
+                      reportNoShow.variables?.bookingId === b.id ? (
+                        <Loader2 className="size-4 animate-spin" />
+                      ) : (
+                        <UserX className="size-4 text-destructive" />
+                      )}
+                      مشتری نیامد
+                    </button>
+                  )}
                   <button
                     onClick={() => setReportFor(b)}
                     className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground"

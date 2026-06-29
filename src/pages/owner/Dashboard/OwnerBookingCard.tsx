@@ -1,11 +1,11 @@
-import { Users, Check, UserX, Phone, Star, Loader2 } from "lucide-react";
+import { Users, Check, Phone, Star, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useOwnerActions } from "@/hooks/useOwner";
 import { faNum } from "@/lib/utils";
 import type { OwnerBooking } from "@/types";
 
 /** A single reservation on the owner dashboard: guest info + approve/reject
- *  (pending) or confirmed status + no-show. */
+ *  (pending) or confirmed status. (No-shows are flagged later from history.) */
 export function OwnerBookingCard({
   booking,
   ownerId,
@@ -13,7 +13,7 @@ export function OwnerBookingCard({
   booking: OwnerBooking;
   ownerId: string;
 }) {
-  const { approve, reject, noShow } = useOwnerActions(ownerId);
+  const { approve, reject } = useOwnerActions(ownerId);
   const busy = approve.isPending || reject.isPending;
 
   return (
@@ -69,25 +69,11 @@ export function OwnerBookingCard({
           </Button>
         </div>
       ) : (
-        <div className="mt-3 flex items-center justify-between">
+        <div className="mt-3">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/12 px-3 py-1.5 text-xs font-bold text-primary">
             <Check className="size-3.5" />
             تأیید‌شده
           </span>
-          <button
-            onClick={() =>
-              noShow.mutate({
-                bookingId: booking.id,
-                cafeId: booking.cafeId,
-                userId: booking.userId,
-              })
-            }
-            disabled={noShow.isPending}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground disabled:opacity-50"
-          >
-            <UserX className="size-4" />
-            {noShow.isSuccess ? "ثبت شد" : "مشتری نیامد"}
-          </button>
         </div>
       )}
     </div>
