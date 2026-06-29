@@ -6,7 +6,7 @@ import { OwnerLayout } from "@/components/layout/OwnerLayout";
 import OwnerDashboard from "@/pages/owner/Dashboard/Main";
 import OwnerProfileHub from "@/pages/owner/Profile/Main";
 import OwnerReviews from "@/pages/owner/Reviews/Main";
-import OwnerReports from "@/pages/owner/Reports/Main";
+import OwnerHistory from "@/pages/owner/History/Main";
 import OwnerEdit from "@/pages/owner/Edit/Main";
 import OwnerPhotos from "@/pages/owner/Photos/Main";
 import Auth from "@/pages/Auth/Main";
@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
       { path: "profile/edit", element: <OwnerEdit /> },
       { path: "profile/photos", element: <OwnerPhotos /> },
       { path: "account/edit", element: <EditAccount /> },
-      { path: "reports", element: <OwnerReports /> },
+      { path: "history", element: <OwnerHistory /> },
     ],
   },
 
