@@ -7,7 +7,7 @@ import { BottomNav } from "@/components/navigation/BottomNav";
 export function AppLayout() {
   return (
     <PhoneFrame>
-      <div className="flex-1 overflow-y-auto scrollbar-none">
+      <div data-scroll-root className="flex-1 overflow-y-auto scrollbar-none">
         <Outlet />
       </div>
       <BottomNav />

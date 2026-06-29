@@ -13,6 +13,7 @@ import Auth from "@/pages/Auth/Main";
 import AddCafe from "@/pages/AddCafe/Main";
 import GuestBooking from "@/pages/GuestBooking/Main";
 import Home from "@/pages/Home/Main";
+import CafeList from "@/pages/CafeList/Main";
 import CafeProfile from "@/pages/CafeProfile/Main";
 import ReviewSubmit from "@/pages/CafeProfile/ReviewSubmit";
 import Booking from "@/pages/Booking/Main";
@@ -42,6 +43,7 @@ export const router = createBrowserRouter([
         element: <AppLayout />,
         children: [
           { index: true, element: <Home /> },
+          { path: "cafes/:section", element: <CafeList /> },
           { path: "bookings", element: <MyBookings /> },
           { path: "profile", element: <Profile /> },
         ],
