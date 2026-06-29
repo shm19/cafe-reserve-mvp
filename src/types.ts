@@ -143,3 +143,16 @@ export interface NoShowReport {
   userId: string;
   createdAt: string;
 }
+
+export type IssueReason = "unpaid_bill" | "disturbance";
+
+/** Owner-reported misconduct on a past booking — platform admins act on it. */
+export interface IssueReport {
+  id: string;
+  bookingId: string;
+  cafeId: string;
+  userId: string;
+  reason: IssueReason;
+  note?: string;
+  createdAt: string;
+}

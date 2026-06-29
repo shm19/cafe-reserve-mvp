@@ -1,5 +1,13 @@
 import { api, newId } from "@/api/client";
-import type { Booking, Cafe, NoShowReport, OwnerBooking, User } from "@/types";
+import type {
+  Booking,
+  Cafe,
+  IssueReason,
+  IssueReport,
+  NoShowReport,
+  OwnerBooking,
+  User,
+} from "@/types";
 
 export async function getOwnerCafes(ownerId: string): Promise<Cafe[]> {
   return api.get<Cafe[]>("/cafes", { ownerId });
@@ -54,4 +62,21 @@ export function reportNoShow(bookingId: string, cafeId: string, userId: string) 
     createdAt: new Date().toISOString(),
   };
   return api.post<NoShowReport>("/noShowReports", report);
+}
+
+export const getNoShowReports = () => api.get<NoShowReport[]>("/noShowReports");
+
+export function reportIssue(input: {
+  bookingId: string;
+  cafeId: string;
+  userId: string;
+  reason: IssueReason;
+  note?: string;
+}) {
+  const report: IssueReport = {
+    id: newId("ir"),
+    ...input,
+    createdAt: new Date().toISOString(),
+  };
+  return api.post<IssueReport>("/issueReports", report);
 }

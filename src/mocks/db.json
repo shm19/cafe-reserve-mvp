@@ -13,7 +13,7 @@
       "id": "u2",
       "phone": "09121111111",
       "name": "آرزو",
-      "role": "user",
+      "role": "owner",
       "points": 120
     },
     {
@@ -21,7 +21,8 @@
       "phone": "09122222222",
       "name": "مدیر کافهٔ نقطه",
       "role": "owner",
-      "points": 0
+      "points": 0,
+      "iban": "IR000000000000000000000001"
     },
     {
       "id": "admin1",
@@ -257,6 +258,29 @@
         "work"
       ],
       "coverColor": "#E6DECF"
+    },
+    {
+      "id": "cmqy3tp162962",
+      "neighborhood": "",
+      "lat": 35.7219,
+      "lng": 51.3347,
+      "description": "",
+      "status": "pending",
+      "openHours": "",
+      "rating": 0,
+      "reviewCount": 0,
+      "distanceM": 0,
+      "tags": [
+        "football",
+        "work"
+      ],
+      "coverColor": "#E6DECF",
+      "name": "کافه خسته",
+      "phone": "09122235241",
+      "address": "تهران مطهری کوچه سرافراز پلاک ۱۲",
+      "maxPartySize": 2,
+      "cancellationPolicy": "لغو رایگان تا ۲۴ ساعت قبل",
+      "ownerId": "u2"
     }
   ],
   "menuItems": [
@@ -513,6 +537,28 @@
       "depositRequired": false,
       "depositStatus": "none",
       "createdAt": "2026-06-20T10:00:00Z"
+    },
+    {
+      "id": "bmqy2vw1j8135",
+      "cafeId": "c8",
+      "userId": "u1",
+      "datetime": "2026-06-28T18:30:00",
+      "partySize": 3,
+      "depositRequired": false,
+      "status": "pending",
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T17:44:07.927Z"
+    },
+    {
+      "id": "bmqy52kfh3560",
+      "cafeId": "c1",
+      "userId": "u1",
+      "datetime": "2026-06-28T18:30:00",
+      "partySize": 3,
+      "depositRequired": false,
+      "status": "pending",
+      "depositStatus": "none",
+      "createdAt": "2026-06-28T18:45:18.701Z"
     }
   ],
   "invites": [
@@ -532,7 +578,7 @@
       "total": 2000000,
       "tax": 180000,
       "createdBy": "u1",
-      "status": "open",
+      "status": "settled",
       "shares": [
         {
           "id": "sh1",
@@ -553,7 +599,8 @@
           "splitBillId": "s1",
           "userOrName": "علی",
           "amount": 250000,
-          "paid": false
+          "paid": true,
+          "paymentRef": "paymqyw1bmx8118"
         }
       ]
     },
@@ -680,5 +727,6 @@
       "url": "",
       "isUgc": true
     }
-  ]
+  ],
+  "issueReports": []
 }

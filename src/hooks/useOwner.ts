@@ -8,6 +8,8 @@ import {
   approveBooking,
   rejectBooking,
   reportNoShow,
+  getNoShowReports,
+  reportIssue,
 } from "@/api/owner";
 import { useAuthStore } from "@/store/authStore";
 import type { Cafe } from "@/types";
@@ -17,7 +19,21 @@ export const ownerKeys = {
   bookings: (ownerId: string) =>
     [...ownerKeys.all, "bookings", ownerId] as const,
   cafe: (ownerId: string) => [...ownerKeys.all, "cafe", ownerId] as const,
+  noShows: () => [...ownerKeys.all, "noShows"] as const,
 };
+
+/** No-show reports as a Set of booking ids — drives attended/no-show badges. */
+export function useNoShowBookingIds() {
+  return useQuery({
+    queryKey: ownerKeys.noShows(),
+    queryFn: async () => new Set((await getNoShowReports()).map((r) => r.bookingId)),
+  });
+}
+
+/** Owner reports user misconduct on a past booking. */
+export function useReportIssue() {
+  return useMutation({ mutationFn: reportIssue });
+}
 
 export function useOwnerBookings(ownerId: string) {
   return useQuery({
