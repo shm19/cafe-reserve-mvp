@@ -79,7 +79,7 @@ export default function Home() {
           <p className="mb-3 px-4 text-xs font-bold text-muted-foreground">
             {results.length > 0 ? "نتایج جستجو" : "کافه‌ای مطابق جستجوی شما پیدا نشد"}
           </p>
-          <div className="grid grid-cols-2 gap-3 px-4">
+          <div className="grid grid-cols-1 gap-3 px-4">
             {results.map((cafe) => (
               <CafeCard key={cafe.id} cafe={cafe} className="w-full" />
             ))}

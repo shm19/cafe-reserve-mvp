@@ -94,7 +94,7 @@ export default function CafeList() {
         </p>
       ) : (
         <>
-          <div className="mt-3 grid grid-cols-2 gap-3 px-4">
+          <div className="mt-3 grid grid-cols-1 gap-3 px-4">
             {visible.map((cafe) => (
               <CafeCard key={cafe.id} cafe={cafe} className="w-full" />
             ))}
