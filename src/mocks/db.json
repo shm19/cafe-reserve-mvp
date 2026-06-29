@@ -556,7 +556,7 @@
       "datetime": "2026-06-28T18:30:00",
       "partySize": 3,
       "depositRequired": false,
-      "status": "pending",
+      "status": "rejected",
       "depositStatus": "none",
       "createdAt": "2026-06-28T18:45:18.701Z"
     }
@@ -706,7 +706,78 @@
       ]
     }
   ],
-  "noShowReports": [],
+  "noShowReports": [
+    {
+      "id": "nsmqz1p6ta212",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:41.854Z"
+    },
+    {
+      "id": "nsmqz1paqw2439",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:46.952Z"
+    },
+    {
+      "id": "nsmqz1pbgq2728",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:47.882Z"
+    },
+    {
+      "id": "nsmqz1pbyd558",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:48.517Z"
+    },
+    {
+      "id": "nsmqz1pcdv9433",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:49.075Z"
+    },
+    {
+      "id": "nsmqz1pegd6583",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:51.757Z"
+    },
+    {
+      "id": "nsmqz1pem85233",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:51.968Z"
+    },
+    {
+      "id": "nsmqz1pf5r9310",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:52.671Z"
+    },
+    {
+      "id": "nsmqz1pfdw533",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:52.964Z"
+    },
+    {
+      "id": "nsmqz1pfiq8827",
+      "bookingId": "b1",
+      "cafeId": "c1",
+      "userId": "u1",
+      "createdAt": "2026-06-29T09:58:53.138Z"
+    }
+  ],
   "payments": [],
   "photos": [
     {
